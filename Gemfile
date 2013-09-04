@@ -49,7 +49,7 @@ group :test do
 	gem 'launchy'
 	gem 'selenium-webdriver'
 	gem 'faker'
-	gem 'Zentest'
+	gem 'ZenTest'
 	gem "autotest-fsevent"
 	gem 'binding_of_caller'
 	gem 'shoulda-matchers'

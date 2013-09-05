@@ -47,3 +47,8 @@ Git commit message style
 Code style
 
 * snake_case
+
+Heroku apps
+
+* http://shielded-forest-9758.herokuapp.com - staging
+* http://sleepy-inlet-1856.herokuapp.com/ - production

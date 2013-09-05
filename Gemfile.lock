@@ -139,9 +139,9 @@ GEM
     omniauth (1.1.4)
       hashie (>= 1.2, < 3)
       rack
-    omniauth-facebook (1.4.1)
-      omniauth-oauth2 (~> 1.1.0)
-    omniauth-oauth2 (1.1.1)
+    omniauth-facebook (1.4.0)
+      omniauth-oauth2 (~> 1.0.2)
+    omniauth-oauth2 (1.0.3)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     pg (0.16.0)
@@ -291,7 +291,7 @@ DEPENDENCIES
   jquery-rails
   koala (~> 1.7.0rc1)
   launchy
-  omniauth-facebook
+  omniauth-facebook (= 1.4.0)
   pg
   poltergeist
   quiet_assets

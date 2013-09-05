@@ -4,6 +4,8 @@ AnattaLy::Application.routes.draw do
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'
 
+  resources :items
+
   resources :users do
     resources :items
   end

@@ -1,0 +1,14 @@
+%h2 Item listing
+%h4= @item.name
+
+%p
+  description:
+  = @item.description
+- if @item.color != ""
+  %p
+    color:
+    = @item.color
+- if @item.size != ""
+  %p
+    size:
+    = @item.size

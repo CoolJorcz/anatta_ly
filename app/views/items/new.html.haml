@@ -1,0 +1,8 @@
+%h2 Post an item to share
+
+= form_for @item do |f|
+  = f.text_field :name, placeholder: "Item"
+  = f.text_area :description, placeholder: "Description"
+  = f.text_field :size, placeholder: "Size"
+  = f.text_field :color, placeholder: "Color"
+  = f.submit "Post!"

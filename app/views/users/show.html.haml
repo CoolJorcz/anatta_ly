@@ -1,0 +1,12 @@
+%h2
+  = @user.name
+  's profile page
+
+= link_to "Add a new item", new_item_path(@user)
+
+%p My items:
+%ul
+  - @items.each do |item|
+    %li
+      = link_to item.name, item_path(item.id)
+

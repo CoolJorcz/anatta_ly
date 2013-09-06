@@ -5,13 +5,15 @@ class ItemsController < ApplicationController
   end
 
   def new
-    # Make sure to add some logic to ensure a user is signed in
-    @item = Item.new
+    if current_user
+      @item = Item.new
+    else
+      redirect_to :root
+    end
   end
 
   def create
-    # User should be @user after oauth stuff is all setup (@user = current_user)
-    @user = User.find_by_id(1)
+    @user = current_user
     @item = Item.new(params[:item])
     @item.user_id = @user.id
 
@@ -47,6 +49,6 @@ class ItemsController < ApplicationController
     # Make sure redirects to correct user
     @item = Item.find_by_id(params[:id])
     @item.destroy
-    redirect_to user_path(1)
+    redirect_to user_path(current_user.id)
   end
 end

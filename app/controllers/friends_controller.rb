@@ -1,7 +1,8 @@
 class FriendsController < ApplicationController
   include UsersHelper
+
   def index
-    @friends = Friend.where(requester_id: current_user.id, approved: true) + Friend.where(receiver_id: current_user.id, approved: true)
+    @friends = get_friends
   end
 
   def new
@@ -36,3 +37,4 @@ class FriendsController < ApplicationController
     redirect_to requests_url
   end
 end
+

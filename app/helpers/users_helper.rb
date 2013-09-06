@@ -21,4 +21,17 @@ module UsersHelper
     user_matches.each{ |user| anattaly_user_matches << User.find_by_facebook_id(user["id"].to_i) }
     anattaly_user_matches
   end
+
+  def get_friends
+    friend_objects = Friend.where(requester_id: current_user.id, approved: true) + Friend.where(receiver_id: current_user.id, approved: true)
+    friends_as_users = []
+    friend_objects.each do |friend|
+      if friend.requester_id == current_user.id
+        friends_as_users << User.find_by_id(friend.receiver_id)
+      elsif friend.receiver_id == current_user.id
+        friends_as_users << User.find_by_id(friend.requester_id)
+      end
+    end
+    friends_as_users
+  end
 end

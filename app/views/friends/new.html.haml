@@ -1,10 +1,10 @@
 %h2
   = @current_user.name
-  's friends
+  , your friends are already on Anatta.ly!
 
-%p Your friends are already on Anattaly!
 %ul
   - @matches.each do |friend|
-    %li
-      = friend.name
-      = link_to "Request to share with " + friend.name, friends_path(receiver_id: friend.id), { method: "post" }
+    - if Friend.find_by_receiver_id(friend.id) == nil && Friend.find_by_requester_id(friend.id) == nil
+      %li
+        = friend.name
+        = link_to "Request to share with " + friend.name, friends_path(receiver_id: friend.id), { method: "post" }

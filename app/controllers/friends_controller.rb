@@ -1,19 +1,17 @@
 class FriendsController < ApplicationController
   include UsersHelper
   def index
-    # Should only be user's possible friends
-    @users = User.all
+    @friends = Friend.where(requester_id: current_user.id, approved: true) + Friend.where(receiver_id: current_user.id, approved: true)
   end
 
   def new
-    @graph = Koala::Facebook::API.new(current_user.oauth_token)
-    @friends = @graph.get_connections("me", "friends")
+    ## only friends I have not requested and aren't friends with
     @matches = parse_facebook
   end
 
   def create
     @friend = Friend.new
-    @friend.requester_id = 1 # should be current_user
+    @friend.requester_id = current_user.id
     @friend.receiver_id = params[:receiver_id]
     @friend.save
     redirect_to friend_url(@friend)
@@ -24,17 +22,15 @@ class FriendsController < ApplicationController
   end
 
   def accept
-    puts '-' * 100
-    puts params
+    debugger
     @friend = Friend.find_by_id(params[:friend_id])
     @friend.approved = true
-    @friend.save
+    @friend.save!
     redirect_to requests_url
-
   end
 
   def destroy
-    # Make sure redirects to correct user
+    # Friend denial or removal
     @friend = Friend.find_by_id(params[:id])
     @friend.destroy
     redirect_to requests_url

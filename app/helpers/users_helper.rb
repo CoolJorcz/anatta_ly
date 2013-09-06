@@ -1,13 +1,16 @@
 module UsersHelper
 
   def parse_facebook
+
+    graph = Koala::Facebook::API.new(current_user.oauth_token)
+    friends = graph.get_connections("me", "friends")
     # Find all the FB id's from anattaly Users
     facebook_ids = User.all.map { |user| user.facebook_id.to_s }
 
     # Select the matches between my FB friends and anattaly Users
     matches = []
     facebook_ids.each do |id|
-      matches << @friends.select{ |friend| friend['id'] == id }
+      matches << friends.select{ |friend| friend['id'] == id }
     end
 
     # Remove empty arrays and make hash easier to use

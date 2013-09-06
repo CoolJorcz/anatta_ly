@@ -5,8 +5,14 @@ AnattaLy::Application.routes.draw do
   match 'signout', to: 'sessions#destroy', as: 'signout'
 
   resources :items
+
   resources :users
+
   resources :friends
+  post '/friends/accept', to: 'friends#accept', as: 'accept_friend'
+
+  resources :requests
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

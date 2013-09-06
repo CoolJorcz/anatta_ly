@@ -15,4 +15,21 @@ class FriendsController < ApplicationController
   def show
 
   end
+
+  def accept
+    puts '-' * 100
+    puts params
+    @friend = Friend.find_by_id(params[:friend_id])
+    @friend.approved = true
+    @friend.save
+    redirect_to requests_url
+
+  end
+
+  def destroy
+    # Make sure redirects to correct user
+    @friend = Friend.find_by_id(params[:id])
+    @friend.destroy
+    redirect_to requests_url
+  end
 end

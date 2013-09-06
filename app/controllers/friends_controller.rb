@@ -1,7 +1,14 @@
 class FriendsController < ApplicationController
+  include UsersHelper
   def index
     # Should only be user's possible friends
     @users = User.all
+  end
+
+  def new
+    @graph = Koala::Facebook::API.new(current_user.oauth_token)
+    @friends = @graph.get_connections("me", "friends")
+    @matches = parse_facebook
   end
 
   def create

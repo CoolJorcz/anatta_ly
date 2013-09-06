@@ -7,12 +7,12 @@ AnattaLy::Application.routes.draw do
   resources :items
 
   resources :users
+  match 'users/:id/friends', to: 'users#friends'
 
   resources :friends
   post '/friends/accept', to: 'friends#accept', as: 'accept_friend'
 
   resources :requests
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

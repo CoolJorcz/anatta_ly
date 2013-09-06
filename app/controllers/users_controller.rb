@@ -5,9 +5,4 @@ class UsersController < ApplicationController
     @item = Item.first
     @items = @user.items
   end
-
-  def index
-    # Should only be user's possible friends
-    @users = User.all
-  end
 end

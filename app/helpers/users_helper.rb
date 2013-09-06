@@ -1,6 +1,6 @@
 module UsersHelper
 
-  def parse_facebook
+  def facebook_friends
     graph = Koala::Facebook::API.new(current_user.oauth_token)
     friends = graph.get_connections("me", "friends")
 
@@ -22,6 +22,14 @@ module UsersHelper
     anattaly_user_matches
   end
 
+  def facebook_friends_to_add
+    # facebookfriends that I'm not friends with on anattaly yet
+    fb_friends = facebook_friends.select do |friend|
+       Friend.find_by_receiver_id(friend.id) == nil && Friend.find_by_requester_id(friend.id) == nil
+    end
+  end
+
+
   def get_friends
     # Find all approved friend objects where user is a requester or reciever
     friend_objects = Friend.where(requester_id: current_user.id, approved: true) + Friend.where(receiver_id: current_user.id, approved: true)
@@ -36,5 +44,10 @@ module UsersHelper
       end
     end
     friends_as_users
+  end
+
+  def is_friend?(friend_object)
+    # Idk if this is correct..error check when we come to it?
+    friends_as_users.include?(friend_object)
   end
 end

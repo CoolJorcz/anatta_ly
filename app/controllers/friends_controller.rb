@@ -7,7 +7,7 @@ class FriendsController < ApplicationController
 
   def new
     ## only friends I have not requested and aren't friends with
-    @matches = parse_facebook
+    @matches = facebook_friends_to_add
   end
 
   def create

@@ -4,7 +4,6 @@
 
 %ul
   - @matches.each do |friend|
-    - if Friend.find_by_receiver_id(friend.id) == nil && Friend.find_by_requester_id(friend.id) == nil
-      %li
-        = friend.name
-        = link_to "Request to share with " + friend.name, friends_path(receiver_id: friend.id), { method: "post" }
+    %li
+      = friend.name
+      = link_to "Request to share with " + friend.name, friends_path(receiver_id: friend.id), { method: "post" }

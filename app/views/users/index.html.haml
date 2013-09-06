@@ -1,0 +1,7 @@
+%h2 All users
+
+%ul
+  - @users.each do |user|
+    %li
+      = user.name
+      = #link_to item.name, item_path(item.id)

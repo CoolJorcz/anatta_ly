@@ -6,6 +6,5 @@
 %ul
   - @matches.each do |friend|
     %li
-      - f = User.find_by_facebook_id(friend[0]['id'])
-      = f.name
-      = link_to "Request to share with " + f.name, friends_path(receiver_id: f.id), { method: "post" }
+      = friend.name
+      = link_to "Request to share with " + friend.name, friends_path(receiver_id: friend.id), { method: "post" }

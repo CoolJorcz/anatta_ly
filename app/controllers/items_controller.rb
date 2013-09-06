@@ -14,9 +14,15 @@ class ItemsController < ApplicationController
     @user = User.find_by_id(1)
     @item = Item.new(params[:item])
     @item.user_id = @user.id
-    @item.save
 
-    redirect_to user_item_url(@item)
+    if @item.valid?
+      flash[:notice] = "Successful Create"
+      @item.save
+      redirect_to item_url(@item)
+    else
+      flash[:notice] = "Failed validation"
+      render :new
+    end
   end
 
   def show
@@ -29,9 +35,12 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find_by_id(params[:id])
-    @item.update_attributes(params[:item])
-    redirect_to item_url(@item)
-    # on failure, render :edit
+    if @item.update_attributes(params[:item])
+      redirect_to item_url(@item)
+    else
+      flash[:notice] = "Failed validation"
+      render :edit
+    end
   end
 
   def destroy

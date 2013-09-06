@@ -37,8 +37,9 @@ ActiveRecord::Schema.define(:version => 20130906015244) do
     t.string   "name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "facebook_id",      :limit => 8
   end
 
 end

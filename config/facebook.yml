@@ -1,9 +1,9 @@
 development:
-  app_id: YOUR_APP_ID
-  secret_key: YOUR_SECRET
+  app_id: "396547350445717"
+  secret_key: ENV['FB_APP_SECRET']
 test:
-  app_id: YOUR_APP_ID
-  secret_key: YOUR_SECRET
+  app_id: "396547350445717"
+  secret_key: ENV['FB_APP_SECRET']
 production:
-  app_id: YOUR_APP_ID
-  secret_key: YOUR_SECRET
+  app_id: "396547350445717"
+  secret_key: ENV['FB_APP_SECRET']

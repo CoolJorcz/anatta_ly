@@ -6,7 +6,6 @@ jQuery ->
 		dataType: 'script'
 		cache: true
 
-
 window.fbAsyncInit = ->
 	FB.init(appId: '<%= ENV["FB_APP_ID"] %>', cookie: true)
 
@@ -19,3 +18,7 @@ window.fbAsyncInit = ->
 		FB.getLoginStatus (response) ->
 			FB.logout() if response.authResponse
 		true
+
+	if $('#sign_out').length > 0
+		FB.getLoginStatus (response) ->
+			window.location = $('#sign_out').attr("href") if !response.authResponse

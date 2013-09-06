@@ -1,9 +1,9 @@
 module UsersHelper
 
   def parse_facebook
-
     graph = Koala::Facebook::API.new(current_user.oauth_token)
     friends = graph.get_connections("me", "friends")
+
     # Find all the FB id's from anattaly Users
     facebook_ids = User.all.map { |user| user.facebook_id.to_s }
 
@@ -23,7 +23,10 @@ module UsersHelper
   end
 
   def get_friends
+    # Find all approved friend objects where user is a requester or reciever
     friend_objects = Friend.where(requester_id: current_user.id, approved: true) + Friend.where(receiver_id: current_user.id, approved: true)
+
+    # Save a user object for each friend
     friends_as_users = []
     friend_objects.each do |friend|
       if friend.requester_id == current_user.id

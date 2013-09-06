@@ -5,10 +5,7 @@ AnattaLy::Application.routes.draw do
   match 'signout', to: 'sessions#destroy', as: 'signout'
 
   resources :items
-
-  resources :users do
-    resources :items
-  end
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

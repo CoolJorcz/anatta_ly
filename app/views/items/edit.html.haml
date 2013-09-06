@@ -1,0 +1,12 @@
+%h2 Item edit
+
+= form_for @item, url: { action: "update" } do |f| #user_item_url, method: "put"
+  = f.text_field :name, placeholder: "Item", value: @item.name
+  %br
+  = f.text_area :description, placeholder: "Description", value: @item.description
+  %br
+  = f.text_field :size, placeholder: "Size", value: @item.size
+  %br
+  = f.text_field :color, placeholder: "Color", value: @item.color
+  %br
+  = f.submit "Edit!"

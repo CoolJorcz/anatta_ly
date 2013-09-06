@@ -16,10 +16,28 @@ class ItemsController < ApplicationController
     @item.user_id = @user.id
     @item.save
 
-    redirect_to item_url(@item)
+    redirect_to user_item_url(@item)
   end
 
   def show
     @item = Item.find_by_id(params[:id])
+  end
+
+  def edit
+    @item = Item.find_by_id(params[:id])
+  end
+
+  def update
+    @item = Item.find_by_id(params[:id])
+    @item.update_attributes(params[:item])
+    redirect_to item_url(@item)
+    # on failure, render :edit
+  end
+
+  def destroy
+    # Make sure redirects to correct user
+    @item = Item.find_by_id(params[:id])
+    @item.destroy
+    redirect_to user_path(1)
   end
 end

@@ -48,6 +48,6 @@ module UsersHelper
 
   def is_friend?(friend_object)
     # Idk if this is correct..error check when we come to it?
-    friends_as_users.include?(friend_object)
+    get_friends.include?(friend_object)
   end
 end

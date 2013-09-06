@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :items
-  has_many :friends
+  has_many :friends, foreign_key: :requestor_id, foreign_key: :receiver_id
 
   def self.from_omniauth(auth)
   	where(auth.slice(:provider,:uid)).first_or_initialize.tap do |user|

@@ -29,6 +29,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by_id(params[:id])
+    @user = @item.user
   end
 
   def edit

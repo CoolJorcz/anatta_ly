@@ -4,7 +4,7 @@ describe Item do
   let(:item) { Item.new(name: "Canoe",
                         description: "Brand-new canoe. Only used a few times.",
                         color: "red",
-                        user_id: 1 }
+                        user_id: 1 )}
 
 
   it { should belong_to(:user) }

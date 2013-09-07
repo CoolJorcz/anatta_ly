@@ -10,8 +10,16 @@ class SharesController < ApplicationController
   end
 
   def create
-    # friend = Friend.create(requester_id: current_user.id, receiver_id: params[:receiver_id])
-    # redirect_to friend_url(friend)
+    share = Share.new
+    share.item_id = params["share"]["item_id"]
+    share.borrower_id = current_user.id
+    share.start_on = params["share"]["start_on"]
+    share.end_on = params["share"]["end_on"]
+    if share.save
+      redirect_to shares_url
+    else
+      redirect_to new_share(params["share"]["item_id"])
+    end
   end
 
   def show

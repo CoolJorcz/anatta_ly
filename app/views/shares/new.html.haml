@@ -10,5 +10,6 @@
   %br
   = f.text_field :end_on, class: "datepicker", value: Date.today
   %br
+  = f.hidden_field :item_id, value: @item.id
   = f.submit "Can I borrow that?"
 

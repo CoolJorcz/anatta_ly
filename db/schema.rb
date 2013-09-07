@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130907022601) do
+ActiveRecord::Schema.define(:version => 20130907031319) do
 
   create_table "friends", :force => true do |t|
     t.integer  "requester_id"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(:version => 20130907022601) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "shares", :force => true do |t|
+    t.integer  "item_id"
+    t.integer  "borrower_id"
+    t.datetime "start_on"
+    t.datetime "end_on"
+    t.string   "status",      :default => "pending"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
   create_table "users", :force => true do |t|

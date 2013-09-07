@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  include UsersHelper
 
   def show
     @user = User.find_by_id(params[:id])

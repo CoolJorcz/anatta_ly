@@ -1,34 +1,35 @@
 %h2 my SHARES (my items)
+
+%h4 SHARE requests
 - if @share_requests.length > 0
-  %h4 SHARE requests
   %ul
     - @share_requests.each do |share|
       %li
         = link_to share.item.name, item_path(share.item.id)
         %ul
           %li= "requester: " + share.borrower.name
-          %li= "from: " + share.start_on.to_s + " to " + share.end_on.to_s
-          %li= link_to "approve", approve_share_path(share_id: share.id), { method: "post", action: "share"}
+          %li= "from: " + share.start_on.to_date.to_s + " to " + share.end_on.to_date.to_s
+          %li= link_to "approve", update_share_path(share_id: share.id, update_type: "approved"), { method: "put", controller: "shares" }
           %li= link_to "deny", share_path(share.id), method: :delete, confirm: "Are you sure you don't want to share with  " + share.borrower.name + "?"
 
+%h4 SHARE approvals
 - if @share_approvals.length > 0
-  %h4 SHARE approvals
   %ul
     - @share_approvals.each do |share|
       %li
         = link_to share.item.name, item_path(share.item.id)
         %ul
           %li= "requester: " + share.borrower.name
-          %li= "from: " + share.start_on.to_s + " to " + share.end_on.to_s
-          %li= "link to say it was checked out"
+          %li= "from: " + share.start_on.to_date.to_s + " to " + share.end_on.to_date.to_s
+          %li= link_to "picked up", update_share_path(share_id: share.id, update_type: "checkedout"), { method: "put", controller: "shares" }
 
+%h4 SHARE checkouts
 - if @share_checkouts.length > 0
-  %h4 SHARE checkouts
   %ul
     - @share_checkouts.each do |share|
       %li
         = link_to share.item.name, item_path(share.item.id)
         %ul
           %li= "borrower: " + share.borrower.name
-          %li= "from: " + share.start_on.to_s + " to " + share.end_on.to_s
-          %li= "link to say it was returned out"
+          %li= "from: " + share.start_on.to_date.to_s + " to " + share.end_on.to_date.to_s
+          %li= link_to "returned", update_share_path(share_id: share.id, update_type: "returned"), { method: "put", controller: "shares" }

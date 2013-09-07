@@ -32,14 +32,32 @@ class SharesController < ApplicationController
   def show
   end
 
-  def approve
+  def update
     @share = Share.find(params[:share_id])
-    @share.status = "approved"
+    @share.status = params[:update_type]
     if !@share.save
       flash[:notice] = "Failed share approval"
     end
     redirect_to shares_url
   end
+
+  # def checkout
+  #   @share = Share.find(params[:share_id])
+  #   @share.status = "checkedout"
+  #   if !@share.save
+  #     flash[:notice] = "Failed share checkout"
+  #   end
+  #   redirect_to shares_url
+  # end
+
+  # def return
+  #   @share = Share.find(params[:share_id])
+  #   @share.status = "returned"
+  #   if !@share.save
+  #     flash[:notice] = "Failed share return"
+  #   end
+  #   redirect_to shares_url
+  # end
 
 
   # Friend denial or removal

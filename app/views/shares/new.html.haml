@@ -6,9 +6,9 @@
 
 %h3 When do you want to borrow it?
 = form_for @share do |f|
-  = f.date_select :start_on, order: [:month, :day, :year]
+  = f.text_field :start_on, class: "datepicker", value: Date.today
   %br
-  = f.date_select :end_on, order: [:month, :day, :year]
+  = f.text_field :end_on, class: "datepicker", value: Date.today
   %br
   = f.submit "Can I borrow that?"
 

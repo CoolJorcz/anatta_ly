@@ -63,6 +63,9 @@ gem "paperclip", "~> 3.0"
 
 #for Heroku
 gem 'aws-sdk', '~> 1.5.7'
+gem 'carrierwave'
+gem 'carrierwave_direct'
+gem 'fog'
 
 #To address Coffeescript issues on Heroku
 gem 'therubyracer'

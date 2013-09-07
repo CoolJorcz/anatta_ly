@@ -6,7 +6,6 @@ class FriendsController < ApplicationController
   end
 
   def new
-    ## only friends I have not requested and aren't friends with
     @matches = facebook_friends_to_add
   end
 
@@ -19,7 +18,6 @@ class FriendsController < ApplicationController
   end
 
   def show
-
   end
 
   def accept

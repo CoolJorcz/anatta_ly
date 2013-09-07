@@ -6,7 +6,7 @@ class Friend < ActiveRecord::Base
   validates_presence_of :receiver
 
 
-    def self.facebook_friends
+  def self.facebook_friends
     graph = Koala::Facebook::API.new(current_user.oauth_token)
     friends = graph.get_connections("me", "friends")
 

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :items
+  has_many :shares, through: :items
   has_many :friends, foreign_key: :requestor_id, foreign_key: :receiver_id
 
   attr_accessible :avatar

@@ -2,7 +2,7 @@ class FriendsController < ApplicationController
   include UsersHelper
 
   def index
-    @friends = get_friends
+    @friends = Friend.get_friends(current_user)
   end
 
   def new

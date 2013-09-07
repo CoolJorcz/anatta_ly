@@ -3,5 +3,4 @@
 %ul
   - @friends.each do |friend|
     %li
-      = friend.name
-      = link_to "go to their profile. change this link.", friends_path(receiver_id: friend.id), { method: "post" }
+      = link_to friend.name, user_path(friend.id)

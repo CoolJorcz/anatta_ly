@@ -8,7 +8,6 @@ class Item < ActiveRecord::Base
   has_many :borrowers, class_name: "User"
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
 
-  before_save 
   def self.items_of_friends(current_user)
     friends = Friend.get_friends(current_user)
     items = []

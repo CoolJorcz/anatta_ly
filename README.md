@@ -55,6 +55,17 @@ class ClassName
 end
 </pre>
 
+<pre>
+class ModelName - ActiveRecord::Base
+  attr_accessible
+  validates_presence_of
+
+  belongs_to
+  has_many
+  has_attached_file
+end
+</pre>
+
 ## Heroku apps
 
 * http://shielded-forest-9758.herokuapp.com - staging

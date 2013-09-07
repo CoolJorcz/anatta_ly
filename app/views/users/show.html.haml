@@ -1,6 +1,8 @@
 %h2
+  = image_tag @profile_path
   = @user.name
   's profile page
+
 
 - if current_user == @user
   = link_to "Add a new item", new_item_path(@user)

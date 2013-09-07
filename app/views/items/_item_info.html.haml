@@ -1,0 +1,18 @@
+%h3= @item.name
+
+%p
+  description:
+  = @item.description
+
+- if @item.color != ""
+  %p
+    color:
+    = @item.color
+
+- if @item.size != ""
+  %p
+    size:
+    = @item.size
+
+- if @item.image_file_name != nil
+  = image_tag @item.image.url(:medium)

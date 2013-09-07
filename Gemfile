@@ -33,7 +33,7 @@ group :development, :test do
 	gem 'rspec'
 	gem 'rspec-rails'
 	gem 'jasmine'
-	gem "travis", "~> 1.5.3"
+	gem 'travis', '~> 1.5.3'
 end
 
 group :development do
@@ -50,16 +50,16 @@ group :test do
 	gem 'selenium-webdriver'
 	gem 'faker'
 	gem 'ZenTest'
-	gem "autotest-fsevent"
+	gem 'autotest-fsevent'
 	gem 'binding_of_caller'
 	gem 'shoulda-matchers'
 end
 
 gem 'jquery-rails'
 
-gem 'koala', "~> 1.7.0rc1"
+gem 'koala', '~> 1.7.0rc1'
 gem 'omniauth-facebook', '1.4.0'
-gem "paperclip", "~> 3.0"
+gem 'paperclip', '~> 3.0'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

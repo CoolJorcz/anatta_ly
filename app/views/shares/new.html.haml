@@ -1,0 +1,15 @@
+%h2
+  Request to borrow an item from
+  = @item.user.name
+
+= render "items/item_info"
+
+%h3 When do you want to borrow it?
+= form_for @share do |f|
+  = f.text_field :start_on, class: "datepicker", value: Date.today
+  %br
+  = f.text_field :end_on, class: "datepicker", value: Date.today
+  %br
+  = f.hidden_field :item_id, value: @item.id
+  = f.submit "Can I borrow that?"
+

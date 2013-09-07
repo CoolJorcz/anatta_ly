@@ -1,0 +1,33 @@
+%h2 my BORROWS (friend items)
+
+%h4 BORROW requests
+- if @borrow_requests.length > 0
+  %ul
+    - @borrow_requests.each do |share|
+      %li
+        = link_to share.item.name, item_path(share.item.id)
+        %ul
+          %li= "owner: " + share.item.user.name
+          %li= "from: " + share.start_on.to_date.to_s + " to " + share.end_on.to_date.to_s
+          %li= link_to "cancel request", update_share_path(share_id: share.id, update_type: "canceled"), { method: "put", controller: "shares" }, confirm: "Are you sure you don't want to cancel this request?"
+
+%h4 BORROW approvals
+- if @borrow_approvals.length > 0
+  %ul
+    - @borrow_approvals.each do |share|
+      %li
+        = link_to share.item.name, item_path(share.item.id)
+        %ul
+          %li= "owner: " + share.item.user.name
+          %li= "from: " + share.start_on.to_date.to_s + " to " + share.end_on.to_date.to_s
+          %li= link_to "cancel request", update_share_path(share_id: share.id, update_type: "canceled"), { method: "put", controller: "shares" }, confirm: "Are you sure you don't want to cancel this request?"
+
+%h4 BORROW checkouts
+- if @borrow_checkouts.length > 0
+  %ul
+    - @borrow_checkouts.each do |share|
+      %li
+        = link_to share.item.name, item_path(share.item.id)
+        %ul
+          %li= "owner: " + share.item.user.name
+          %li= "from: " + share.start_on.to_date.to_s + " to " + share.end_on.to_date.to_s

@@ -61,6 +61,7 @@ gem 'koala', '~> 1.7.0rc1'
 gem 'omniauth-facebook', '1.4.0'
 gem 'paperclip', '~> 3.0'
 
+<<<<<<< HEAD
 #for Heroku
 gem 'aws-sdk', '~> 1.5.7'
 gem 'carrierwave'
@@ -70,6 +71,10 @@ gem 'fog'
 #To address Coffeescript issues on Heroku
 gem 'therubyracer'
 gem 'bistro_car'
+=======
+#To address Coffeescript issues on Heroku
+gem 'therubyracer'
+>>>>>>> Added therubyracer to gemfile for coffee support
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

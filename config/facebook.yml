@@ -1,9 +1,9 @@
 development:
   app_id: 396547350445717
-  secret_key: 929992342c80bbc59681a12c673b0cb2
+  secret_key: 'ENV[APP_SECRET]'
 test:
   app_id: 396547350445717
-  secret_key: 929992342c80bbc59681a12c673b0cb2
+  secret_key: 'ENV[APP_SECRET]'
 production:
   app_id: 396547350445717
-  secret_key: 929992342c80bbc59681a12c673b0cb2
+  secret_key: 'ENV[APP_SECRET]'

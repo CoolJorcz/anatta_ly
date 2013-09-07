@@ -15,6 +15,7 @@ AnattaLy::Application.routes.draw do
   resources :requests
 
   resources :shares
+  post '/shares/approve', to: 'shares#approve', as: 'approve_share'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

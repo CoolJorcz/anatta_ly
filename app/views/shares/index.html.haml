@@ -1,27 +1,5 @@
-%h2 My Shares
-%h4 SHARE requests
-%ul
-  - @share_requests.each do |share|
-    %li
-      = link_to share.item.name, item_path(share.item.id)
-      %ul
-        %li= "requester: " + share.borrower.name
-        %li= "from: " + share.start_on.to_s + " to " + share.end_on.to_s
-        %li= "APPROVE"
+%h1 sharing is caring
 
-%h4 SHARE approvals
-%h4 SHARE checkouts
+= render partial: "shares"
 
-%h2 My Borrows
-%h4 BORROW requests
-%ul
-  - @borrow_requests.each do |share|
-    %li
-      = link_to share.item.name, item_path(share.item.id)
-      %ul
-        %li= "owner: " + share.item.user.name
-        %li= "from: " + share.start_on.to_s + " to " + share.end_on.to_s
-        / %li= "APPROVE"
-
-%h4 BORROW approvals
-%h4 BORROW checkouts
+= render partial: "borrows"

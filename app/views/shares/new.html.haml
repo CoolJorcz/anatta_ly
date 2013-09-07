@@ -1,0 +1,14 @@
+%h2
+  Request to borrow an item from
+  = @item.user.name
+
+= render "items/item_info"
+
+%h3 When do you want to borrow it?
+= form_for @share do |f|
+  = f.date_select :start_on, order: [:month, :day, :year]
+  %br
+  = f.date_select :end_on, order: [:month, :day, :year]
+  %br
+  = f.submit "Can I borrow that?"
+

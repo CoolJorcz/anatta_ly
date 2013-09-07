@@ -4,7 +4,7 @@ class FriendsController < ApplicationController
   end
 
   def new
-    @matches = Friend.facebook_friends_to_add
+    @matches = facebook_friends_to_add
   end
 
   def create

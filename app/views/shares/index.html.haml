@@ -4,6 +4,10 @@
   - @share_requests.each do |share|
     %li
       = link_to share.item.name, item_path(share.item.id)
+      %ul
+        %li= "requester: " + share.borrower.name
+        %li= "from: " + share.start_on.to_s + " to " + share.end_on.to_s
+        %li= "APPROVE"
 
 %h4 SHARE approvals
 %h4 SHARE checkouts
@@ -14,6 +18,10 @@
   - @borrow_requests.each do |share|
     %li
       = link_to share.item.name, item_path(share.item.id)
+      %ul
+        %li= "owner: " + share.item.user.name
+        %li= "from: " + share.start_on.to_s + " to " + share.end_on.to_s
+        / %li= "APPROVE"
 
 %h4 BORROW approvals
 %h4 BORROW checkouts

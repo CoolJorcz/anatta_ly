@@ -1,6 +1,4 @@
 class FriendsController < ApplicationController
-  include UsersHelper
-
   def index
     @friends = Friend.get_friends(current_user)
   end
@@ -10,21 +8,20 @@ class FriendsController < ApplicationController
   end
 
   def create
-    @friend = Friend.new
-    @friend.requester_id = current_user.id
-    @friend.receiver_id = params[:receiver_id]
-    @friend.save
-    redirect_to friend_url(@friend)
+    friend = Friend.create(requester_id: current_user.id, receiver_id: params[:receiver_id[})
+    redirect_to friend_url(friend)
   end
 
   def show
   end
 
   def accept
-    debugger
     @friend = Friend.find_by_id(params[:friend_id])
     @friend.approved = true
-    @friend.save!
+    if !@friend.save
+      flash[:notice] = "Failed friend approval"
+    end
+
     redirect_to requests_url
   end
 

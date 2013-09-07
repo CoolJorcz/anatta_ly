@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   def index
-    @user = User.find_by_id(current_user.id)
+    @user = current_user
     @friend_requests = Friend.where(receiver_id: @user.id, approved: false)
   end
 end

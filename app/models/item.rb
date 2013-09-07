@@ -4,7 +4,6 @@ class Item < ActiveRecord::Base
   attr_accessible :name, :description, :size, :color, :image
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
 
-  before_save 
   def self.items_of_friends(current_user)
     friends = Friend.get_friends(current_user)
     items = []

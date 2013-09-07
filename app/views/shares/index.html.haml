@@ -1,14 +1,19 @@
 %h2 My Shares
-%h4 Items requested to be shared from me
-%h4 Items I've approved to be shared (upcoming checkouts)
-%h4 Items checked out from me
+%h4 SHARE requests
+%ul
+  - @share_requests.each do |item|
+    %li
+      = item.name #link_to item.name, item_path(item.id)
+
+%h4 SHARE approvals
+%h4 SHARE checkouts
 
 %h2 My Borrows
-%h4 Items I've requested to borrow
+%h4 BORROW requests
 %ul
   - @borrow_requests.each do |item|
     %li
       = item.name #link_to item.name, item_path(item.id)
 
-%h4 Items I've gotten approval to borrow (upcoming checkouts)
-%h4 Items I'm currently checking out
+%h4 BORROW approvals
+%h4 BORROW checkouts

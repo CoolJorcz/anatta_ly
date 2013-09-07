@@ -1,10 +1,15 @@
 class SharesController < ApplicationController
   def index
     # @friends = Friend.get_friends(current_user)
+    # @share_requests =
+    # @share_approvals =
+    # @share_checkouts =
+    @borrow_requests = Share.borrow_requests(current_user)
+    # @borrow_approvals =
+    # @borrow_checkouts =
   end
 
   def new
-    # @matches = facebook_friends_to_add
     @share = Share.new
     @item = Item.find(params[:item_id])
   end
@@ -18,7 +23,7 @@ class SharesController < ApplicationController
     if share.save
       redirect_to shares_url
     else
-      redirect_to new_share(params["share"]["item_id"])
+      redirect_to new_share_path(item_id: params["share"]["item_id"])
     end
   end
 

@@ -61,6 +61,9 @@ gem 'koala', "~> 1.7.0rc1"
 gem 'omniauth-facebook', '1.4.0'
 gem "paperclip", "~> 3.0"
 
+#for Heroku
+gem 'aws-sdk'
+
 #To address Coffeescript issues on Heroku
 gem 'therubyracer'
 gem 'bistro_car'

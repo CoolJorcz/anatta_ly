@@ -5,7 +5,7 @@ class Item < ActiveRecord::Base
 
   belongs_to :user
   has_many :shares
-  has_many :borrowers, class_name "User"
+  has_many :borrowers, class_name: "User"
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
 
   def self.items_of_friends(current_user)

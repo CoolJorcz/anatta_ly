@@ -1,0 +1,31 @@
+%h2 my BORROWS (friend items)
+
+- if @borrow_requests.length > 0
+  %h4 BORROW requests
+  %ul
+    - @borrow_requests.each do |share|
+      %li
+        = link_to share.item.name, item_path(share.item.id)
+        %ul
+          %li= "owner: " + share.item.user.name
+          %li= "from: " + share.start_on.to_s + " to " + share.end_on.to_s
+
+- if @borrow_approvals.length > 0
+  %h4 BORROW approvals
+  %ul
+    - @borrow_approvals.each do |share|
+      %li
+        = link_to share.item.name, item_path(share.item.id)
+        %ul
+          %li= "owner: " + share.item.user.name
+          %li= "from: " + share.start_on.to_s + " to " + share.end_on.to_s
+
+- if @borrow_checkouts.length > 0
+  %h4 BORROW checkouts
+  %ul
+    - @borrow_checkouts.each do |share|
+      %li
+        = link_to share.item.name, item_path(share.item.id)
+        %ul
+          %li= "owner: " + share.item.user.name
+          %li= "from: " + share.start_on.to_s + " to " + share.end_on.to_s

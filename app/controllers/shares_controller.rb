@@ -1,12 +1,12 @@
 class SharesController < ApplicationController
   def index
     # @friends = Friend.get_friends(current_user)
-    @share_requests = Share.share_requests(current_user)
-    # @share_approvals =
-    # @share_checkouts =
-    @borrow_requests = Share.borrow_requests(current_user)
-    # @borrow_approvals =
-    # @borrow_checkouts =
+    @share_requests = Share.shares(current_user, "pending")
+    @share_approvals = Share.shares(current_user, "approved")
+    @share_checkouts = Share.shares(current_user, "checkedout")
+    @borrow_requests = Share.borrows(current_user, "pending")
+    @borrow_approvals = Share.borrows(current_user, "approved")
+    @borrow_checkouts = Share.borrows(current_user, "checkedout")
   end
 
   def new
@@ -32,20 +32,21 @@ class SharesController < ApplicationController
   def show
   end
 
-  def accept
-    # @friend = Friend.find_by_id(params[:friend_id])
-    # @friend.approved = true
-    # if !@friend.save
-    #   flash[:notice] = "Failed friend approval"
-    # end
-
-    # redirect_to requests_url
+  def approve
+    @share = Share.find(params[:share_id])
+    @share.status = "approved"
+    if !@share.save
+      flash[:notice] = "Failed share approval"
+    end
+    redirect_to shares_url
   end
+
 
   # Friend denial or removal
   def destroy
-    # @friend = Friend.find_by_id(params[:id])
-    # @friend.destroy
-    # redirect_to requests_url
+    @share = Share.find(params[:id])
+    @share.destroy
+    redirect_to shares_url
   end
 end
+

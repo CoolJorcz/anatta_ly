@@ -5,16 +5,16 @@ class Share < ActiveRecord::Base
   belongs_to :item
   belongs_to :borrower, class_name: "User", foreign_key: "borrower_id"
 
-  def self.share_requests(current_user)
+  def self.shares(current_user, status)
     items = current_user.items
     shares = []
     items.each do |item|
-      shares << Share.where(item_id: item.id, status: "pending")
+      shares << Share.where(item_id: item.id, status: status)
     end
     shares.flatten
   end
 
-  def self.borrow_requests(current_user)
-    Share.where(borrower_id: current_user.id, status: "pending")
+  def self.borrows(current_user, status)
+    Share.where(borrower_id: current_user.id, status: status)
   end
 end

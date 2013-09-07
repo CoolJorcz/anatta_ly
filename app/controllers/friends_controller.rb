@@ -8,7 +8,7 @@ class FriendsController < ApplicationController
   end
 
   def create
-    friend = Friend.create(requester_id: current_user.id, receiver_id: params[:receiver_id[})
+    friend = Friend.create(requester_id: current_user.id, receiver_id: params[:receiver_id])
     redirect_to friend_url(friend)
   end
 

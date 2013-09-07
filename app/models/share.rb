@@ -11,20 +11,10 @@ class Share < ActiveRecord::Base
     items.each do |item|
       shares << Share.where(item_id: item.id, status: "pending")
     end
-
-    requests = []
-    shares.flatten.each do |share|
-      requests << Item.find(share.item_id)
-    end
-    requests
+    shares.flatten
   end
 
   def self.borrow_requests(current_user)
-    shares = Share.where(borrower_id: current_user.id, status: "pending")
-    requests = []
-    shares.each do |share|
-      requests << Item.find(share.item_id)
-    end
-    requests
+    Share.where(borrower_id: current_user.id, status: "pending")
   end
 end

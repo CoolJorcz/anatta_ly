@@ -1,7 +1,10 @@
 class ItemsController < ApplicationController
   def index
-    # This should be all items of FRIENDS
-    @items = Item.all
+    if current_user
+      @items = Item.items_of_friends(current_user)
+    else
+      redirect_to root_path
+    end
   end
 
   def new

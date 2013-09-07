@@ -1,0 +1,5 @@
+%p Friend's Items!!!!!!!!!!!!!!!!!!!
+%ul
+  - @items.each do |item|
+    %li
+      = link_to item.name, item_path(item.id)

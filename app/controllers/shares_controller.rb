@@ -1,6 +1,5 @@
 class SharesController < ApplicationController
   def index
-    # @friends = Friend.get_friends(current_user)
     @share_requests = Share.shares(current_user, "pending")
     @share_approvals = Share.shares(current_user, "approved")
     @share_checkouts = Share.shares(current_user, "checkedout")
@@ -16,10 +15,9 @@ class SharesController < ApplicationController
 
   def create
     share = Share.new
-    # share = Share.new(params["share"])
     share.item_id = params["share"]["item_id"]
-    share.start_on = params["share"]["start_on"] # Make sure these transform to datetimes!!!!
-    share.end_on = params["share"]["end_on"] # Make sure these transform to datetimes!!!!
+    share.start_on = params["share"]["start_on"]
+    share.end_on = params["share"]["end_on"]
     share.borrower_id = current_user.id
 
     if share.save
@@ -41,26 +39,6 @@ class SharesController < ApplicationController
     redirect_to shares_url
   end
 
-  # def checkout
-  #   @share = Share.find(params[:share_id])
-  #   @share.status = "checkedout"
-  #   if !@share.save
-  #     flash[:notice] = "Failed share checkout"
-  #   end
-  #   redirect_to shares_url
-  # end
-
-  # def return
-  #   @share = Share.find(params[:share_id])
-  #   @share.status = "returned"
-  #   if !@share.save
-  #     flash[:notice] = "Failed share return"
-  #   end
-  #   redirect_to shares_url
-  # end
-
-
-  # Friend denial or removal
   def destroy
     @share = Share.find(params[:id])
     @share.destroy

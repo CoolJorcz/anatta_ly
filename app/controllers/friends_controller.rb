@@ -17,13 +17,13 @@ class FriendsController < ApplicationController
   end
 
   def accept
-    puts '-' * 100
+    puts '-' * 100 # NEVER MERGE IN DEBUGGING CODE LIKE THIS INTO MASTER!!!!!!!!!!!!!!!!!!!!
     puts params
     @friend = Friend.find_by_id(params[:friend_id])
     @friend.approved = true
     @friend.save
     redirect_to requests_url
-
+    # why is there a newline here?
   end
 
   def destroy

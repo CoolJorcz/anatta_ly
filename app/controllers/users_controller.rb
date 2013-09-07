@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   include UsersHelper
+
   def friends
     @graph = Koala::Facebook::API.new(current_user.oauth_token)
     @friends = @graph.get_connections("me", "friends")

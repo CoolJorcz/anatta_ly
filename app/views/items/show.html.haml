@@ -19,8 +19,8 @@
     = @item.size
 
 - if @item.image != nil
-  =image_tag @item.image.url(:medium)
-  =image_tag @item.image.url(:thumb)
+  =image_tag @item.image.url
+  =image_tag @item.image.url
 
 - if current_user != @user
   %h4

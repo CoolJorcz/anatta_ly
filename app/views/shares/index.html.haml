@@ -1,9 +1,9 @@
 %h2 My Shares
 %h4 SHARE requests
 %ul
-  - @share_requests.each do |item|
+  - @share_requests.each do |share|
     %li
-      = item.name #link_to item.name, item_path(item.id)
+      = link_to share.item.name, item_path(share.item.id)
 
 %h4 SHARE approvals
 %h4 SHARE checkouts
@@ -11,9 +11,9 @@
 %h2 My Borrows
 %h4 BORROW requests
 %ul
-  - @borrow_requests.each do |item|
+  - @borrow_requests.each do |share|
     %li
-      = item.name #link_to item.name, item_path(item.id)
+      = link_to share.item.name, item_path(share.item.id)
 
 %h4 BORROW approvals
 %h4 BORROW checkouts

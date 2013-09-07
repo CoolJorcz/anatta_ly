@@ -37,4 +37,7 @@ AnattaLy::Application.configure do
 
   # Configuration of paperclip via ImageMagick
   Paperclip.options[:command_path] = "/opt/local/bin/"
+
+  #Coffeescript for Heroku
+  config.gem 'bistro_car'
 end

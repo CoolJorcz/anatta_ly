@@ -63,6 +63,7 @@ gem "paperclip", "~> 3.0"
 
 #To address Coffeescript issues on Heroku
 gem 'therubyracer'
+gem 'bistro_car'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

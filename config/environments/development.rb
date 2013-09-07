@@ -40,7 +40,6 @@ AnattaLy::Application.configure do
 
   #Coffeescript for Heroku
   config.gem 'bistro_car'
-<<<<<<< HEAD
 
   #For file uploads on Heroku
   config.paperclip_defaults = {
@@ -52,6 +51,4 @@ AnattaLy::Application.configure do
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
-=======
->>>>>>> converted coffeescript to javascript
 end

@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "is created after facebook login" do
+    pending
+  end
+
+  it { should have_many(:items) }
+  it { should have_many(:friends) }
 end

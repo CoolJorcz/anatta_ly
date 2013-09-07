@@ -2,7 +2,8 @@
   = @user.name
   's profile page
 
-= link_to "Add a new item", new_item_path(@user)
+- if current_user == @user
+  = link_to "Add a new item", new_item_path(@user)
 
 %p My items:
 %ul

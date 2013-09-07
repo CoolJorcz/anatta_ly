@@ -1,8 +1,9 @@
 %h2 Item listing
 %h3= @item.name
+- if current_user == @user
+  %h4= link_to "Edit", edit_item_path(@item.id)
+  %h4= link_to "Delete", item_path(@item.id), method: :delete, confirm: "Are you sure you want to delete " + @item.name + "?"
 
-%h4= link_to "Edit", edit_item_path(@item.id)
-%h4= link_to "Delete", item_path(@item.id), method: :delete, confirm: "Are you sure you want to delete " + @item.name + "?"
 %p
   description:
   = @item.description
@@ -16,3 +17,11 @@
   %p
     size:
     = @item.size
+
+- if current_user != @user
+  %h4
+    Hey,
+    = @user.name
+    , can I borrow that
+    = @item.name
+    ?

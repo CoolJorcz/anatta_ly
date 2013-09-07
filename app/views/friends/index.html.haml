@@ -1,7 +1,6 @@
-%h2 All users (should be friends of current_user)
+%h2 All of my friends I have the ability to share items with
 
 %ul
-  - @users.each do |user|
+  - @friends.each do |friend|
     %li
-      = user.name
-      = link_to "Request to share with " + user.name, friends_path(receiver_id: user.id), { method: "post" }
+      = link_to friend.name, user_path(friend.id)

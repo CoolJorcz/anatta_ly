@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Friend do
   let(:friend) { Friend.new(requester_id: 1,
                             receiver_id: 2,
-                            approved: true }
+                            approved: true) }
 
   it "should not be able to friend request yourself" do
     pending

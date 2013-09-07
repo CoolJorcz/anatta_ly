@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :items
-  has_many :friends
+  has_many :friends, foreign_key: :requestor_id, foreign_key: :receiver_id
 
   def self.from_omniauth(auth)
   	where(auth.slice(:provider,:uid)).first_or_initialize.tap do |user|
@@ -14,11 +14,13 @@ class User < ActiveRecord::Base
   end
 
   def facebook
-    @facebook ||= Koala::Facebook::API.new(oauth_token)
-    block_given? ? yield(@facebook) : @facebook
-  rescue Koala::Facebook::APIError => e
-    logger.ingo e.to_s
-    nil # or consider a custom null object
+    begin
+      @facebook ||= Koala::Facebook::API.new(oauth_token)
+      block_given? ? yield(@facebook) : @facebook
+    rescue Koala::Facebook::APIError => e
+      logger.ingo e.to_s
+      nil # or consider a custom null object
+    end
   end
 
   def friends_count

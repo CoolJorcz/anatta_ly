@@ -28,8 +28,8 @@ class FriendsController < ApplicationController
     redirect_to requests_url
   end
 
+  # Friend denial or removal
   def destroy
-    # Friend denial or removal
     @friend = Friend.find_by_id(params[:id])
     @friend.destroy
     redirect_to requests_url

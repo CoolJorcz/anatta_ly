@@ -18,6 +18,11 @@
     size:
     = @item.size
 
+- if @item.image != nil	
+	= image_tag @item.image.url
+	= image_tag @item.image.url(:medium)
+	= image_tag @item.image.url(:thumb)
+
 - if current_user != @user
   %h4
     Hey,
@@ -25,3 +30,4 @@
     , can I borrow that
     = @item.name
     ?
+

@@ -1,6 +1,6 @@
 %h2 Item edit
 
-= form_for @item, url: { action: "update" } do |f| #user_item_url, method: "put"
+= form_for @item, url: { action: "update" }, html: { multipart: true } do |f| 
   = f.text_field :name, placeholder: "Item", value: @item.name
   %br
   = f.text_area :description, placeholder: "Description", value: @item.description
@@ -9,4 +9,5 @@
   %br
   = f.text_field :color, placeholder: "Color", value: @item.color
   %br
+  = f.file_field :image 
   = f.submit "Edit!"

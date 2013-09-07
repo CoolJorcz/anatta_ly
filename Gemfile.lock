@@ -33,8 +33,12 @@ GEM
     arel (3.0.2)
     autotest-fsevent (0.2.8)
       sys-uname
+<<<<<<< HEAD
     aws-sdk (1.5.8)
       httparty (~> 0.7)
+=======
+    aws-sdk (1.11.1)
+>>>>>>> Adapting Paperclip for Heroku setup
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)

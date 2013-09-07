@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   has_many :items
   has_many :friends, foreign_key: :requestor_id, foreign_key: :receiver_id
 
+  attr_accessible :avatar
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+
   def self.from_omniauth(auth)
   	where(auth.slice(:provider,:uid)).first_or_initialize.tap do |user|
   		user.provider = auth.provider

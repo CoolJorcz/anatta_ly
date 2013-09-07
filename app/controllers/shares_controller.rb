@@ -1,7 +1,7 @@
 class SharesController < ApplicationController
   def index
     # @friends = Friend.get_friends(current_user)
-    # @share_requests =
+    @share_requests = Share.share_requests(current_user)
     # @share_approvals =
     # @share_checkouts =
     @borrow_requests = Share.borrow_requests(current_user)
@@ -16,10 +16,12 @@ class SharesController < ApplicationController
 
   def create
     share = Share.new
+    # share = Share.new(params["share"])
     share.item_id = params["share"]["item_id"]
+    share.start_on = params["share"]["start_on"] # Make sure these transform to datetimes!!!!
+    share.end_on = params["share"]["end_on"] # Make sure these transform to datetimes!!!!
     share.borrower_id = current_user.id
-    share.start_on = params["share"]["start_on"]
-    share.end_on = params["share"]["end_on"]
+
     if share.save
       redirect_to shares_url
     else

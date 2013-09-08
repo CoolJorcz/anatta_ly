@@ -1,14 +1,21 @@
 %h2 Post an item to share
 
 = form_for @item do |f|
-  = f.text_field :name, placeholder: "Item"
+  %p Item
+  = f.text_field :name, placeholder: "required"
+  %p Description
+  = f.text_area :description, placeholder: "required"
+  %p Image
+  = f.file_field :image
+  %p Category
+  - Category.all.each do |c|
+    = f.radio_button :category_id, c.id
+    = c.name
+    %br
   %br
-  = f.text_area :description, placeholder: "Description"
-  %br
-  = f.text_field :size, placeholder: "Size"
-  %br
-  = f.text_field :color, placeholder: "Color"
-  %br
-  = f.file_field :image 
+  %p Size
+  = f.text_field :size, placeholder: "optional"
+  %p Color
+  = f.text_field :color, placeholder: "optional"
   %br
   = f.submit "Post!"

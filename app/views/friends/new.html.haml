@@ -1,10 +1,23 @@
+
+- if @friend_requests.length > 0
+  %h2= "Requests for " + @user.name
+  %ul
+    - @friend_requests.each do |fr|
+      %li
+        - u = User.find_by_id(fr.requester_id)
+        = link_to image_tag(profile_picture_path(u)), user_path(u)
+        = link_to u.name, user_path(u)
+        = link_to "Accept", accept_friend_path(friend_id: fr.id), { method: "post", action: "accept"}#friends_path(friend_id: fr.id)
+        = link_to "Deny", friend_path(fr.id), method: :delete, confirm: "Are you sure you don't want to share with  " + u.name + "?"
+
 - if @possible_friends.length > 0
   %h2= @current_user.name + ", your friends are already on Anatta.ly!"
+  %h4 Request to see their items, and give them permission to see yours.
   %ul
     - @possible_friends.each do |friend|
       %li
-        = friend.name
-        = link_to "Request to share with " + friend.name, friends_path(receiver_id: friend.id), { method: "post" }
+        = link_to image_tag(profile_picture_path(friend)), user_path(friend)
+        = link_to "Send request to " + friend.name, friends_path(receiver_id: friend.id), { method: "post" }
 
 - else
   %h2 It looks like you don't have any friends on anatta.ly to share with. Let's invite some!

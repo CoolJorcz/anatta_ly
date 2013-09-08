@@ -1,4 +1,5 @@
 class Friend < ActiveRecord::Base
+  attr_accessible :requester_id, :receiver_id
   belongs_to :requester, class_name: "User"
   belongs_to :receiver, class_name: "User"
 
@@ -49,5 +50,11 @@ class Friend < ActiveRecord::Base
       end
     end
     friends_as_users
+  end
+
+  def self.already_friends_or_requested?(user1, user2)
+    return true if self.where(requester_id: user1.id, receiver_id: user2.id).length > 0
+    return true if self.where(requester_id: user2.id, receiver_id: user1.id).length > 0
+    return false
   end
 end

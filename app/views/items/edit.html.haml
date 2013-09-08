@@ -1,14 +1,22 @@
 %h2 Item edit
 
-= form_for @item, url: { action: "update" }, html: { multipart: true } do |f| 
-  = f.text_field :name, placeholder: "Item", value: @item.name
+= form_for @item, url: { action: "update" }, html: { multipart: true } do |f|
+  %p Item
+  = f.text_field :name, placeholder: "required", value: @item.name
+  %p Description
+  = f.text_area :description, placeholder: "required", value: @item.description
+  %p Image
+  = image_tag @item.image.url(:thumb)
+  = f.file_field :image
+  %p Category
+  - Category.all.each do |c|
+    = f.radio_button :category_id, c.id
+    = c.name
+    %br
   %br
-  = f.text_area :description, placeholder: "Description", value: @item.description
+  %p Size
+  = f.text_field :size, placeholder: "optional", value: @item.size
+  %p Color
+  = f.text_field :color, placeholder: "optional", value: @item.color
   %br
-  = f.text_field :size, placeholder: "Size", value: @item.size
-  %br
-  = f.text_field :color, placeholder: "Color", value: @item.color
-  %br
-  = f.file_field :image 
-  %br
-  = f.submit "Edit!"
+  = f.submit "Update!"

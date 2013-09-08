@@ -1,18 +1,17 @@
-%h3= @item.name
+%h1= @item.name
 
-%p
-  description:
-  = @item.description
+%h3
+  = link_to image_tag(profile_picture_path(@item.user)), user_path(@item.user)
+  = @item.user.name
+
+%h5= @item.category.name
+
+= image_tag @item.image.url(:medium)
+
+%p= @item.description
 
 - if @item.color != ""
-  %p
-    color:
-    = @item.color
+  %p= "color: " + @item.color
 
 - if @item.size != ""
-  %p
-    size:
-    = @item.size
-
-- if @item.image_file_name != nil
-  = image_tag @item.image.url(:medium)
+  %p= "size: " + @item.size

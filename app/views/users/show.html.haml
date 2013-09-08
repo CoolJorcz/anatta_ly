@@ -1,8 +1,6 @@
 %h2
   = image_tag @profile_path
-  = @user.name
-  's profile page
-
+  = @user.name + "'s profile page"
 
 - if current_user == @user
   = link_to "Add a new item", new_item_path(@user)
@@ -11,5 +9,7 @@
 %ul
   - @items.each do |item|
     %li
+      - if item.image_file_name != nil
+        = image_tag item.image.url(:small_sq)
       = link_to item.name, item_path(item.id)
 

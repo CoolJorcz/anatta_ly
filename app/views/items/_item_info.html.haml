@@ -1,7 +1,12 @@
-%h3= @item.name
+%h1= @item.name
 
-- if @item.image_file_name != nil
-  = image_tag @item.image.url(:medium)
+%h3
+  = link_to image_tag(profile_picture_path(@item.user)), user_path(@item.user)
+  = @item.user.name
+
+%h5= @item.category.name
+
+= image_tag @item.image.url(:medium)
 
 %p= @item.description
 

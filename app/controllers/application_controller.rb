@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
     Friend.get_friends(current_user).include?(friend_object)
   end
 
+  helper_method :profile_picture_path
   helper_method :current_user
   helper_method :is_friend?
 end
+

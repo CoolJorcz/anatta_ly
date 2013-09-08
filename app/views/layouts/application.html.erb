@@ -19,25 +19,33 @@
   </script>
 </head>
 	<body>
-		<div id="container">
-			<div id="user_nav">
-        <ul>
-          <li><%=link_to "Friends", friends_path%></li>
-          <li><%=link_to "Shares", shares_path%></li>
-          <li><%=link_to "Items", items_path%></li>
-        </ul>
-				<% if current_user %>
-					Hello, <strong> <%= link_to current_user.name, user_path(current_user) %></strong>!
-					<%= link_to "Sign out", signout_path, id: "sign_out" %>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          
+          <nav>
+            <ul class="nav pull-right">
+              <li><%=link_to "Friends", friends_path%></li>
+		          <li><%=link_to "Shares", shares_path%></li>
+		          <li><%=link_to "Items", items_path%></li>
+            </ul>
+						<% if current_user %>
+							Hello, <strong> <%= link_to current_user.name, user_path(current_user) %></strong>!
+							<%= link_to "Sign out", signout_path, id: "sign_out", class: "btn btn-small btn-primary" %>
 
-				<% else %>
-					<%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-				<% end %>
-			</div>
-		<% flash.each do |name, msg| %>
+						<% else %>
+							<%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-small
+							 btn-primary" %>
+						<% end %>            
+          </nav>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+    	<% flash.each do |name, msg| %>
 			<%= content_tag :div, msg, id: "flash_#{name}" %>
-		<% end %>
-		<%= yield %>
-		</div>
+			<% end %>
+      <%= yield %>
+    </div>
 	</body>
 </html>

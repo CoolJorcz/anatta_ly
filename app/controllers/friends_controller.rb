@@ -14,8 +14,11 @@ class FriendsController < ApplicationController
   end
 
   def create
-    friend = Friend.create(requester_id: current_user.id, receiver_id: params[:receiver_id])
-    redirect_to friend_url(friend)
+    receiver = User.find(params[:receiver_id])
+    unless Friend.already_friends_or_requested?(current_user, receiver)
+      friend = Friend.create(requester_id: current_user.id, receiver_id: receiver.id)
+    end
+    redirect_to new_friend_url #(friend)
   end
 
   def show

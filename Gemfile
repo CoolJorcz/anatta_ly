@@ -62,7 +62,7 @@ gem 'omniauth-facebook', '1.4.0'
 gem 'paperclip', '~> 3.0'
 
 #for Heroku
-gem 'aws-sdk', '~> 1.5.7'
+gem 'aws-sdk'
 gem 'carrierwave'
 gem 'carrierwave_direct'
 gem 'fog'

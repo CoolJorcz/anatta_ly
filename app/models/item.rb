@@ -7,13 +7,7 @@ class Item < ActiveRecord::Base
   has_many :shares
   has_many :borrowers, class_name: "User"
 
-  has_attached_file :image, 
-                    styles: { medium: "300x300>", thumb: "100x100>" }, 
-                    default_url: "/images/:style/missing.png",
-                    storage: {
-                      'development' => :filesystem,
-                      'production' => :s3
-                    }[RAILS_ENV]
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
 
 
   def self.items_of_friends(current_user)

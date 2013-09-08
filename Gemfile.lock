@@ -330,7 +330,7 @@ PLATFORMS
 DEPENDENCIES
   ZenTest
   autotest-fsevent
-  aws-sdk (~> 1.5.7)
+  aws-sdk
   better_errors
   binding_of_caller
   bistro_car

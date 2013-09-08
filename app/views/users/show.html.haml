@@ -1,21 +1,15 @@
 - if (current_user == @user) || is_friend?(@user)
   - if current_user == @user
-    %h2 My Collection
-    = image_tag @profile_picture
-    %h4= "I saved $"
-    %h4= "I saved my friends $"
+    = render partial: "user_profile"
 
   - else
-    %h2= @user.name + "'s Collection"
-    = image_tag @profile_picture
-    %h4= @user.name + " saved $"
-    %h4= @user.name + " saved thier friends $"
+    = render partial: "friend_profile"
 
   %h4= "Total karma points:"
   - if current_user == @user
     = link_to "Add a new item", new_item_path(@user)
 
-  %p My items:
+  %p Collection:
   %ul
     - @items.each do |item|
       %li
@@ -24,7 +18,4 @@
         = link_to item.name, item_path(item.id)
 
 - else
-  %h2= @user.name + "'s Collection"
-  = image_tag @profile_picture
-  = "You're not friends with "  + @user.name + ", yet. "
-  = link_to "Add as friend.", friends_path(receiver_id: @user.id), { method: "post" }
+  = render partial: "non_friend_profile"

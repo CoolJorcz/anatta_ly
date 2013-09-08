@@ -1,10 +1,16 @@
 class FriendsController < ApplicationController
   def index
+    # Current Friends
     @friends = Friend.get_friends(current_user)
   end
 
   def new
+    # All possible friends and request linkes
     @possible_friends = Friend.facebook_friends_to_add(current_user)
+
+    #Pending requests
+    @user = current_user
+    @friend_requests = Friend.where(receiver_id: @user.id, approved: false)
   end
 
   def create
@@ -22,13 +28,13 @@ class FriendsController < ApplicationController
       flash[:notice] = "Failed friend approval"
     end
 
-    redirect_to requests_url
+    redirect_to friends_url
   end
 
   def destroy
     @friend = Friend.find_by_id(params[:id])
     @friend.destroy
-    redirect_to requests_url
+    redirect_to friends_url
   end
 end
 

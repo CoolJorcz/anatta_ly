@@ -12,8 +12,6 @@ AnattaLy::Application.routes.draw do
   resources :friends
   post '/friends/accept', to: 'friends#accept', as: 'accept_friend'
 
-  resources :requests
-
   resources :shares
   post '/shares/update', to: 'shares#update', as: 'update_share'
 

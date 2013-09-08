@@ -1,4 +1,5 @@
 class Friend < ActiveRecord::Base
+  attr_accessible :requester_id, :receiver_id
   belongs_to :requester, class_name: "User"
   belongs_to :receiver, class_name: "User"
 

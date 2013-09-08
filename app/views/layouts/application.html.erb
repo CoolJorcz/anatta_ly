@@ -26,6 +26,11 @@
 	<body>
 		<div id="container">
 			<div id="user_nav">
+        <ul>
+          <li><%=link_to "Friends", friends_path%></li>
+          <li><%=link_to "Shares", shares_path%></li>
+          <li><%=link_to "Items", items_path%></li>
+        </ul>
 				<% if current_user %>
 					Hello, <strong> <%= link_to current_user.name, user_path(current_user) %></strong>!
 					<%= link_to "Sign out", signout_path, id: "sign_out" %>

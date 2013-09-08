@@ -1,6 +1,16 @@
-%h2
-  = image_tag @profile_path
-  = @user.name + "'s profile page"
+- if current_user == @user
+  %h2 My Collection
+  = image_tag @profile_picture
+  %h4= "I saved $"
+  %h4= "I saved my friends $"
+
+- else
+  %h2= @user.name + "'s Collection"
+  = image_tag @profile_picture
+  %h4= @user.name + " saved $"
+  %h4= @user.name + " saved thier friends $"
+
+%h4= "Total karma points:"
 
 - if current_user == @user
   = link_to "Add a new item", new_item_path(@user)
@@ -10,6 +20,6 @@
   - @items.each do |item|
     %li
       - if item.image_file_name != nil
-        = image_tag item.image.url(:small_sq)
+        = link_to image_tag(item.image.url(:small)), item_path(item.id)
       = link_to item.name, item_path(item.id)
 

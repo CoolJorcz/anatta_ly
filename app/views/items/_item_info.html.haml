@@ -6,10 +6,7 @@
 %p= @item.description
 
 - if @item.color != ""
-  %p= "color: " +                                                                                                                                                                                                                                                                                                     @item.color
+  %p= "color: " + @item.color
 
 - if @item.size != ""
-  %p
-    size:
-    = @item.size
-
+  %p= "size: " + @item.size

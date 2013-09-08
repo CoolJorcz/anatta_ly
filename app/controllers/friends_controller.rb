@@ -4,7 +4,7 @@ class FriendsController < ApplicationController
   end
 
   def new
-    @matches = facebook_friends_to_add
+    @possible_friends = Friend.facebook_friends_to_add(current_user)
   end
 
   def create
@@ -25,7 +25,6 @@ class FriendsController < ApplicationController
     redirect_to requests_url
   end
 
-  # Friend denial or removal
   def destroy
     @friend = Friend.find_by_id(params[:id])
     @friend.destroy

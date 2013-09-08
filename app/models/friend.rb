@@ -6,7 +6,7 @@ class Friend < ActiveRecord::Base
   validates_presence_of :receiver
 
 
-  def self.facebook_friends
+  def self.facebook_friends(current_user)
     graph = Koala::Facebook::API.new(current_user.oauth_token)
     friends = graph.get_connections("me", "friends")
 
@@ -28,9 +28,9 @@ class Friend < ActiveRecord::Base
     anattaly_user_matches
   end
 
-  def self.facebook_friends_to_add
+  def self.facebook_friends_to_add(current_user)
     # facebookfriends that I'm not friends with on anattaly yet
-    friends_to_add = self.facebook_friends.select do |friend|
+    friends_to_add = self.facebook_friends(current_user).select do |friend|
        Friend.find_by_receiver_id(friend.id) == nil && Friend.find_by_requester_id(friend.id) == nil
     end
   end

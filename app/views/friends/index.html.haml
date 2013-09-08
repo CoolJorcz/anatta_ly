@@ -1,6 +1,7 @@
-%h2 All of my friends I have the ability to share items with
+%h2 Sharing Friends
 
 %ul
   - @friends.each do |friend|
     %li
+      = link_to image_tag(profile_picture_path(friend)), user_path(friend)
       = link_to friend.name, user_path(friend.id)

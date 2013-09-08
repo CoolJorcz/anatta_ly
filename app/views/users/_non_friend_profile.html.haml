@@ -1,0 +1,4 @@
+%h2= @user.name + "'s Collection"
+= image_tag @profile_picture
+= "You're not friends with "  + @user.name + ", yet. "
+= link_to "Add as friend.", friends_path(receiver_id: @user.id), { method: "post" }

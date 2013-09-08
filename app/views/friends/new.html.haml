@@ -1,9 +1,10 @@
-%h2
-  = @current_user.name
-  , your friends are already on Anatta.ly!
+- if @possible_friends.length > 0
+  %h2= @current_user.name + ", your friends are already on Anatta.ly!"
+  %ul
+    - @possible_friends.each do |friend|
+      %li
+        = friend.name
+        = link_to "Request to share with " + friend.name, friends_path(receiver_id: friend.id), { method: "post" }
 
-%ul
-  - @matches.each do |friend|
-    %li
-      = friend.name
-      = link_to "Request to share with " + friend.name, friends_path(receiver_id: friend.id), { method: "post" }
+- else
+  %h2 It looks like you don't have any friends on anatta.ly to share with. Let's invite some!

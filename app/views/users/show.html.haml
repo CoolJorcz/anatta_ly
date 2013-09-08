@@ -12,7 +12,6 @@
     %h4= @user.name + " saved thier friends $"
 
   %h4= "Total karma points:"
-
   - if current_user == @user
     = link_to "Add a new item", new_item_path(@user)
 

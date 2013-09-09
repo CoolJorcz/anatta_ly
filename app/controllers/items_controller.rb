@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
   def index
     if current_user
-      @items = Item.items_of_friends(current_user)
+      friend_items = Item.items_of_friends(current_user)
+      @items = friend_items.search(params[:search])
     else
       redirect_to root_path
     end

@@ -4,13 +4,7 @@
   <title>anatta.ly</title>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <% if Rails.env.production? %>
-  	<%= javascript_include_tag "coffeescripts" %>
-  <% else %>
-  	<%= coffee_script_bundle %>
-  <% end %>
   <%= stylesheet_link_tag "application", media: "all" %>
-
   <meta charset="utf-8" />
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -28,8 +22,10 @@
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
-          
           <nav>
+             = form_tag user_path, method: 'get' do
+             = text_field_tag :search, params[:search]
+             = submit_tag "Search", name: nil
             <ul class="nav pull-right">
               <li><%=link_to "Friends", friends_path%></li>
 		          <li><%=link_to "Shares", shares_path%></li>

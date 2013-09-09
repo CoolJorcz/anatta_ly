@@ -30,15 +30,11 @@ footer {
   text-align: center;
 }
 
-.container {
-  max-width: 90%;
-}
-
 .container-body {
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   padding: 0 1em;
-  background-color: white;
-  border-top: .2em solid magenta;
+  background-color: lightsteelblue;
   color: black;
 }
 

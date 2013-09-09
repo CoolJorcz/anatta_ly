@@ -1,27 +1,6 @@
-%h1 Share Information Page
-%h1= @share.item.name
+= render partial: "share_basic_info"
 
-%h3
-  = link_to image_tag(profile_picture_path(@share.item.user)), user_path(@share.item.user)
-  = @share.item.user.name
-  = "is sharing with"
-  = link_to image_tag(profile_picture_path(@share.borrower)), user_path(@share.borrower)
-  = @share.borrower.name
+= render partial: "share_details"
 
-%h5= @share.item.category.name
-
-= image_tag @share.item.image.url(:medium)
-
-%p= @share.item.description
-
-- if @share.item.color != ""
-  %p= "color: " + @share.item.color
-
-- if @share.item.size != ""
-  %p= "size: " + @share.item.size
-
-%p= "start: " + @share.start_on.to_date.strftime("%m/%d/%Y")
-%p= "end: " + @share.end_on.to_date.strftime("%m/%d/%Y")
-%p= "share status: " + @share.status
-
-= gmaps4rails(@json)
+- if @share.item.user == current_user || @share.borrower = current_user
+  = link_to "Update share details", edit_share_path(@share.id)

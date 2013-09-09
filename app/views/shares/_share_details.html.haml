@@ -1,0 +1,16 @@
+%h5 Share Details
+%p
+  = "Share begins " + @share.start_on.to_date.strftime("%m/%d/%Y")
+  %ul
+    - if @share.pickup_location != nil
+      %li= "pickup location: " + @share.pickup_location
+    - if @share.pickup_time != nil
+      %li= "pickup time: " + @share.pickup_time
+
+%p
+  = "Share ends " + @share.end_on.to_date.strftime("%m/%d/%Y")
+  %ul
+    - if @share.return_location != nil
+      %li= "return location: " + @share.return_location
+    - if @share.return_time != nil
+      %li= "return time: " + @share.return_time

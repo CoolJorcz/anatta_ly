@@ -1,0 +1,23 @@
+%h1= @share.item.name
+
+%h3
+  = link_to image_tag(profile_picture_path(@share.item.user)), user_path(@share.item.user)
+  = @share.item.user.name
+  = "is sharing with"
+  = link_to image_tag(profile_picture_path(@share.borrower)), user_path(@share.borrower)
+  = @share.borrower.name
+
+%h5= @share.item.category.name
+%h5= "Status: " + @share.status
+
+%br
+
+= link_to image_tag(@share.item.image.url(:medium)), item_path(@share.item.id)
+
+%p= @share.item.description
+
+- if @share.item.color != ""
+  %p= "color: " + @share.item.color
+
+- if @share.item.size != ""
+  %p= "size: " + @share.item.size

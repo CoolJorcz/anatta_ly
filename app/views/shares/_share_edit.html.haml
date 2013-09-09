@@ -1,0 +1,17 @@
+%h5 Edit Share Details
+
+= form_for @share, method: :post, url: details_share_url(id: @share.id), html: { multipart: true } do |f|
+  %p Pickup date
+  = f.text_field :start_on, class: "datepicker", value: @share.start_on.to_date.strftime("%Y-%m-%d")
+  %p Pickup location
+  = f.text_field :pickup_location, value: @share.pickup_location
+  %p Pickup time
+  = f.text_field :pickup_time, value: @share.pickup_time
+  %p Return date
+  = f.text_field :end_on, class: "datepicker", value: @share.end_on.to_date.strftime("%Y-%m-%d")
+  %p Return location
+  = f.text_field :return_location, value: @share.return_location
+  %p Return time
+  = f.text_field :return_time, value: @share.return_time
+  %br
+  = f.submit "Update!"

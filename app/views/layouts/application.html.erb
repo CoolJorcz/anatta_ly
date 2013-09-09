@@ -24,19 +24,25 @@
       <div class="navbar-inner">
         <div class="container">
           <nav>
-            <ul class="nav pull-right">
-              <li><%=link_to "Friends", friends_path%></li>
-              <li><%=link_to "Shares", shares_path%></li>
-              <li><%=link_to "Items", items_path%></li>
+            <ul class="nav pull-left">
+              <li><%=link_to "AnattaLy", root_path %></li>
+              <% if current_user %>
+                <li><%=link_to "Friends", friends_path%></li>
+                <li><%=link_to "Shares", shares_path%></li>
+                <li><%=link_to "Items", items_path%></li>
+              <% end %>
+
             </ul>
-            <span class="nav pull-left">
             <% if current_user %>
-    					Hello, <strong> <%= link_to current_user.name, user_path(current_user) %></strong>! <%= "(" + current_user.points.to_s + "ॐ)" %>
-              <%= link_to "Sign out", signout_path, id: "sign_out" %>
-            <% else %>
-              <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-small
-               btn-primary" %>
+              <p class="nav pull-right"><%= link_to "Sign out", signout_path, id: "sign_out" %></p>
+              <p class="nav pull-right">Hello, <strong> <%= link_to current_user.name, user_path(current_user) %></strong>! <%= "(" + current_user.points.to_s + "ॐ)" %></p>
             <% end %>
+            <span class="nav pull-right">
+              <% if current_user %>
+              <% else %>
+                <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-small
+                 btn-primary" %>
+              <% end %>
             </span>
             <span class="nav pull-center">
                <%= form_tag root_path, method: 'get' do %>

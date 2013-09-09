@@ -1,12 +1,14 @@
 class WelcomeController < ApplicationController
 	def index
-    @friends = Friend.get_friends(current_user)
-    @items = []
-    @friends.each do |friend|
-      friend.items.each do |item|
-        @items << item
+    if current_user
+      @friends = Friend.get_friends(current_user)
+      @items = []
+      @friends.each do |friend|
+        friend.items.each do |item|
+          @items << item
+        end
       end
-    end
-    @items.shuffle!
-	end
+      @items = Friend.items_of_friends(current_user)
+  	end
+  end
 end

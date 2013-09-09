@@ -1,0 +1,56 @@
+@import "bootstrap";
+
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 2em;
+  background: grey;
+}
+
+section {
+  overflow: auto;
+}
+
+header {
+  width: 100%;
+}
+
+.navbar-fixed-top .container {
+  width: 100%;
+}
+
+.btn-small {
+  margin-left:1em;
+}
+
+footer {
+  text-align: center;
+}
+
+.container-body {
+  width: 100%;
+  margin: 0;
+  padding: 0 1em;
+  background-color: lightsteelblue;
+  color: black;
+}
+
+img.desaturate { 
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.holy { 
+  width: 15em;
+  height: 15em;
+  padding: 0;
+  margin: 0.5em 0.5em;
+  border: 0.2em thin grey;
+  background-color: black;
+  display: inline;
+}

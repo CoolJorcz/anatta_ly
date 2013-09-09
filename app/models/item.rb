@@ -1,7 +1,7 @@
 class Item < ActiveRecord::Base
-  attr_accessible :name, :description, :size, :color, :image, :category_id
+  attr_accessible :name, :description, :size, :color, :image, :category_id, :price
 
-  validates_presence_of :name, :description, :user_id, :image_file_name, :category_id
+  validates_presence_of :name, :description, :user_id, :image_file_name, :category_id, :price
 
   belongs_to :user
   belongs_to :category

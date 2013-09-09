@@ -5,13 +5,6 @@ class Share < ActiveRecord::Base
   belongs_to :item
   belongs_to :borrower, class_name: "User", foreign_key: "borrower_id"
 
-  acts_as_gmappable
-
-  def gmaps4rails_address
-      #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
-    "#{self.street}, #{self.city}, #{self.country}"
-  end
-
   def self.shares(current_user, status)
     items = current_user.items
     shares = []

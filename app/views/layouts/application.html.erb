@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <title>anatta.ly</title>
-  <%= stylesheet_link_tag "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <% if Rails.env.production? %>
@@ -10,11 +9,13 @@
   <% else %>
   	<%= coffee_script_bundle %>
   <% end %>
+  <%= stylesheet_link_tag "application", media: "all" %>
+
   <meta charset="utf-8" />
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css" />
+  
   <script>
   $(function() {
     $( ".datepicker" ).datepicker({
@@ -51,6 +52,10 @@
 			<%= content_tag :div, msg, id: "flash_#{name}" %>
 			<% end %>
       <%= yield %>
+      <footer>
+        <h3>Talk to Me Goose</h3>
+        <p>&copy; 2011 Maverick & Goose Ventures.</p>
+      </footer>
     </div>
 	</body>
 </html>

@@ -1,7 +1,9 @@
-%h1 my BORROWS (friends' items)
+%h1 My Borrows
+- if @borrow_requests.length == 0 && @borrow_approvals.length == 0 && @borrow_checkouts.length == 0
+  %h4 No good stuff to borrow? Check out what your friends are lending or invite some new friends :)
 
-%h3 BORROW requests
 - if @borrow_requests.length > 0
+  %h3 BORROW requests
   %ul
     - @borrow_requests.each do |share|
       %li
@@ -9,11 +11,11 @@
         = link_to share.item.name, item_path(share.item.id)
         %ul
           %li= "owner: " + share.item.user.name
-          %li= "from: " + share.start_on.to_date.to_s + " to " + share.end_on.to_date.to_s
+          %li= "from: " + share.start_on.to_date.strftime("%m/%d/%Y") + " to " + share.end_on.to_date.strftime("%m/%d/%Y")
           %li= link_to "cancel request", update_share_path(share_id: share.id, update_type: "canceled"), { method: "put", controller: "shares" }, confirm: "Are you sure you don't want to cancel this request?"
 
-%h3 BORROW approvals
 - if @borrow_approvals.length > 0
+  %h3 BORROW approvals
   %ul
     - @borrow_approvals.each do |share|
       %li
@@ -21,11 +23,11 @@
         = link_to share.item.name, item_path(share.item.id)
         %ul
           %li= "owner: " + share.item.user.name
-          %li= "from: " + share.start_on.to_date.to_s + " to " + share.end_on.to_date.to_s
+          %li= "from: " + share.start_on.to_date.strftime("%m/%d/%Y") + " to " + share.end_on.to_date.strftime("%m/%d/%Y")
           %li= link_to "cancel request", update_share_path(share_id: share.id, update_type: "canceled"), { method: "put", controller: "shares" }, confirm: "Are you sure you don't want to cancel this request?"
 
-%h3 BORROW checkouts
 - if @borrow_checkouts.length > 0
+  %h3 BORROW checkouts
   %ul
     - @borrow_checkouts.each do |share|
       %li
@@ -33,4 +35,4 @@
         = link_to share.item.name, item_path(share.item.id)
         %ul
           %li= "owner: " + share.item.user.name
-          %li= "from: " + share.start_on.to_date.to_s + " to " + share.end_on.to_date.to_s
+          %li= "from: " + share.start_on.to_date.strftime("%m/%d/%Y") + " to " + share.end_on.to_date.strftime("%m/%d/%Y")

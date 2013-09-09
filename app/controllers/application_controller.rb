@@ -15,12 +15,16 @@ class ApplicationController < ActionController::Base
   end
 
   def friend_request_pending?(friend)
-    Friend.get_friends(current_user).include?(friend)
+  end
+
+  def redirect_to_root_if_logged_out
+    redirect_to :root if !current_user
   end
 
   helper_method :profile_picture_path
   helper_method :current_user
   helper_method :is_friend?
   helper_method :friend_request_pending?
+  helper_method :redirect_to_root_if_logged_out
 end
 

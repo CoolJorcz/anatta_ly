@@ -14,16 +14,23 @@ class SharesController < ApplicationController
   end
 
   def create
+    today = Time.now.strftime("%Y-%m-%d")
+    start_on = params["share"]["start_on"]
+    end_on = params["share"]["end_on"]
+    item_id = params["share"]["item_id"]
+
     share = Share.new
-    share.item_id = params["share"]["item_id"]
-    share.start_on = params["share"]["start_on"]
-    share.end_on = params["share"]["end_on"]
+    share.item_id = item_id
+    share.start_on = start_on
+    share.end_on = end_on
     share.borrower_id = current_user.id
 
-    if share.save
+    if end_on < start_on || start_on < today
+      redirect_to new_share_path(item_id: item_id)
+    elsif share.save
       redirect_to shares_url
     else
-      redirect_to new_share_path(item_id: params["share"]["item_id"])
+      redirect_to new_share_path(item_id: item_id)
     end
   end
 

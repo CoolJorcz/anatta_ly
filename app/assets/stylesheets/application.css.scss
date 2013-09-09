@@ -1,43 +1,53 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- */
+@import "bootstrap";
 
- @import "bootstrap";
-
-/* universal */
 
 html {
   overflow-y: scroll;
 }
 
 body {
-  padding-top: 60px;
+  padding-top: 2em;
+  background: grey;
 }
 
 section {
   overflow: auto;
 }
 
-textarea {
-  resize: vertical;
+header {
+  width: 100%;
 }
 
-.center {
-  text-align: center;
+.navbar-fixed-top .container {
+  width: 100%;
 }
 
-.center h1 {
-  margin-bottom: 10px;
+.btn-small{
+  margin-left:1em;
 }
 
 .container-body {
-  padding: 0 30px;
+  padding: 0 1em;
+  background-color: white;
+  margin: 0 auto;
+  width: 90%;
+  border-top: .2em solid magenta;
+  color: black;
+}
+
+img.desaturate { 
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.holy { 
+  width: 15em;
+  height: 15em;
+  padding: 0;
+  margin: 0.5em 0.5em;
+  border: 0.2em thin grey;
+  background-color: black;
+  display: inline;
 }

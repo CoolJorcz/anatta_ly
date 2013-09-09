@@ -49,7 +49,6 @@ class SharesController < ApplicationController
   # called when details about the share are updated
   def details
     @share = Share.find(params[:id])
-    puts "--details" * 50
     if @share.update_attributes(params[:share])
       redirect_to share_url(@share)
     else
@@ -59,7 +58,6 @@ class SharesController < ApplicationController
 
   # called only when new status
   def update
-    puts "--update" * 50
     new_status = params[:update_type]
     @share = Share.find(params[:share_id])
     @share.status = new_status

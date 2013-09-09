@@ -1,14 +1,11 @@
 class FriendsController < ApplicationController
   def index
-    # Current Friends
     @friends = Friend.get_friends(current_user)
   end
 
   def new
-    # All possible friends and request linkes
     @possible_friends = Friend.facebook_friends_to_add(current_user)
 
-    #Pending requests
     @user = current_user
     @friend_requests = Friend.where(receiver_id: @user.id, approved: false)
   end

@@ -12,18 +12,15 @@ class Item < ActiveRecord::Base
 
   def self.items_of_friends(current_user)
     friends = Friend.get_friends(current_user)
-    items = []
-    friends.each do |friend|
-      items << friend.items
-    end
-    items.flatten
+    friends_ids = friends.map {|f| f.id}
+    where(:user_id => friends_ids)
   end
 
   def self.search(search)
     if search
-      find(:all, conditions: ['lower(name) LIKE ?', "%#{search.downcase}%"])
+      where(['lower(name) LIKE ?', "%#{search.downcase}%"])
     else
-      find(:all)
+      all
     end
   end
 end

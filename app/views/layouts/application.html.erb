@@ -23,22 +23,23 @@
       <div class="navbar-inner">
         <div class="container">
           <nav>
-             = form_tag user_path, method: 'get' do
-             = text_field_tag :search, params[:search]
-             = submit_tag "Search", name: nil
             <ul class="nav pull-right">
               <li><%=link_to "Friends", friends_path%></li>
-		          <li><%=link_to "Shares", shares_path%></li>
-		          <li><%=link_to "Items", items_path%></li>
+              <li><%=link_to "Shares", shares_path%></li>
+              <li><%=link_to "Items", items_path%></li>
             </ul>
-						<% if current_user %>
-							Hello, <strong> <%= link_to current_user.name, user_path(current_user) %></strong>!
-							<%= link_to "Sign out", signout_path, id: "sign_out", class: "btn btn-small btn-primary" %>
+            <% if current_user %>
+              Hello, <strong> <%= link_to current_user.name, user_path(current_user) %></strong>!
+              <%= link_to "Sign out", signout_path, id: "sign_out", class: "btn btn-small btn-primary" %>
 
-						<% else %>
-							<%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-small
-							 btn-primary" %>
-						<% end %>            
+            <% else %>
+              <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-small
+               btn-primary" %>
+            <% end %>            
+             <%= form_tag items_path, method: 'get' do %>
+               <%=  text_field_tag :search, params[:search] %>
+             <%= submit_tag "Search", name: nil %>
+             <% end %>
           </nav>
         </div>
       </div>

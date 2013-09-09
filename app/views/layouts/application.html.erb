@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <title>anatta.ly</title>
-  <%= stylesheet_link_tag "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <% if Rails.env.production? %>
@@ -10,11 +9,13 @@
   <% else %>
   	<%= coffee_script_bundle %>
   <% end %>
+  <%= stylesheet_link_tag "application", media: "all" %>
+
   <meta charset="utf-8" />
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css" />
+  
   <script>
   $(function() {
     $( ".datepicker" ).datepicker({
@@ -24,20 +25,36 @@
   </script>
 </head>
 	<body>
-		<div id="container">
-			<div id="user_nav">
-				<% if current_user %>
-					Hello, <strong> <%= link_to current_user.name, user_path(current_user) %></strong>!
-					<%= link_to "Sign out", signout_path, id: "sign_out" %>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          
+          <nav>
+            <ul class="nav pull-right">
+              <li><%=link_to "Friends", friends_path%></li>
+		          <li><%=link_to "Shares", shares_path%></li>
+		          <li><%=link_to "Items", items_path%></li>
+            </ul>
+						<% if current_user %>
+							Hello, <strong> <%= link_to current_user.name, user_path(current_user) %></strong>!
+							<%= link_to "Sign out", signout_path, id: "sign_out", class: "btn btn-small btn-primary" %>
 
-				<% else %>
-					<%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-				<% end %>
-			</div>
-		<% flash.each do |name, msg| %>
+						<% else %>
+							<%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-small
+							 btn-primary" %>
+						<% end %>            
+          </nav>
+        </div>
+      </div>
+    </header>
+    <div class="container container-body">
+    	<% flash.each do |name, msg| %>
 			<%= content_tag :div, msg, id: "flash_#{name}" %>
-		<% end %>
-		<%= yield %>
-		</div>
+			<% end %>
+      <%= yield %>
+      <footer>
+        <p>Anatta-ly &copy; 2013 Karma Productions</p>
+      </footer>
+    </div>
 	</body>
 </html>

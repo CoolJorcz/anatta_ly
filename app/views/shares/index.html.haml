@@ -1,5 +1,17 @@
 %h1 Sharing Panel
 
-= render partial: "shares"
+%h2 My Shares
+- if @share_requests.length == 0 && @share_approvals.length == 0 && @share_checkouts.length == 0
+  %h4 It looks like no one has requested to share with you. Why not invite some friends or add some more items?
 
-= render partial: "borrows"
+= render partial: "share_category", locals: { shares: @share_requests, kind: "share", type: "requests" }
+= render partial: "share_category", locals: { shares: @share_approvals, kind: "share", type: "approvals" }
+= render partial: "share_category", locals: { shares: @share_checkouts, kind: "share", type: "checkouts" }
+
+%h2 My Borrows
+- if @borrow_requests.length == 0 && @borrow_approvals.length == 0 && @borrow_checkouts.length == 0
+  %h4 No good stuff to borrow? Check out what your friends are lending or invite some new friends :)
+
+= render partial: "share_category", locals: { shares: @borrow_requests, kind: "borrow", type: "requests" }
+= render partial: "share_category", locals: { shares: @borrow_approvals, kind: "borrow", type: "approvals" }
+= render partial: "share_category", locals: { shares: @borrow_checkouts, kind: "borrow", type: "checkouts" }

@@ -22,3 +22,6 @@
 
 %p= "start: " + @share.start_on.to_date.strftime("%m/%d/%Y")
 %p= "end: " + @share.end_on.to_date.strftime("%m/%d/%Y")
+%p= "share status: " + @share.status
+
+= gmaps4rails(@json)

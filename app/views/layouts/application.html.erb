@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
   <title>anatta.ly</title>
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <%= stylesheet_link_tag 'gmaps4rails' %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag "application", media: "all" %>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  
+
   <script>
   $(function() {
     $( ".datepicker" ).datepicker({
@@ -30,15 +31,13 @@
             </ul>
             <span class="nav pull-left">
             <% if current_user %>
-              Hello, <strong> <%= link_to current_user.name, user_path(current_user) %></strong>!
-              <%= link_to "Sign out", signout_path, id: "sign_out", class: "btn btn-small btn-primary" %>
-
+    					Hello, <strong> <%= link_to current_user.name, user_path(current_user) %></strong>! <%= "(" + current_user.points.to_s + "ॐ)" %>
             <% else %>
               <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-small
                btn-primary" %>
-            <% end %>     
+            <% end %>
             </span>
-            <span class="nav pull-center">       
+            <span class="nav pull-center">
                <%= form_tag items_path, method: 'get' do %>
                  <%=  text_field_tag :search, params[:search] %>
                <%= submit_tag "Search", name: nil %>
@@ -49,7 +48,7 @@
       </div>
     </header>
     <div class="container container-body">
-    	<% flash.each do |name, msg| %>
+      <% flash.each do |name, msg| %>
 			<%= content_tag :div, msg, id: "flash_#{name}" %>
 			<% end %>
       <%= yield %>

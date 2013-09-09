@@ -61,6 +61,7 @@ gem 'jquery-rails'
 gem 'koala', '~> 1.7.0rc1'
 gem 'omniauth-facebook', '1.4.0'
 gem 'paperclip', '~> 3.0'
+gem 'gmaps4rails', '~> 1.5.6'
 
 
 #for Heroku

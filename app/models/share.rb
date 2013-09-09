@@ -1,5 +1,5 @@
 class Share < ActiveRecord::Base
-  attr_accessible :item_id, :start_on, :end_on
+  attr_accessible :item_id, :start_on, :end_on, :pickup_location, :pickup_time, :return_location, :return_time
   validates_presence_of :item_id, :borrower_id, :start_on, :end_on, :status
 
   belongs_to :item

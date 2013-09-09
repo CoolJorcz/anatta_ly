@@ -5,7 +5,10 @@
   %h4= link_to "Delete", item_path(@item.id), method: :delete, confirm: "Are you sure you want to delete " + @item.name + "?"
 
 - if current_user != @user
-  %h4
-    - ask_str = "Hey, " + @user.name + ", can I borrow that " +  @item.name.downcase + "?"
-    = link_to ask_str, new_share_path(item_id: @item.id)
-
+  - if current_user.points <= 1
+    %h4
+      = "Looks like you don't have enough karma to borrow this item. You should add a few more items to share or invite some friends to the site!"
+  - else
+    %h4
+      - ask_str = "Hey, " + @user.name + ", can I borrow that " +  @item.name.downcase + "?"
+      = link_to ask_str, new_share_path(item_id: @item.id)

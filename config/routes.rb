@@ -13,6 +13,7 @@ AnattaLy::Application.routes.draw do
   post '/friends/accept', to: 'friends#accept', as: 'accept_friend'
 
   resources :shares
+  post '/shares/details', to: 'shares#details', as: 'details_share'
   post '/shares/update', to: 'shares#update', as: 'update_share'
 
   # The priority is based upon order of creation:

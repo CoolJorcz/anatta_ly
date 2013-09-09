@@ -35,12 +35,45 @@ class SharesController < ApplicationController
   end
 
   def show
+    @share = Share.find(params[:id])
+    @json = @share.to_gmaps4rails
   end
 
+  def edit
+    @share = Share.find(params[:id])
+    unless @share.item.user == current_user || @share.borrower = current_user
+      redirect_to share_path(@share.id)
+    end
+  end
+
+  # called when details about the share are updated
+  def details
+    @share = Share.find(params[:id])
+    if @share.update_attributes(params[:share])
+      redirect_to share_url(@share)
+    else
+      render :edit
+    end
+  end
+
+  # called only when new status
   def update
+    new_status = params[:update_type]
     @share = Share.find(params[:share_id])
-    @share.status = params[:update_type]
-    if !@share.save
+    @share.status = new_status
+    if @share.save
+      if new_status == "checkedout"
+        @share.item.user.amt_shared += @share.item.price
+        @share.item.user.points += 2
+        @share.item.user.save
+        @share.borrower.amt_borrowed += @share.item.price
+        @share.borrower.points -= 2
+        @share.borrower.save
+      elsif new_status == "returned"
+        @share.borrower.points +=1
+        @share.borrower.save
+      end
+    else
       flash[:notice] = "Failed share approval"
     end
     redirect_to shares_url

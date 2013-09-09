@@ -13,9 +13,13 @@
     = c.name
     %br
   %br
+  %p Approximate Price
+  $
+  = f.text_field :price, placeholder: "required"
   %p Size
   = f.text_field :size, placeholder: "optional"
   %p Color
   = f.text_field :color, placeholder: "optional"
   %br
   = f.submit "Post!"
+

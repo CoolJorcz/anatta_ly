@@ -1,0 +1,6 @@
+= render partial: "share_basic_info"
+
+= render partial: "share_details"
+
+- if @share.item.user == current_user || @share.borrower = current_user
+  = link_to "Update share details", edit_share_path(@share.id)

@@ -22,15 +22,22 @@ header {
   width: 100%;
 }
 
-.btn-small{
+.btn-small {
   margin-left:1em;
 }
 
+footer {
+  text-align: center;
+}
+
+.container {
+  max-width: 90%;
+}
+
 .container-body {
+  margin: 0 auto;
   padding: 0 1em;
   background-color: white;
-  margin: 0 auto;
-  width: 90%;
   border-top: .2em solid magenta;
   color: black;
 }

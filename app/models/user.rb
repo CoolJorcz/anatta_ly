@@ -7,13 +7,6 @@ class User < ActiveRecord::Base
   attr_accessible :avatar
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
 
-  acts_as_gmappable
-
-  def gmaps4rails_address
-      #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
-    "#{self.street}, #{self.city}, #{self.country}"
-  end
-
   def self.from_omniauth(auth)
 
     # immediately get 60 day auth token

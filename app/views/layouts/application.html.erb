@@ -20,6 +20,7 @@
   </script>
 </head>
 	<body>
+<<<<<<< HEAD
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
@@ -31,9 +32,7 @@
             </ul>
             <span class="nav pull-left">
             <% if current_user %>
-              Hello, <strong> <%= link_to current_user.name, user_path(current_user) %></strong>!
-              <%= link_to "Sign out", signout_path, id: "sign_out", class: "btn btn-small btn-primary" %>
-
+    					Hello, <strong> <%= link_to current_user.name, user_path(current_user) %></strong>! <%= "(" + current_user.points.to_s + "ॐ)" %>
             <% else %>
               <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-small
                btn-primary" %>
@@ -50,7 +49,7 @@
       </div>
     </header>
     <div class="container container-body">
-    	<% flash.each do |name, msg| %>
+      <% flash.each do |name, msg| %>
 			<%= content_tag :div, msg, id: "flash_#{name}" %>
 			<% end %>
       <%= yield %>

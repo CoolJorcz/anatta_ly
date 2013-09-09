@@ -7,5 +7,6 @@ class WelcomeController < ApplicationController
         @items << item
       end
     end
+    @items.shuffle!
 	end
 end

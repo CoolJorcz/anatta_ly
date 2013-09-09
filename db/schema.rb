@@ -11,11 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20130909134418) do
-=======
-ActiveRecord::Schema.define(:version => 20130909025052) do
->>>>>>> Resolved merge conflict w/ layour file
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -78,9 +74,6 @@ ActiveRecord::Schema.define(:version => 20130909025052) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.boolean  "gmaps"
     t.integer  "amt_borrowed",                     :default => 0
     t.integer  "amt_shared",                       :default => 0
     t.integer  "points",                           :default => 10

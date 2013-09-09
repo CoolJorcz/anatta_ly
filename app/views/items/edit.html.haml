@@ -14,6 +14,9 @@
     = c.name
     %br
   %br
+  %p Approximate Price
+  $
+  = f.text_field :price, placeholder: "required", value: @item.price
   %p Size
   = f.text_field :size, placeholder: "optional", value: @item.size
   %p Color

@@ -8,7 +8,7 @@ class WelcomeController < ApplicationController
           @items << item
         end
       end
-      @items.shuffle!
+      @items = Friend.items_of_friends(current_user)
   	end
   end
 end

@@ -22,8 +22,10 @@
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
-          
           <nav>
+             = form_tag user_path, method: 'get' do
+             = text_field_tag :search, params[:search]
+             = submit_tag "Search", name: nil
             <ul class="nav pull-right">
               <li><%=link_to "Friends", friends_path%></li>
 		          <li><%=link_to "Shares", shares_path%></li>

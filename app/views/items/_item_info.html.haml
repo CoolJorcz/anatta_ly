@@ -1,11 +1,11 @@
 %h1= @item.name
+%h2= "Karma Price: " + @item.try(:price).to_s + "ॐ"
 
 %h3
   = link_to image_tag(profile_picture_path(@item.user)), user_path(@item.user)
   = @item.user.name
 
 %h5= @item.category.name
-
 = image_tag @item.image.url(:medium)
 
 %p= @item.description
@@ -15,3 +15,4 @@
 
 - if @item.size != ""
   %p= "size: " + @item.size
+

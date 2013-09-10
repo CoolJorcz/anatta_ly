@@ -3,9 +3,8 @@
   %ul
     - @items.each do |item|
       %li
-        - if item.image_file_name != nil
-          = link_to image_tag(item.image.url(:small)), item_path(item.id)
-        = link_to item.name, item_path(item.id)
+        = link_to image_tag(item.image.url(:small), class: "holy img-polaroid"), item_path(item.id)
+        = link_to item.name, item_path(item.id), class: "caption"
 
 - else
   %h3 More often than not, our friends already have the things we want or need. Anatta.Ly is an app that makes it easy to share items amongst friends.

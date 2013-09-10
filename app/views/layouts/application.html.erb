@@ -29,7 +29,7 @@
               <% if current_user %>
                 <li><%=link_to "Friends", friends_path%></li>
                 <li><%=link_to "Shares", shares_path%></li>
-                <li><%=link_to "Items", items_path%></li>
+                <li><%=link_to "Items", user_path(current_user)%></li>
               <% end %>
 
             </ul>

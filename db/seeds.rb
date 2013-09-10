@@ -45,4 +45,3 @@ def set_facebook_photo
     end
   end
 end
-

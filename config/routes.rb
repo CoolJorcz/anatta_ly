@@ -6,6 +6,8 @@ AnattaLy::Application.routes.draw do
 
   resources :items
 
+  resources :categories
+
   resources :users
   match 'users/:id/friends', to: 'users#friends'
 

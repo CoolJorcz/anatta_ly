@@ -54,6 +54,7 @@ group :test do
 	gem 'autotest-fsevent'
 	gem 'binding_of_caller'
 	gem 'shoulda-matchers'
+	gem 'vcr'
 end
 
 gem 'jquery-rails'

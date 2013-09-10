@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Friend do
-  let(:friend) { FactoryGirl.create(:friend) }
+describe Share do
+  let(:share) { FactoryGirl.create(:share) }
   
   it "should not be able to friend request yourself" do
     pending
@@ -21,9 +21,11 @@ describe Friend do
     pending
   end
 
-  it { should belong_to(:requester) }
-  it { should belong_to(:receiver) }
-  it { should validate_presence_of(:requester) }
-  it { should validate_presence_of(:receiver) }
-
+  it { should belong_to(:item) }
+  it { should belong_to(:borrower) }
+  it { should validate_presence_of(:item_id) }
+  it { should validate_presence_of(:borrower_id) }
+  it { should validate_presence_of(:start_on) }
+  it { should validate_presence_of(:end_on) }
+  it { should validate_presence_of(:status) }
 end

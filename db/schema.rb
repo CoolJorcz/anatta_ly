@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130909134418) do
+ActiveRecord::Schema.define(:version => 20130910030244) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -56,9 +56,9 @@ ActiveRecord::Schema.define(:version => 20130909134418) do
     t.float    "longitude"
     t.boolean  "gmaps"
     t.string   "pickup_location"
-    t.time     "pickup_time"
+    t.string   "pickup_time"
     t.string   "return_location"
-    t.time     "return_time"
+    t.string   "return_time"
   end
 
   create_table "users", :force => true do |t|

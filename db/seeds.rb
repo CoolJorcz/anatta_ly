@@ -16,18 +16,6 @@ def seed_category
   end
 end
 
-
-<<<<<<< HEAD
-categories.each do |category|
-	Category.create(name: category)
-end
-
-@test_users = Koala::Facebook::TestUsers.new(:app_id => ENV['FB_APP_ID'], :secret => ENV['FB_APP_SECRET'])
-installed_status = true
-permissions = "user_photos, user_friends, user_location"
-@test_users.create_network(10, installed_status, permissions)
-
-=======
 def new_item(user)
   Item.create!(name: Faker::Lorem.word,
            description: Faker::Lorem.sentence,
@@ -58,5 +46,3 @@ def set_facebook_photo
   end
 end
 
-set_facebook_photo
->>>>>>> master

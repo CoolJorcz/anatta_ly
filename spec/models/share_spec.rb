@@ -1,9 +1,8 @@
 require 'spec_helper'
 
-
 describe Share do
   let(:share) { FactoryGirl.create(:share) }
-  
+
   it "should not be able to friend request yourself" do
     pending
   end

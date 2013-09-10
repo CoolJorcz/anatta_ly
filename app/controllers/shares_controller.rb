@@ -1,5 +1,6 @@
 class SharesController < ApplicationController
   def index
+    # i wonder if there's a better way than this:
     @share_requests = Share.shares(current_user, "pending")
     @share_approvals = Share.shares(current_user, "approved")
     @share_checkouts = Share.shares(current_user, "checkedout")

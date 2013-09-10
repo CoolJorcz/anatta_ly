@@ -14,7 +14,8 @@ categories.each do |category|
 	Category.create(name: category)
 end
 
-@test_users = Koala::Facebook::TestUsers.new(:app_id => ENV['FB_APP_ID'], :app_access_token => ENV['FB_APP_SECRET'])
-installed_status = false
-permissions
+@test_users = Koala::Facebook::TestUsers.new(:app_id => ENV['FB_APP_ID'], :secret => ENV['FB_APP_SECRET'])
+installed_status = true
+permissions = "user_photos, user_friends, user_location"
 @test_users.create_network(10, installed_status, permissions)
+

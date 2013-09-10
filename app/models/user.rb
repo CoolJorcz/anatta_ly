@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :borrows
   has_many :shares, through: :items
   has_many :friends, foreign_key: :requestor_id, foreign_key: :receiver_id
+  after_create :profile_pic
 
   attr_accessible :avatar
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
@@ -29,6 +30,11 @@ class User < ActiveRecord::Base
   		user.oauth_expires_at = new_access_expires_at
   		user.save!
   	end
+  end
+
+  def profile_pic
+    graph = Koala::Facebook::API.new(self.oauth_token)
+    self.avatar = graph.get_picture(user.facebook_id)
   end
 
   def facebook

@@ -27,10 +27,10 @@
             <ul class="nav pull-left">
               <li><%=link_to "Anatta.Ly", root_path %></li>
               <% if current_user %>
-                <li><%=link_to "Friends", friends_path%></li>
-                <li><%=link_to "Shares", shares_path%></li>
-                <li><%=link_to "Items", user_path(current_user)%></li>
-                <li><%= link_to "Categories", categories_path  %></li>
+                <li><%=link_to "My Friends", friends_path%></li>
+                <li><%=link_to "My Shares", shares_path%></li>
+                <li><%=link_to "My Items", user_path(current_user)%></li>
+                <li><%= link_to "Shareables", categories_path  %></li>
               <% end %>
 
             </ul>
@@ -46,9 +46,11 @@
               <% end %>
             </span>
             <span class="nav pull-center">
-               <%= form_tag root_path, method: 'get' do %>
-                 <%=  text_field_tag :search, params[:search] %>
-               <%= submit_tag "Search", name: nil %>
+              <% if current_user %>
+                 <%= form_tag root_path, method: 'get' do %>
+                   <%=  text_field_tag :search, params[:search] %>
+                 <%= submit_tag "Find Items", name: nil %>
+                 <% end %>
                <% end %>
              </span>
           </nav>

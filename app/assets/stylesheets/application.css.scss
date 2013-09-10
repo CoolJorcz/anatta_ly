@@ -20,7 +20,9 @@ header {
 
 .navbar-fixed-top .container {
   width: 100%;
+  background-color: lightgrey;
 }
+
 
 .btn-small {
   margin-left:1em;
@@ -81,4 +83,9 @@ h1 {
   /*margin-left: 85px;*/
   padding: 50px 0;
   font-size: 3.25em;
+}
+
+.friends {
+  width: 200px;
+  border: 1em solid red;
 }

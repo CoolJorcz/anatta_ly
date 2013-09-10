@@ -28,6 +28,7 @@
 
             - elsif type == "checkouts"
               %li= link_to "returned", update_share_path(share_id: share.id, update_type: "returned"), { method: "put", controller: "shares" }
-          - elsif kind == "borrow" &&  (type == "requests" || type == "approvals")
-            %li= link_to "cancel request", update_share_path(share_id: share.id, update_type: "canceled"), { method: "put", controller: "shares" }, confirm: "Are you sure you don't want to borrow this item?"
-
+            - elsif kind == "borrow" &&  (type == "requests" || type == "approvals")
+              %li= link_to "cancel request", update_share_path(share_id: share.id, update_type: "canceled"), { method: "put", controller: "shares" }, confirm: "Are you sure you don't want to borrow this item?"
+- else
+  %h1 Shares are empty!

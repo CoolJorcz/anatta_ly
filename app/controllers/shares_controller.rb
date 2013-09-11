@@ -37,6 +37,7 @@ class SharesController < ApplicationController
   def show
     @share = Share.find(params[:id])
     @review = Review.new
+    @feedback = Review.where(share_id: @share.id)
   end
 
   def edit

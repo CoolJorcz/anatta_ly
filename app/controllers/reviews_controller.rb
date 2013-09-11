@@ -12,12 +12,12 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(params[:review])
+    @share = Share.find(params[:review][:share_id])
     if @review.valid?
       @review.save
-      puts " saved the review ............" * 50
-      redirect_to review_path(@review) #id: @review.id, :share_id @review.share.id
+      params
+      redirect_to share_path(@share) #id: @review.id, :share_id @review.share.id
     else 
-      @share = Share.find(params[:review][:share_id])
       render :new
     end 
   end

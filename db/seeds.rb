@@ -41,9 +41,7 @@ end
 def set_facebook_photo
   User.all.each do |user|
     if user.oauth_expires_at > Time.current
-      graph = Koala::Facebook::API.new(user.oauth_token)
-      picture = graph.get_picture(user.facebook_id)
-      user.avatar = open(picture)
+      user.avatar = open user.facebook_avatar_url
       user.save!
     end
   end

@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   has_many :borrows
   has_many :shares, through: :items
   has_many :friends, foreign_key: :requestor_id, foreign_key: :receiver_id
-  after_create :profile_pic
 
   attr_accessible :avatar
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
@@ -22,19 +21,20 @@ class User < ActiveRecord::Base
     new_access_token = new_access_info["access_token"]
     new_access_expires_at = DateTime.now + new_access_info["expires"].to_i.seconds
 
-  	where(auth.slice(:provider,:uid)).first_or_initialize.tap do |user|
-  		user.provider = auth.provider
-  		user.facebook_id = auth.uid
-  		user.name = auth.info.name
-  		user.oauth_token = new_access_token
-  		user.oauth_expires_at = new_access_expires_at
-  		user.save!
-  	end
+    where(auth.slice(:provider,:uid)).first_or_initialize.tap do |user|
+      user.provider = auth.provider
+      user.facebook_id = auth.uid
+      user.name = auth.info.name
+      user.oauth_token = new_access_token
+      user.oauth_expires_at = new_access_expires_at
+      user.avatar = open user.facebook_avatar_url
+      user.save!
+    end
   end
 
-  def profile_pic
+  def facebook_avatar_url
     graph = Koala::Facebook::API.new(self.oauth_token)
-    graph.get_picture(user.facebook_id)
+    graph.get_picture(uid)
   end
 
   def facebook

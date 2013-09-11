@@ -37,6 +37,7 @@ class SharesController < ApplicationController
   def show
     @share = Share.find(params[:id])
     # @json = @share.to_gmaps4rails
+    # Saving for google maps integration
   end
 
   def edit

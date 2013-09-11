@@ -4,7 +4,6 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    puts "in reviews new -----" * 200
     @share = Share.find(params[:share_id]) #Share.find(params[:share_id]) #CHANGE THIS
     @review = Review.new
   end

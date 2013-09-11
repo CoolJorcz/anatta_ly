@@ -10,6 +10,10 @@
     %br
     - if current_user == @user
       = link_to "Add a new item", new_item_path(@user), class: "btn button-small"
+    - if @reviews.size > 0
+      
+    - else
+      %p No one has reviewed yet.
 
   %ul.collection#collection
     - @items.each do |item|

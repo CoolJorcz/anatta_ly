@@ -23,21 +23,11 @@
       <div class="navbar-inner">
         <div class="container">
           <nav>
-            <span class="nav_search">
-              <% if current_user %>
-              <%= form_tag root_path, method: 'get' do %>
-              <%= text_field_tag :search, params[:search], placeholder: "Find Items" %>
-              <% end %>
-              <% end %>
-            </span>
-
             <ul class="nav" id="links">
-              <li><%=link_to "Anatta.Ly", root_path %></li>
+              <li><%=link_to "Available Items", root_path %></li>
               <% if current_user %>
-                <li><%=link_to "My Friends", friends_path%></li>
                 <li><%=link_to "My Shares", shares_path%></li>
                 <li><%=link_to "My Items", user_path(current_user)%></li>
-                <li><%= link_to "Shareables", categories_path  %></li>
               <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
             <p class="nav pull-right">Hello, <%= link_to current_user.name, user_path(current_user) %>! <%= "(" + current_user.points.to_s + "ॐ)" %></p>
             </ul>

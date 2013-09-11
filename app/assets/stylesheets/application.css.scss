@@ -1,9 +1,10 @@
 @import "bootstrap";
 
+/*=====================MAIN STYLES=================*/
+
 body {
   font-family: "Tahoma"
 }
-
 
 html {
   overflow-y: scroll;
@@ -18,9 +19,11 @@ body {
 section {
   overflow: auto;
 }
+/*
 .container{
   margin:0; padding: 0;
-}
+}*/
+
 header {
   width: 100%;
 }
@@ -46,9 +49,10 @@ header {
   height: 50px;
   color: white;
 }
+
 .navbar .container > nav > ul {
   float: right;
-  margin: 0 10px 0 0; padding: 0;
+  margin: 0 10px 0 0; padding: 0 120px 0 0;
   position: relative;
   top:6px;
 }
@@ -74,6 +78,7 @@ header {
 }
 .navbar .container > nav > ul > li{
   margin: 0 3px;
+
 }
 .navbar .container > nav > ul > li > a {
   color: rgba(254,254,254,1);
@@ -113,6 +118,29 @@ span.nav_search > form > input[type="submit"]{
   background: rgba(25,130,114,0.8);
 }
 
+.categories{
+  margin: 0 auto;
+  text-align: center;
+  width: 80%;
+  display: inline;
+}
+
+.categories li {
+  padding-left: 2em;
+  font-size: 1.5em;
+}
+
+.search_bar{
+  width: 350px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: rgba(21,86,130,0.6);
+  border-radius: 5px;
+}
+.index_search textfield{
+  color: black;
+}
+
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   color: rgba(254,254,254,1);
   text-align: center;
@@ -144,6 +172,7 @@ li {
   display: inline-block;
   position: relative;
 }
+
 
 ul.collection > li{
   padding:5px 5px 80px;
@@ -178,7 +207,7 @@ text-align: center;
 }
 
 .container-body {
-  width: 100%;
+  /*width: 100%;*/
   margin: 80px auto;
   color: black;
   padding-bottom: 10em;
@@ -215,7 +244,7 @@ h1 {
 }
 
 .friends {
-  width: 300px;
+  width: 80%;
   border: .5em solid lightgrey;
   padding: 1em 2em;
 }
@@ -223,3 +252,16 @@ h1 {
 .collection {
   /*margin-left: 95px;*/
 }
+
+.profile_box{
+  display: inline-block;
+  margin-left: 32px;
+}
+
+/*.span2{
+  min-width: 300px;
+}
+
+.span10{
+  float:right;
+}*/

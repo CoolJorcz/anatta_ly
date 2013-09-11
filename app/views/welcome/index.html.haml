@@ -1,6 +1,6 @@
 - if current_user
   %h1 Check out what your friends are lending out!
-  %ul
+  %ul.collection
     - @items.each do |item|
       %li
         = link_to image_tag(item.image.url(:small), class: "holy img-polaroid"), item_path(item.id)

@@ -9,10 +9,12 @@
           - unless share.item.user == current_user
             %li
               = link_to image_tag(profile_picture_path(share.item.user)), user_path(share.item.user)
+              %br
               = "lender: " + share.item.user.name
           - unless share.borrower == current_user
             %li
               = link_to image_tag(profile_picture_path(share.borrower)), user_path(share.borrower)
+              %br
               = "requester: " + share.borrower.name
           %li= "start: " + share.start_on.to_date.strftime("%m/%d/%Y")
           %li= "to: " + share.end_on.to_date.strftime("%m/%d/%Y")

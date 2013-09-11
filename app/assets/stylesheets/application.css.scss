@@ -22,9 +22,20 @@ header {
   width: 100%;
 }
 
-.navbar-fixed-top .container {
-  width: 100%;
-  background-color: lightgrey;
+.header_2 {
+  display: inline;
+}
+
+.navbar .container{
+  width: 1901px;
+  background-color: #373744;
+  overflow: visible;
+  height: 60px;
+  color: white;
+}
+
+#links a{
+  color: #4ac2e2;
 }
 
 
@@ -46,18 +57,27 @@ li {
   position: relative;
 }
 
+.my_items {
+  width: 246px;
+}
+
 .caption {
-  color: red;
+  color: black;
+  font-size: 12px;
+  text-wrap: none;
+  text-align: center;
+  width: 100%;
   position: absolute;
   bottom: 1em;
-  right: 7em;
   padding-right: 1em;
 }
 
 .container-body {
   width: 1200px;
   margin: 0 auto;
-  padding: 0 1em;
+  padding: 1em 1em;
+  box-shadow: 0px 5px 50px black;
+
   background-color: white;
   color: black;
   padding-bottom: 10em;
@@ -84,13 +104,21 @@ img.desaturate {
 h1 {
   display: inline-block;
   margin: 0;
-  /*margin-left: 85px;*/
+  margin-left: 85px;
   padding: 50px 0;
   font-size: 3.25em;
+}
+
+.header_4 {
+  display: inline;
 }
 
 .friends {
   width: 300px;
   border: .5em solid lightgrey;
   padding: 1em 2em;
+}
+
+.collection {
+  margin-left: 95px;
 }

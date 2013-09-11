@@ -5,14 +5,14 @@
   - else
     = render partial: "friend_profile"
 
-  %h4= "Karma " + @user.points.to_s + "ॐ"
+  %h4.header_4= "Karma " + @user.points.to_s + "ॐ"
+  %br
   - if current_user == @user
     = link_to "Add a new item", new_item_path(@user), class: "btn button-small"
 
-  %p Collection:
-  %ul
+  %ul.collection
     - @items.each do |item|
-      %li
+      %li.my_items
         - if item.image_file_name != nil
           = link_to image_tag(item.image.url(:small), class: "holy img-polaroid"), item_path(item.id)
         = link_to item.name, item_path(item.id), class: "caption"

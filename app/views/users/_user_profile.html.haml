@@ -1,4 +1,7 @@
-%h2 My Collection
 = image_tag @profile_picture
-%h4= "I saved $" + @user.amt_borrowed.to_s
-%h4= "I saved my friends $" + @user.amt_shared.to_s
+%h2.header_2 My Collection
+%br
+%h4.header_4= "I saved $" + @user.amt_borrowed.to_s
+%br
+%h4.header_4= "I saved my friends $" + @user.amt_shared.to_s
+%br

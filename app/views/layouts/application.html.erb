@@ -26,9 +26,7 @@
             <span class="nav_search">
               <% if current_user %>
               <%= form_tag root_path, method: 'get' do %>
-              <%= text_field_tag :search, params[:search], placeholder: "Search" %>
-              <%= submit_tag "Find Items", name: nil, class: "btn btn-small
-                            btn-primary"%>
+              <%= text_field_tag :search, params[:search], placeholder: "Find Items" %>
               <% end %>
               <% end %>
             </span>

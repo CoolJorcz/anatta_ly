@@ -58,11 +58,11 @@ header {
   left:510px;
   letter-spacing: 1.5px;
 }
-.navbar .container > nav > ul > li:nth-of-type(even){
+/*.navbar .container > nav > ul > li:nth-of-type(even){
   background: rgba(0,161,221,0.5);
   padding: 2px 10px;
-}
-.navbar .container > nav > ul > li:nth-of-type(odd){
+}*/
+.navbar .container > nav > ul > li{
   /*border:1px red solid;*/
   background: rgba(21,86,130,0.5);
   padding: 2px 10px;
@@ -98,6 +98,7 @@ span.nav_search > form > input[type="text"]{
   border:none;
   /*display: inline-block;*/
   float:left;
+  color: white;
   background: rgba(21,86,130,0.6);
   width:33em;
   height:40px;

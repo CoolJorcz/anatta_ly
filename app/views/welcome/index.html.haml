@@ -1,8 +1,8 @@
 - if current_user
   / %h1 Check out what your friends are lending out!
-  %ul.collection
+  %ul{class: "collection", id: "collection"}
     - @items.each do |item|
-      %li
+      %li.item
         = link_to image_tag(item.image.url(:small), class: "holy img-polaroid"), item_path(item.id)
         %h4= link_to item.name, item_path(item.id), class: "caption centerwrap"
         %hr
@@ -13,6 +13,7 @@
   %h3 More often than not, our friends already have the things we want or need. Anatta.Ly is an app that makes it easy to share items amongst friends.
 
   %h1 When you share more you can DO MORE.
+
   =image_tag "index/test1.jpg", class: "img-polaroid holy desaturate"
   =image_tag "index/test2.jpg", class: "img-polaroid holy desaturate"
   =image_tag "index/test3.jpg", class: "img-polaroid holy desaturate"

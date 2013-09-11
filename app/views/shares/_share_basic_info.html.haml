@@ -3,9 +3,20 @@
 %h3
   = link_to image_tag(profile_picture_path(@share.item.user)), user_path(@share.item.user)
   = @share.item.user.name
-  = "is sharing with"
+  - if @share.status == "returned"
+    = "shared with"
+  - elsif @share.status == "pending"
+    = "hopefully going to share with" 
+  - elsif @share.status == "approved"
+    = "going to share with" 
+  - elsif @share.status == "checkedout"
+    = "sharing with" 
+  - elsif @share.status == "canceled" || @share.status == "pending"
+    = "in not sharing with"    
   = link_to image_tag(profile_picture_path(@share.borrower)), user_path(@share.borrower)
   = @share.borrower.name
+  - if @share.status == "canceled" || @share.status == "pending"
+    = "at this time" 
 
 %h5= @share.item.category.name
 %h5= "Status: " + @share.status

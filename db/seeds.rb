@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'faker'
-require 'openuri'
+require 'open-uri'
 
 def seed_category
   categories = ['Apparel', 'Sports & Outdoors', 'Children', 'Books, Movies & Music', 'Electronics', 'Miscellaneous']
@@ -40,9 +40,10 @@ end
 
 def set_facebook_photo
   User.all.each do |user|
-    if user.oauth_token != nil
+    if user.oauth_expires_at > Time.current
       graph = Koala::Facebook::API.new(user.oauth_token)
-       open(graph.get_picture(user.facebook_id))
+      picture = graph.get_picture(user.facebook_id)
+      user.avatar = open(picture)
       user.save!
     end
   end

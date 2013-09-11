@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
 
   def profile_pic
     graph = Koala::Facebook::API.new(self.oauth_token)
-    self.avatar = graph.get_picture(user.facebook_id)
+    graph.get_picture(user.facebook_id)
   end
 
   def facebook

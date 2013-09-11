@@ -52,7 +52,7 @@ header {
 
 .navbar .container > nav > ul {
   float: right;
-  margin: 0 10px 0 0; padding: 0 120px 0 0;
+  margin: 0 10px 0 0; padding: 0 190px 0 0;
   position: relative;
   top:6px;
 }
@@ -84,9 +84,14 @@ header {
   color: rgba(254,254,254,1);
   font-size: 15px;
 }
+
 #links a{
-  /*color: #4ac2e2;*/
+  color: #4ac2e2;
 }
+#links a:hover{
+  color: white;
+}
+
 input{
   border-radius: 0 !important;
   border:none !important;
@@ -173,9 +178,8 @@ li {
   position: relative;
 }
 
-
 ul.collection > li{
-  padding:5px 5px 80px;
+  padding:5px 5px 20px;
   margin: 0 10px;
   max-width: 16em;
   box-shadow: 0px 1px 5px rgba(34,34,34,0.7);
@@ -207,7 +211,7 @@ text-align: center;
 }
 
 .container-body {
-  /*width: 100%;*/
+  width: 100%;
   margin: 80px auto;
   color: black;
   padding-bottom: 10em;
@@ -256,6 +260,54 @@ h1 {
 .profile_box{
   display: inline-block;
   margin-left: 32px;
+}
+
+.individual_share{
+  width: 300px;
+  display: inline-block;
+  border: 1px solid gray;
+  position: relative;
+  li{
+    display:inline-block;
+  }
+}
+.individual_share > ul {
+  border:1px blue solid;
+  margin: 0;
+}
+.individual_share > ul > li{
+  border:1px red solid;
+  width: 100%;
+  margin: 0; padding: 0;
+}
+.individual_share > ul > li.share_page,
+.individual_share > ul > li.request_status{
+  width: 48%;
+}
+.individual_share > ul > li > p{
+  float: right;
+}
+.individual_share > ul > li > a{
+  float: left;
+}
+.img_share {
+  width: 5em;
+  height: auto;
+  padding: 0;
+  margin: 0.5em 0.5em;
+  /*border: 0.8em solid #DDD;*/
+  /*border-bottom: 3em solid #DDD;*/
+  /*background-color: black;*/
+  display: inline;
+/*  position: absolute;*/
+}
+
+.img_user{
+
+}
+
+.sharer{
+  float:right;
 }
 
 /*.span2{

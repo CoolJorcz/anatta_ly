@@ -27,6 +27,9 @@
                 %h4= link_to item.name, item_path(item.id), class: "caption centerwrap"
                 %hr
                 %p= item.description*3
+                %hr
+                = image_tag(item.user.avatar.url)
+                = "Posted by " + item.user.name
           - else
             %h2 Your search didn't return any results.
             = link_to "Back home", root_path

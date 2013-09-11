@@ -6,8 +6,7 @@ class ApplicationController < ActionController::Base
   end
 
   def profile_picture_path(user)
-    graph = Koala::Facebook::API.new(user.oauth_token)
-    graph.get_picture(user.facebook_id)
+    user.avatar.url
   end
 
   def is_friend?(friend)

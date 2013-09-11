@@ -1,5 +1,9 @@
 @import "bootstrap";
 
+body {
+  font-family: "Tahoma"
+}
+
 
 html {
   overflow-y: scroll;
@@ -7,7 +11,7 @@ html {
 
 body {
   padding-top: 4em;
-  background: grey;
+  background: #006C51;
 }
 
 section {
@@ -20,7 +24,9 @@ header {
 
 .navbar-fixed-top .container {
   width: 100%;
+  background-color: lightgrey;
 }
+
 
 .btn-small {
   margin-left:1em;
@@ -34,27 +40,57 @@ footer {
   text-align: center;
 }
 
-.container-body {
-  width: 100%;
-  margin: 0;
-  padding: 0 1em;
-  background-color: lightsteelblue;
-  color: black;
+li {
+  list-style: none;
+  display: inline-block;
+  position: relative;
 }
 
-img.desaturate { 
+.caption {
+  color: red;
+  position: absolute;
+  bottom: 1em;
+  right: 7em;
+  padding-right: 1em;
+}
+
+.container-body {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 0 1em;
+  background-color: white;
+  color: black;
+  padding-bottom: 10em;
+}
+
+img.desaturate {
   filter: grayscale(100%);
   -webkit-filter: grayscale(100%);
   -moz-filter: grayscale(100%);
   filter: grayscale(100%);
 }
 
-.holy { 
+.holy {
   width: 15em;
   height: 15em;
   padding: 0;
   margin: 0.5em 0.5em;
-  border: 0.2em thin grey;
+  border: 0.8em solid #DDD;
+  border-bottom: 3em solid #DDD;
   background-color: black;
   display: inline;
+}
+
+h1 {
+  display: inline-block;
+  margin: 0;
+  /*margin-left: 85px;*/
+  padding: 50px 0;
+  font-size: 3.25em;
+}
+
+.friends {
+  width: 300px;
+  border: .5em solid lightgrey;
+  padding: 1em 2em;
 }

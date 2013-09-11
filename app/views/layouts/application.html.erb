@@ -5,12 +5,8 @@
   <%= stylesheet_link_tag "application", media: "all" %>
   <%= stylesheet_link_tag 'gmaps4rails' %>
   <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-  <meta charset="utf-8" />
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
+  <%= csrf_meta_tags %>
   <script>
   $(function() {
     $( ".datepicker" ).datepicker({
@@ -18,30 +14,42 @@
     });
   });
   </script>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
 </head>
 	<body>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
           <nav>
-            <ul class="nav pull-right">
-              <li><%=link_to "Friends", friends_path%></li>
-              <li><%=link_to "Shares", shares_path%></li>
-              <li><%=link_to "Items", items_path%></li>
+            <ul class="nav pull-left">
+              <li><%=link_to "Anatta.Ly", root_path %></li>
+              <% if current_user %>
+                <li><%=link_to "My Friends", friends_path%></li>
+                <li><%=link_to "My Shares", shares_path%></li>
+                <li><%=link_to "My Items", user_path(current_user)%></li>
+                <li><%= link_to "Shareables", categories_path  %></li>
+              <% end %>
+
             </ul>
-            <span class="nav pull-left">
             <% if current_user %>
-    					Hello, <strong> <%= link_to current_user.name, user_path(current_user) %></strong>! <%= "(" + current_user.points.to_s + "ॐ)" %>
-              <%= link_to "Sign out", signout_path, id: "sign_out" %>
-            <% else %>
-              <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-small
-               btn-primary" %>
+              <p class="nav pull-right"><%= link_to "Sign out", signout_path, id: "sign_out" %></p>
+              <p class="nav pull-right">Hello, <strong> <%= link_to current_user.name, user_path(current_user) %></strong>! <%= "(" + current_user.points.to_s + "ॐ)" %></p>
             <% end %>
+            <span class="nav pull-right">
+              <% if current_user %>
+              <% else %>
+                <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-small
+                 btn-primary" %>
+              <% end %>
             </span>
             <span class="nav pull-center">
-               <%= form_tag root_path, method: 'get' do %>
-                 <%=  text_field_tag :search, params[:search] %>
-               <%= submit_tag "Search", name: nil %>
+              <% if current_user %>
+                 <%= form_tag root_path, method: 'get' do %>
+                   <%=  text_field_tag :search, params[:search] %>
+                 <%= submit_tag "Find Items", name: nil %>
+                 <% end %>
                <% end %>
              </span>
           </nav>
@@ -53,9 +61,9 @@
 			<%= content_tag :div, msg, id: "flash_#{name}" %>
 			<% end %>
       <%= yield %>
+    </div>
       <footer>
         <p>Anatta-ly &copy; 2013 Karma Productions</p>
       </footer>
-    </div>
 	</body>
 </html>

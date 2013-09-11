@@ -30,10 +30,10 @@ class UsersController < ApplicationController
 		end
 
 		if @reviews.length > 0
-			@avg_stars = (total_stars / @reviews.length).ceiling
-			@avg_condition = total_stars / @reviews.length
-			@percentage_lend_again = total_lend_agains / @reviews.length
-			@percentage_returned_on_time = total_returned_on_time / @reviews.length
+			@avg_stars = (total_stars.to_f / @reviews.length).ceil
+			@avg_condition = total_stars.to_f / @reviews.length
+			@percentage_lend_again = (100 * total_lend_agains.to_f / @reviews.length).to_i
+			@percentage_returned_on_time = (100 * total_returned_on_time.to_f / @reviews.length).to_i
 		end
   end
 end

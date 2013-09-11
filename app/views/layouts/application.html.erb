@@ -23,21 +23,28 @@
       <div class="navbar-inner">
         <div class="container">
           <nav>
-            <ul class="nav pull-left" id="links">
+            <span class="nav_search">
+              <% if current_user %>
+              <%= form_tag root_path, method: 'get' do %>
+              <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+              <%= submit_tag "Find Items", name: nil, class: "btn btn-small
+                            btn-primary"%>
+              <% end %>
+              <% end %>
+            </span>
+
+            <ul class="nav" id="links">
               <li><%=link_to "Anatta.Ly", root_path %></li>
               <% if current_user %>
                 <li><%=link_to "My Friends", friends_path%></li>
                 <li><%=link_to "My Shares", shares_path%></li>
                 <li><%=link_to "My Items", user_path(current_user)%></li>
                 <li><%= link_to "Shareables", categories_path  %></li>
-              <% end %>
-
+              <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+            <p class="nav pull-right">Hello, <%= link_to current_user.name, user_path(current_user) %>! <%= "(" + current_user.points.to_s + "ॐ)" %></p>
             </ul>
-            <% if current_user %>
-              <p class="nav pull-right"><%= link_to "Sign out", signout_path, id: "sign_out", class: "btn btn-small
-                                  btn-primary" %></p>
-              <p class="nav pull-right"><strong> Hello, <%= link_to current_user.name, user_path(current_user) %>! <%= "(" + current_user.points.to_s + "ॐ)" %></strong></p>
             <% end %>
+
             <span class="nav pull-right">
               <% if current_user %>
               <% else %>
@@ -45,20 +52,11 @@
                  btn-primary" %>
               <% end %>
             </span>
-            <span class="nav pull-center">
-              <% if current_user %>
-                 <%= form_tag root_path, method: 'get' do %>
-                   <%=  text_field_tag :search, params[:search] %>
-                 <%= submit_tag "Find Items", name: nil, class: "btn btn-small
-                                  btn-primary"%>
-                 <% end %>
-               <% end %>
-             </span>
           </nav>
         </div>
       </div>
     </header>
-    <div class="container container-body">
+    <div class="container-body">
       <% flash.each do |name, msg| %>
 			<%= content_tag :div, msg, id: "flash_#{name}" %>
 			<% end %>

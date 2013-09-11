@@ -14,7 +14,9 @@ AnattaLy::Application.routes.draw do
   resources :friends
   post '/friends/accept', to: 'friends#accept', as: 'accept_friend'
 
-  resources :shares
+  resources :shares do
+    resources :reviews
+  end
   post '/shares/details', to: 'shares#details', as: 'details_share'
   post '/shares/update', to: 'shares#update', as: 'update_share'
 

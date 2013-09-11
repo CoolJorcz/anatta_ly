@@ -1,0 +1,42 @@
+= form_for @review do |f| 
+  %p How many stars would you give them?*
+  - (1..5).to_a.reverse.each do |i|
+    = f.radio_button :stars, i
+    = i
+    %br
+  %br
+  %p What was the condition of your item on its return?*
+  = f.radio_button :condition, 5
+  = "The same condition I lent it out in. Everything looks good. : )"
+  %br
+  = f.radio_button :condition, 4
+  = "It definitely got a little more use, but no big deal."
+  %br
+  = f.radio_button :condition, 3
+  = "It got a little too much use, I'm not super happy about its condition."
+  %br
+  = f.radio_button :condition, 1
+  = "It's nearly ruined. : ("
+  %br  
+  %br
+  %p Did they return the item on time?*
+  = f.radio_button :returned_on_time, true
+  = "Yup!"
+  = f.radio_button :returned_on_time, false
+  = "Not so much."
+  %br
+  %br
+  %p Would you lend to them again?*
+  = f.radio_button :lend_again, true
+  = "Yes, definitely!"
+  = f.radio_button :lend_again, false
+  = "Nope, probably not."
+  %br
+  %br
+  %p Any comments?
+  = f.text_area :comment, placeholder: "optional"
+  %br
+  *required
+  %br
+  = f.hidden_field :share_id, value: @share.id
+  = f.submit "Post!"

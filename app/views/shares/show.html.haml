@@ -4,3 +4,6 @@
 
 - if @share.item.user == current_user || @share.borrower = current_user
   = link_to "Update share details", edit_share_path(@share.id)
+
+- if @share.status == "returned" && @share.item.user == current_user
+  = link_to "Write a review", new_review_path(share_id: @share.id) 

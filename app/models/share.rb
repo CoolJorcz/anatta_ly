@@ -4,6 +4,7 @@ class Share < ActiveRecord::Base
 
   belongs_to :item
   belongs_to :borrower, class_name: "User", foreign_key: "borrower_id"
+  has_many :reviews
 
   def self.shares(current_user, status)
     items = current_user.items

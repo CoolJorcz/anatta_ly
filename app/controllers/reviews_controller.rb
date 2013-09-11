@@ -5,28 +5,26 @@ class ReviewsController < ApplicationController
 
   def new
     # new_share_review GET    /shares/:share_id/reviews/new(.:format)      reviews#new
-    @share = Share.find(params[:share_id])
+    @share = Share.find(params[:share_id]) #Share.find(params[:share_id]) #CHANGE THIS
     @review = Review.new
     # @item = Item.find(params[:item_id])
   end
 
   def create
-    # Review.new(share_id:)
-    # @user = current_user
-    # @item = Item.new(params[:item])
-    # @item.user_id = @user.id
-    # puts @item
-
-    # if @item.valid?
-    #   @item.save
-    #   redirect_to item_url(@item)
-    # else
-    #   render :new
-    # end
+    @review = Review.new(params[:review])
+    if @review.valid?
+      @review.save
+      puts " saved the review ............" * 50
+      redirect_to review_path(@review) #id: @review.id, :share_id @review.share.id
+    else 
+      @share = Share.find(params[:review][:share_id])
+      render :new
+    end 
   end
 
   def show
-    @share = Share.find(params[:id])
+    @review = Review.find(params[:id])
+    @share = Share.find(@review.share.id)
   end
 
   def edit

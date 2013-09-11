@@ -4,10 +4,9 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    # new_share_review GET    /shares/:share_id/reviews/new(.:format)      reviews#new
+    puts "in reviews new -----" * 200
     @share = Share.find(params[:share_id]) #Share.find(params[:share_id]) #CHANGE THIS
     @review = Review.new
-    # @item = Item.find(params[:item_id])
   end
 
   def create

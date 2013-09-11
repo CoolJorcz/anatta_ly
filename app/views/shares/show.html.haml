@@ -2,17 +2,18 @@
 
 = render partial: "share_details"
 
-- if @share.item.user == current_user || @share.borrower = current_user
-  = link_to "Update share details", edit_share_path(@share.id)
+- if @share.status == "pending" || @share.status == "approved" || @share.status == "checkedout"
+  - if @share.item.user == current_user || @share.borrower = current_user
+    %h4= link_to "Update share details", edit_share_path(@share.id)
 
 - if @share.status == "returned" && @share.item.user == current_user
-  = link_to "Review your borrower.", new_review_path(share_id: @share.id) 
-
-- if @feedback.size == 1
-  %h3= "Feedback"
-  %p= "Stars: " + @feedback[0].stars.to_s
-
-  - if @feedback[0].comment != nil
-    %p= "Comments on borrow: " + @feedback[0].comment	
+  - if @feedback.size == 0
+    = link_to "Review your borrower.", new_review_path(share_id: @share.id)
+    
+  - elsif @feedback.size == 1
+    %h3= "Feedback"
+    %p= "Stars: " + @feedback[0].stars.to_s
+    - if @feedback[0].comment != nil
+      %p= "Comments on borrow: " + @feedback[0].comment	
 
 

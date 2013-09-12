@@ -15,7 +15,6 @@
     - if current_user == @user
       = link_to "Add a new item", new_item_path(@user), class: "btn button-small"
 
-
   %ul.collection#collection
     - @items.each do |item|
       %li.my_items.item

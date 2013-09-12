@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
   end
 
   def update_feedback_reviews
-    borrows = Share.where(borrower_id: @user.id)
+    borrows = Share.where(borrower_id: self.id)
     reviews = []
     borrows.each do |share|
       Review.all.each do |review|

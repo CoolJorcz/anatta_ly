@@ -19,7 +19,9 @@
     = "at this time" 
 
 %h5= @share.item.category.name
-%h5= "Status: " + @share.status
+%h5
+  = "Status: "
+  %span.item_status= @share.status.capitalize
 
 %br
 

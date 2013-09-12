@@ -24,12 +24,12 @@ $(function(){
       $(share_item).html(picked_up);
     });
 
-    $('.returned').bind('ajax:success', function (event, data, status, xhr){
+    // $('.returned').bind('ajax:success', function (event, data, status, xhr){
 
-      var returned = "Item returned. Be sure to give your review."
-      var share_item = '#share' + data.id
-      $(share_item).html(returned);
-    });
+    //   var returned = "Item returned. Be sure to give your review."
+    //   var share_item = '#share' + data.id
+    //   $(share_item).html(returned);
+    // });
 
 
 });

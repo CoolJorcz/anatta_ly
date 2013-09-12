@@ -16,6 +16,7 @@
         - if item.image_file_name != nil
           = link_to image_tag(item.image.url(:small), class: "holy img-polaroid"), item_path(item.id)
         = link_to item.name, item_path(item.id), class: "caption"
+        
   %h3 Borrowing Review
   - if @user.num_reviews > 1
     - borrow_rating = "ॐ" * @user.avg_stars
@@ -28,10 +29,5 @@
       - @user.comments.each do |comment|
         %li= comment
 
-
-
-
-
 - else
   = render partial: "non_friend_profile"
-

@@ -10,6 +10,8 @@ class WelcomeController < ApplicationController
       end
       @categories = Category.all
       @friends = Friend.get_friends(current_user)
+      @all_borrows = Share.borrows(current_user)
+      @all_shares = current_user.shares
   	end
   end
 end

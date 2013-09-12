@@ -148,6 +148,10 @@ letter-spacing: 5px;
   width: 30%;
 }
 
+.nav pull-right{
+  display:inline-block;
+}
+
 footer {
   text-align: center;
 }
@@ -212,13 +216,13 @@ img.desaturate {
   display: inline;
 }
 
-h1 {
+/*h1 {
   display: inline-block;
   margin: 0;
   margin-left: 85px;
   padding: 50px 0;
   font-size: 3.25em;
-}
+}*/
 
 .header_4 {
   display: inline;
@@ -305,7 +309,7 @@ h1 {
   color: red;
 }
 
-<<<<<<< HEAD
+
 /*4ac2e2*/
 
 .about_block {
@@ -356,15 +360,28 @@ dark #165987
 .about_block.even {
   background-color: #165987;
   color: #4AC2E2;
-  
+
   /*background-color: #4ac2e2;*/
 
 }
 
-.span2{
-
-  min-width: 300px;
+.anattaly{
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 40px;
 }
+
+.logo{
+width:50px;
+height:50px;
+
+background:url(index/om.gif) 0 0;
+}
+
+.welcome{
+  padding: 0 10%;
+}
+
 .user-form {
   margin: auto;
   width: 60%;

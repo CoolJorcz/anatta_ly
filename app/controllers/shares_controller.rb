@@ -31,7 +31,7 @@ class SharesController < ApplicationController
     if end_on < start_on || start_on < today
       redirect_to new_share_path(item_id: item_id)
     elsif share.save
-      redirect_to shares_url
+      redirect_to root_url
     else
       redirect_to new_share_path(item_id: item_id)
     end
@@ -77,10 +77,15 @@ class SharesController < ApplicationController
         @share.borrower.points +=1
         @share.borrower.save
       end
+      if request.xhr?
+        render json: @share
+      else
+        redirect_to root_path
+      end
     else
       flash[:notice] = "Failed share approval"
+      render "welcome#index"
     end
-    redirect_to shares_url
   end
 
   def destroy

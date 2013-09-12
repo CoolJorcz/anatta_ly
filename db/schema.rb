@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130912024323) do
+ActiveRecord::Schema.define(:version => 20130912043100) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -49,10 +49,10 @@ ActiveRecord::Schema.define(:version => 20130912024323) do
     t.integer  "stars"
     t.text     "comment"
     t.integer  "condition"
-    t.boolean  "lend_again"
-    t.boolean  "returned_on_time"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.integer  "lend_again",       :default => 1
+    t.integer  "returned_on_time", :default => 1
   end
 
   create_table "shares", :force => true do |t|
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20130912024323) do
     t.integer  "avg_condition",                         :default => 0
     t.integer  "percent_lend_again",                    :default => 0
     t.integer  "percent_returned_on_time",              :default => 0
+    t.integer  "num_reviews",                           :default => 0
   end
 
 end

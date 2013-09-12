@@ -20,16 +20,16 @@
   %br  
   %br
   %p Did they return the item on time?*
-  = f.radio_button :returned_on_time, true
+  = f.radio_button :returned_on_time, 1
   = "Yup!"
-  = f.radio_button :returned_on_time, false
+  = f.radio_button :returned_on_time, 0
   = "Not so much."
   %br
   %br
   %p Would you lend to them again?*
-  = f.radio_button :lend_again, true
+  = f.radio_button :lend_again, 1
   = "Yes, definitely!"
-  = f.radio_button :lend_again, false
+  = f.radio_button :lend_again, 0
   = "Nope, probably not."
   %br
   %br

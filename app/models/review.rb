@@ -5,3 +5,4 @@ class Review < ActiveRecord::Base
 
   belongs_to :share
 end
+

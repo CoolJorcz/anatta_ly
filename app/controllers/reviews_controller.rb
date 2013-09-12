@@ -7,11 +7,12 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(params[:review])
     @share = Share.find(params[:review][:share_id])
-    @share.borrower.update_feedback_reviews
+    borrower = @share.borrower
+    borrower.update_feedback_reviews
 
     if @review.valid?
       @review.save
-      params
+      puts params
       redirect_to share_path(@share) 
     else 
       render :new

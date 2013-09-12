@@ -84,8 +84,14 @@ class SharesController < ApplicationController
       else
         redirect_to share_path(@share)
       end
+      if request.xhr?
+        render json: @share
+      else
+        redirect_to root_path
+      end
     else
       flash[:notice] = "Failed share approval"
+      render "welcome#index"
     end
   end
 

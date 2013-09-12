@@ -1,7 +1,7 @@
 - if shares.length > 0
   %ul.shares
     - shares.each do |share|
-      %li.individual_share
+      %li{class: :individual_share, id: "share#{share.id}"}
         = link_to image_tag(share.item.image.url(:thumb), class: "img_share img-polaroid"), item_path(share.item.id)
         = link_to share.item.name, item_path(share.item.id)
         %ul
@@ -19,10 +19,10 @@
               %li#share= link_to "share page", share_path(share.id)
               - if kind == "share"
                 - if type == "requests"
-                  %li#approve
-                    = link_to "approve", update_share_path(share_id: share.id, update_type: "approved"), { method: :put, controller: "shares", data: share.id, }
+                  %li
+                    = link_to "approve", update_share_path(share_id: share.id, update_type: "approved"), { method: "put", controller: "shares", remote: true}
                   %li#deny
-                    = link_to "deny", update_share_path(share_id: share.id, update_type: "denied"), { method: "put", controller: "shares" }, confirm: "Are you sure you don't want to share with " + share.borrower.name + "?"
+                    = link_to "deny", update_share_path(share_id: share.id, update_type: "denied"), { method: "put", controller: "shares" }, confirm: "Are  you sure you don't want to share with " + share.borrower.name + "?"
                 - elsif type == "approvals"
                   %li#picked_up= link_to "picked up", update_share_path(share_id: share.id, update_type: "checkedout"), { method: :put, controller: "shares" }
 

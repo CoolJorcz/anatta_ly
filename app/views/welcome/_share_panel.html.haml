@@ -16,21 +16,21 @@
             = "My requests"
           %div{id: "collapse1", class: "accordion-body collapse"}
             %div{class: "accordion-inner"}
-            = render partial: "share_category", locals: { shares: @all_shares.where(status: :pending), kind: "share", type: "requests" }
+            = render partial: "share/share_category", locals: { shares: @all_shares.where(status: :pending), kind: "share", type: "requests" }
       %div{class: "accordion-group"}
         %div{class: "accordion-heading"}
           %a{class: "accordion-toggle", "data-toggle"=> "collapse", "data-parent"=> "#accordion1", "href"=> "#collapse2"}
             = "My approvals"
           %div{id: "collapse2", class: "accordion-body collapse"}
             %div{class: "accordion-inner"}
-            = render partial: "share_category", locals: { shares: @all_shares.where(status: :approved), kind: "share", type: "approvals" }
+            = render partial: "share/share_category", locals: { shares: @all_shares.where(status: :approved), kind: "share", type: "approvals" }
       %div{class: "accordion-group"}
         %div{class: "accordion-heading"}
           %a{class: "accordion-toggle", "data-toggle"=> "collapse", "data-parent"=> "#accordion1", "href"=> "#collapse3"}
             = "My rented items"
           %div{id: "collapse3", class: "accordion-body collapse"}
             %div{class: "accordion-inner"}
-            = render partial: "share_category", locals: { shares: @all_shares.where(status: :checkedout), kind: "share", type: "checkouts" }
+            = render partial: "share/share_category", locals: { shares: @all_shares.where(status: :checkedout), kind: "share", type: "checkouts" }
 
   %div{id: "borrows", class: "tab-pane"}
     - if @all_borrows.length == 0
@@ -42,22 +42,18 @@
             = "My requests"
           %div{id: "collapse4", class: "accordion-body collapse"}
             %div{class: "accordion-inner"}
-            = render partial: "share_category", locals: { shares: @all_borrows.where(status: :pending), kind: "borrow", type: "requests" }
+            = render partial: "share/share_category", locals: { shares: @all_borrows.where(status: :pending), kind: "borrow", type: "requests" }
       %div{class: "accordion-group"}
         %div{class: "accordion-heading"}
           %a{class: "accordion-toggle", "data-toggle"=> "collapse", "data-parent"=> "#accordion4", "href"=> "#collapse5"}
             = "My approvals"
           %div{id: "collapse5", class: "accordion-body collapse"}
             %div{class: "accordion-inner"}
-            = render partial: "share_category", locals: { shares: @all_borrows.where(status: :approved), kind: "borrow",  type: "approvals" }
+            = render partial: "share/share_category", locals: { shares: @all_borrows.where(status: :approved), kind: "borrow",  type: "approvals" }
       %div{class: "accordion-group"}
         %div{class: "accordion-heading"}
           %a{class: "accordion-toggle", "data-toggle"=> "collapse", "data-parent"=> "#accordion4", "href"=> "#collapse6"}
             = "My rented items"
           %div{id: "collapse6", class: "accordion-body collapse"}
             %div{class: "accordion-inner"}
-            = render partial: "share_category", locals: { shares: @all_borrows.where(status: :checkedout), kind: "borrow",  type: "checkouts" }
-
-
-
-
+            = render partial: "share/share_category", locals: { shares: @all_borrows.where(status: :checkedout), kind: "borrow",  type: "checkouts" }

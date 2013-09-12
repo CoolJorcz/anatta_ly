@@ -23,23 +23,22 @@
       <div class="navbar-inner">
         <div class="container">
           <nav>
-            <ul class="nav" id="links">
-              <li><%=link_to "Available Items", root_path %></li>
-              <% if current_user %>
-                <li><%=link_to "My Shares", shares_path%></li>
-                <li><%=link_to "My Items", user_path(current_user)%></li>
-              <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
-            <p class="nav pull-right">Hello, <%= link_to current_user.name, user_path(current_user) %>! <%= "(" + current_user.points.to_s + "ॐ)" %></p>
-            </ul>
-            <% end %>
-
             <span class="nav pull-right">
               <% if current_user %>
+                <span class="nav pull-right">Hello, <%= link_to current_user.name, user_path(current_user) %>! <%= "(" + current_user.points.to_s + "ॐ)" %></span>
               <% else %>
                 <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-small
                  btn-primary" %>
               <% end %>
             </span>
+            <ul class="nav" id="links">
+              <% if current_user %>
+                <li><%=link_to "Available Items", root_path %></li>
+                <li><%=link_to "My Items", user_path(current_user)%></li>
+              <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+            </ul>
+            <% end %>
+
           </nav>
         </div>
       </div>

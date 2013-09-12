@@ -1,7 +1,7 @@
 - if current_user
   %div.container-fluid
     %div.row-fluid
-      %div.span2
+      %div.span3
         %div.sharing_friends
           %h2 My Friends
         %ul
@@ -11,8 +11,11 @@
               = link_to friend.name, user_path(friend.id)
           %br
           = link_to "Check to see if you have friends on Anatta.ly", new_friend_path(current_user)
+        %div.sharing_panel
+          %h2 Sharing Panel
+          = render partial: "shares/share_panel", locals: {all_shares: @all_shares, all_borrows: @all_borrows}
 
-      %div.span10
+      %div.span9
         %div.categories
 
           %ul

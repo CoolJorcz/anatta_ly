@@ -6,7 +6,7 @@ class Item < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   has_many :shares, dependent: :destroy
-  has_many :borrowers, class_name: "User"
+  has_many :borrows, through: :shares, class_name: "User"
 
   has_attached_file :image, styles: { medium: "300x300>", small:"200x200>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
 

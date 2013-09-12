@@ -1,10 +1,11 @@
 class User < ActiveRecord::Base
+  attr_accessible :avatar
+
   has_many :items, dependent: :destroy
-  has_many :borrows
+  has_many :borrows, through: :shares, source: :borrower
   has_many :shares, through: :items
   has_many :friends, foreign_key: :requestor_id, foreign_key: :receiver_id
 
-  attr_accessible :avatar
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
 
   def gmaps4rails_address

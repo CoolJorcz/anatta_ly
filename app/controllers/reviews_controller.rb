@@ -1,8 +1,4 @@
 class ReviewsController < ApplicationController
-  def index
-
-  end
-
   def new
     @share = Share.find(params[:share_id]) #Share.find(params[:share_id]) #CHANGE THIS
     @review = Review.new
@@ -11,6 +7,8 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(params[:review])
     @share = Share.find(params[:review][:share_id])
+    @share.borrower.update_feedback_reviews
+
     if @review.valid?
       @review.save
       params

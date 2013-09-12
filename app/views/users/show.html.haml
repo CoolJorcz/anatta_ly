@@ -2,7 +2,6 @@
   %div{class: "profile_box"}
     - if current_user == @user
       = render partial: "user_profile"
-
     - else
       = render partial: "friend_profile"
 
@@ -10,13 +9,13 @@
     %br
     - if current_user == @user
       = link_to "Add a new item", new_item_path(@user), class: "btn button-small"
-    - if @reviews.size > 5
-      - borrow_rating = "ॐ" * @avg_stars
+    - if @reviews.size > 0
+      - borrow_rating = "ॐ" * self.avg_stars
       %h4= "Borrow rating " + borrow_rating
-      %h4= "Items returned on time " + @percentage_returned_on_time.to_s + "%"
-      %h4= "Users would lend with me again " + @percentage_lend_again.to_s + "%"
+      %h4= "Items returned on time " + self.percentage_returned_on_time.to_s + "%"
+      %h4= "Users would lend with me again " + self.percentage_lend_again.to_s + "%"
     - else
-      %p (A user needs at least 5 reviews before feedback is calculated.)
+      %p= #(A user needs at least 5 reviews before feedback is calculated.)
 
   %ul.collection#collection
     - @items.each do |item|

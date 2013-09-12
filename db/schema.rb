@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130910220000) do
+ActiveRecord::Schema.define(:version => 20130912024323) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -78,19 +78,20 @@ ActiveRecord::Schema.define(:version => 20130910220000) do
     t.string   "name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.datetime "created_at",                                       :null => false
-    t.datetime "updated_at",                                       :null => false
-    t.integer  "facebook_id",         :limit => 8
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
+    t.integer  "facebook_id",              :limit => 8
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.boolean  "gmaps"
-    t.integer  "amt_borrowed",                     :default => 0
-    t.integer  "amt_shared",                       :default => 0
-    t.integer  "points",                           :default => 10
+    t.integer  "amt_borrowed",                          :default => 0
+    t.integer  "amt_shared",                            :default => 0
+    t.integer  "points",                                :default => 10
+    t.integer  "avg_stars",                             :default => 0
+    t.integer  "avg_condition",                         :default => 0
+    t.integer  "percent_lend_again",                    :default => 0
+    t.integer  "percent_returned_on_time",              :default => 0
   end
 
 end

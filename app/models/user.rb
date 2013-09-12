@@ -50,4 +50,35 @@ class User < ActiveRecord::Base
   def friends_count
     facebook { |fb| fb.get_connection("me", "friends").size }
   end
+
+  def update_feedback_reviews
+    borrows = Share.where(borrower_id: @user.id)
+    reviews = []
+    borrows.each do |share|
+      Review.all.each do |review|
+        reviews << review if share.id == review.share_id
+      end
+    end
+
+    total_stars = 0
+    total_condition = 0
+    total_lend_agains = 0
+    total_returned_on_time = 0
+
+    reviews.each do |review|
+      total_stars += review.stars
+      total_condition += review.condition
+      total_lend_agains +=1 if review.lend_again == true
+      total_returned_on_time += 1 if review.returned_on_time == true
+    end
+
+    if reviews.length > 0
+      self.avg_stars = (total_stars.to_f / reviews.length).ceil
+      self.avg_condition = total_stars.to_f / reviews.length
+      self.percentage_lend_again = (100 * total_lend_agains.to_f / reviews.length).to_i
+      self.percentage_returned_on_time = (100 * total_returned_on_time.to_f / reviews.length).to_i
+      self.save
+    end
+
+  end
 end

@@ -10,7 +10,7 @@
               = link_to image_tag(profile_picture_path(friend)), user_path(friend)
               = link_to friend.name, user_path(friend.id)
           %br
-          = link_to "Check to see if you have friends on Anatta.ly", new_friend_path(current_user)
+          = link_to "Check to see if you have friends on AnattaLy", new_friend_path(current_user)
         %div.sharing_panel
           %h2 Sharing Panel
           = render partial: "shares/share_panel", locals: {all_shares: @all_shares, all_borrows: @all_borrows}
@@ -39,7 +39,7 @@
             / %hr
 - else
   %h1= link_to "Sign up with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-small btn-primary"
-  %h3 More often than not, our friends already have the things we want or need. Anatta.Ly is an app that makes it easy to share items amongst friends.
+  %h3 More often than not, our friends already have the things we want or need. AnattaLy is an app that makes it easy to share items amongst friends.
 
   %h1 When you share more you can DO MORE.
 

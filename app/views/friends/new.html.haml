@@ -11,7 +11,7 @@
         = link_to "Deny", friend_path(fr.id), method: :delete, confirm: "Are you sure you don't want to share with  " + u.name + "?"
 
 - if @possible_friends.length > 0
-  %h2= @current_user.name + ", your friends are already on Anatta.ly!"
+  %h2= @current_user.name + ", your friends are already on AnattaLy!"
   %h4 Request to see their items, and give them permission to see yours.
   %ul
     - @possible_friends.each do |friend|
@@ -20,4 +20,4 @@
         = link_to "Send request to " + friend.name, friends_path(receiver_id: friend.id), { method: "post" }
 
 - else
-  %h2 It looks like you don't have any friends on anatta.ly to share with. Let's invite some!
+  %h2 It looks like you don't have any friends on AnattaLy to share with. Maybe you should invite them to signup!

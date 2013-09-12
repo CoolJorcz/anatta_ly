@@ -1,11 +1,16 @@
 class SharesController < ApplicationController
   def index
+    @all_shares = current_user.shares
+
+
     @share_requests = Share.shares(current_user, "pending")
     @share_approvals = Share.shares(current_user, "approved")
     @share_checkouts = Share.shares(current_user, "checkedout")
-    @borrow_requests = Share.borrows(current_user, "pending")
-    @borrow_approvals = Share.borrows(current_user, "approved")
-    @borrow_checkouts = Share.borrows(current_user, "checkedout")
+
+    @all_borrows = Share.borrows(current_user)
+    # @borrow_requests = Share.borrows(current_user, "pending")
+    # @borrow_approvals = Share.borrows(current_user, "approved")
+    # @borrow_checkouts = Share.borrows(current_user, "checkedout")
   end
 
   def new

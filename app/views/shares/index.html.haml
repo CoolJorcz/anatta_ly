@@ -7,56 +7,56 @@
 
 %div{class: "tab-content"}
   %div{id: "shares", class: "tab-pane"}
-    - if @share_requests.length == 0 && @share_approvals.length == 0 && @share_checkouts.length == 0
+    - if @all_shares.length == 0
       %h4 It looks like no one has requested to share with you. Why not invite some friends or add some more items?
-    %div{class: "accordion", id:"accordion2"}
+    %div{class: "accordion", id:"accordion1"}
       %div{class: "accordion-group"}
         %div{class: "accordion-heading"}
-          %a{class: "accordion-toggle", "data-toggle"=> "collapse", "data-parent"=> "#accordion2", "href"=> "#collapseOne"}
+          %a{class: "accordion-toggle", "data-toggle"=> "collapse", "data-parent"=> "#accordion1", "href"=> "#collapse1"}
             = "My requests"
-          %div{id: "collapseOne", class: "accordion-body collapse"}
+          %div{id: "collapse1", class: "accordion-body collapse"}
             %div{class: "accordion-inner"}
-            = render partial: "share_category", locals: { shares: @share_requests, kind: "share", type: "requests" }
+            = render partial: "share_category", locals: { shares: @all_shares.where(status: :pending), kind: "share", type: "requests" }
       %div{class: "accordion-group"}
         %div{class: "accordion-heading"}
-          %a{class: "accordion-toggle", "data-toggle"=> "collapse", "data-parent"=> "#accordion2", "href"=> "#collapseTwo"}
+          %a{class: "accordion-toggle", "data-toggle"=> "collapse", "data-parent"=> "#accordion1", "href"=> "#collapse2"}
             = "My approvals"
-          %div{id: "collapseTwo", class: "accordion-body collapse"}
+          %div{id: "collapse2", class: "accordion-body collapse"}
             %div{class: "accordion-inner"}
-            = render partial: "share_category", locals: { shares: @share_approvals, kind: "share", type: "approvals" }
+            = render partial: "share_category", locals: { shares: @all_shares.where(status: :approved), kind: "share", type: "approvals" }
       %div{class: "accordion-group"}
         %div{class: "accordion-heading"}
-          %a{class: "accordion-toggle", "data-toggle"=> "collapse", "data-parent"=> "#accordion2", "href"=> "#collapseThree"}
+          %a{class: "accordion-toggle", "data-toggle"=> "collapse", "data-parent"=> "#accordion1", "href"=> "#collapse3"}
             = "My rented items"
-          %div{id: "collapseThree", class: "accordion-body collapse"}
+          %div{id: "collapse3", class: "accordion-body collapse"}
             %div{class: "accordion-inner"}
-            = render partial: "share_category", locals: { shares: @share_checkouts, kind: "share", type: "checkouts" }
+            = render partial: "share_category", locals: { shares: @all_shares.where(status: :checkedout), kind: "share", type: "checkouts" }
 
   %div{id: "borrows", class: "tab-pane"}
-    - if @borrow_requests.length == 0 && @borrow_approvals.length == 0 && @borrow_checkouts.length == 0
+    - if @all_borrows.length == 0
       %h4 No good stuff to borrow? Check out what your friends are lending or invite some new friends :)
-    %div{class: "accordion", id:"accordion3"}
+    %div{class: "accordion", id:"accordion4"}
       %div{class: "accordion-group"}
         %div{class: "accordion-heading"}
-          %a{class: "accordion-toggle", "data-toggle"=> "collapse", "data-parent"=> "#accordion3", "href"=> "#collapseFour"}
+          %a{class: "accordion-toggle", "data-toggle"=> "collapse", "data-parent"=> "#accordion4", "href"=> "#collapse4"}
             = "My requests"
-          %div{id: "collapseFour", class: "accordion-body collapse"}
+          %div{id: "collapse4", class: "accordion-body collapse"}
             %div{class: "accordion-inner"}
-            = render partial: "share_category", locals: { shares: @borrow_requests, kind: "borrow", type: "requests" }
+            = render partial: "share_category", locals: { shares: @all_borrows.where(status: :pending), kind: "borrow", type: "requests" }
       %div{class: "accordion-group"}
         %div{class: "accordion-heading"}
-          %a{class: "accordion-toggle", "data-toggle"=> "collapse", "data-parent"=> "#accordion3", "href"=> "#collapseFive"}
+          %a{class: "accordion-toggle", "data-toggle"=> "collapse", "data-parent"=> "#accordion4", "href"=> "#collapse5"}
             = "My approvals"
-          %div{id: "collapseFive", class: "accordion-body collapse"}
+          %div{id: "collapse5", class: "accordion-body collapse"}
             %div{class: "accordion-inner"}
-            = render partial: "share_category", locals: { shares: @borrow_approvals, kind: "borrow", type: "approvals" }
+            = render partial: "share_category", locals: { shares: @all_borrows.where(status: :approved), kind: "borrow",  type: "approvals" }
       %div{class: "accordion-group"}
         %div{class: "accordion-heading"}
-          %a{class: "accordion-toggle", "data-toggle"=> "collapse", "data-parent"=> "#accordion3", "href"=> "#collapseSix"}
+          %a{class: "accordion-toggle", "data-toggle"=> "collapse", "data-parent"=> "#accordion4", "href"=> "#collapse6"}
             = "My rented items"
-          %div{id: "collapseSix", class: "accordion-body collapse"}
+          %div{id: "collapse6", class: "accordion-body collapse"}
             %div{class: "accordion-inner"}
-            = render partial: "share_category", locals: { shares: @borrow_checkouts, kind: "borrow", type: "checkouts" }
+            = render partial: "share_category", locals: { shares: @all_borrows.where(status: :checkedout), kind: "borrow",  type: "checkouts" }
 
 
 

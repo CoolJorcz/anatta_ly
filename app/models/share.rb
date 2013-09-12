@@ -1,20 +1,24 @@
 class Share < ActiveRecord::Base
-  attr_accessible :item_id, :start_on, :end_on, :pickup_location, :pickup_time, :return_location, :return_time
+  attr_accessible :item_id, :start_on, :end_on, :pickup_location, :pickup_time, :return_location, :return_time, :borrower_id
   validates_presence_of :item_id, :borrower_id, :start_on, :end_on, :status
 
   belongs_to :item
-  belongs_to :borrower, class_name: "User", foreign_key: "borrower_id"
+  belongs_to :borrower, class_name: "User"
 
-  def self.shares(current_user, status)
+  def self.shares(current_user, status = nil)
     items = current_user.items
     shares = []
     items.each do |item|
-      shares << Share.where(item_id: item.id, status: status)
+      if status.nil?
+        shares << Share.where(item_id: item.id)
+      else
+        shares << Share.where(item_id: item.id, status: status)
+      end
     end
     shares.flatten
   end
 
-  def self.borrows(current_user, status)
-    Share.where(borrower_id: current_user.id, status: status)
+  def self.borrows(current_user)
+    Share.where(borrower_id: current_user.id)
   end
 end

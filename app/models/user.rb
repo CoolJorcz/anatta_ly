@@ -75,8 +75,8 @@ class User < ActiveRecord::Base
     if reviews.length > 0
       self.avg_stars = (total_stars.to_f / reviews.length).ceil
       self.avg_condition = total_stars.to_f / reviews.length
-      self.percentage_lend_again = (100 * total_lend_agains.to_f / reviews.length).to_i
-      self.percentage_returned_on_time = (100 * total_returned_on_time.to_f / reviews.length).to_i
+      self.percent_lend_again = (100 * total_lend_agains.to_f / reviews.length).to_i
+      self.percent_returned_on_time = (100 * total_returned_on_time.to_f / reviews.length).to_i
       self.save
     end
 

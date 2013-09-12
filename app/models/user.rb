@@ -82,4 +82,19 @@ class User < ActiveRecord::Base
 
     self.save
   end
+
+  def comments
+    borrows = Share.where(borrower_id: self.id)
+    comments = []
+    borrows.each do |share|
+      Review.all.each do |review|
+        if share.id == review.share_id
+          unless (review.comment == nil || review.comment == " " || review.comment == "")
+            comments << review.comment 
+          end
+        end
+      end
+    end
+    comments
+  end
 end

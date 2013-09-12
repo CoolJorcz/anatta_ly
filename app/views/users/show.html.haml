@@ -2,7 +2,6 @@
   %div{class: "profile_box"}
     - if current_user == @user
       = render partial: "user_profile"
-
     - else
       = render partial: "friend_profile"
 
@@ -17,7 +16,18 @@
         - if item.image_file_name != nil
           = link_to image_tag(item.image.url(:small), class: "holy img-polaroid"), item_path(item.id)
         = link_to item.name, item_path(item.id), class: "caption"
+        
+  %h3 Borrowing Review
+  - if @user.num_reviews > 1
+    - borrow_rating = "ॐ" * @user.avg_stars
+    %h5= "Borrow rating " + borrow_rating
+    %h5= "Items returned on time " + @user.percent_returned_on_time.to_s + "%"
+    %h5= "Users would lend with me again " + @user.percent_lend_again.to_s + "%"
+    - if @user.comments.size > 0
+      %h5= "Comments: " + @user.percent_lend_again.to_s + "%"
+      %ul
+      - @user.comments.each do |comment|
+        %li= comment
 
 - else
   = render partial: "non_friend_profile"
-

@@ -1,4 +1,4 @@
 %h2= @user.name + "'s Collection"
 = image_tag @profile_picture
 %h4= @user.name + " saved $" + @user.amt_borrowed.to_s
-%h4= @user.name + " saved their friends $" + @user.amt_shared.to_s
+%h4= @user.name + " saved others $" + @user.amt_shared.to_s

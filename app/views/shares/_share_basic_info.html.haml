@@ -1,18 +1,31 @@
-%h1= @share.item.name
+%h2= @share.item.name
 
 %h3
   = link_to image_tag(profile_picture_path(@share.item.user)), user_path(@share.item.user)
   = @share.item.user.name
-  = "is sharing with"
+  - if @share.status == "returned"
+    = "shared with"
+  - elsif @share.status == "pending"
+    = "is hopefully going to share with" 
+  - elsif @share.status == "approved"
+    = "is scheduled to share with" 
+  - elsif @share.status == "checkedout"
+    = "is sharing with" 
+  - elsif @share.status == "canceled" || @share.status == "denied"
+    = "is not sharing with"    
   = link_to image_tag(profile_picture_path(@share.borrower)), user_path(@share.borrower)
   = @share.borrower.name
+  - if @share.status == "canceled" || @share.status == "denied"
+    = "at this time" 
 
 %h5= @share.item.category.name
-%h5= "Status: " + @share.status
+%h5
+  = "Status: "
+  %span.item_status= @share.status.capitalize
 
 %br
 
-= link_to image_tag(@share.item.image.url(:medium), item_path(@share.item.id),
+= link_to image_tag(@share.item.image.url(:medium)), item_path(@share.item.id)
 
 %p= @share.item.description
 

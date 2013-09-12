@@ -1,0 +1,7 @@
+%h1= "Borrower Review"
+
+= render "shares/share_basic_info"
+
+%h2= "How did lending your " + @share.item.name.downcase + " to " + @share.borrower.name + " go?"
+
+= render partial: "review_form"

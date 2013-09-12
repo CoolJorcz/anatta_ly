@@ -6,13 +6,13 @@
   - if @share.status == "returned"
     = "shared with"
   - elsif @share.status == "pending"
-    = "hopefully going to share with" 
+    = "is hopefully going to share with" 
   - elsif @share.status == "approved"
-    = "going to share with" 
+    = "is scheduled to share with" 
   - elsif @share.status == "checkedout"
-    = "sharing with" 
+    = "is sharing with" 
   - elsif @share.status == "canceled" || @share.status == "denied"
-    = "in not sharing with"    
+    = "is not sharing with"    
   = link_to image_tag(profile_picture_path(@share.borrower)), user_path(@share.borrower)
   = @share.borrower.name
   - if @share.status == "canceled" || @share.status == "denied"
@@ -23,7 +23,7 @@
 
 %br
 
-= link_to image_tag(@share.item.image.url(:medium), item_path(@share.item.id),
+= link_to image_tag(@share.item.image.url(:medium)), item_path(@share.item.id)
 
 %p= @share.item.description
 

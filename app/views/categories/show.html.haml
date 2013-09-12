@@ -1,8 +1,10 @@
 %h2= @category.name
 
-%ul
+%ul.collection#collection
   - @items.each do |item|
     - if @friend_items.include?(item)
-      %li.items
+      %li.my_items.item
         = link_to image_tag(item.image.url(:small), class: "holy img-polaroid"), item_path(item.id)
         = link_to item.name, item_path(item.id), class: "caption"
+
+%h2= link_to "Back Home", root_path

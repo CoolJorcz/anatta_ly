@@ -103,11 +103,16 @@ span.nav_search > form{
   text-align: center;
   width: 80%;
   display: inline;
+  position: relative;
 }
 
 .categories li {
   padding-left: 2em;
   font-size: 1.5em;
+}
+.categories li a{
+  display: inline;
+
 }
 
 .search_bar{
@@ -237,10 +242,10 @@ h1 {
   position: relative;
   margin-bottom: 2em;
   background-color: rgba(240, 240, 240, .5);
-    li{
-      display:inline-block;
-    }
 }
+    /*li{
+      display:inline-block;
+    }*/
 .individual_share > ul {
   border-top:1px solid gray;
   margin: 0;
@@ -292,7 +297,7 @@ h1 {
   background-color: rgba(240, 240, 240, .5);
 }
 .sharer{
-  float:right;
+  float: right;
   padding-right: 1em;
 }
 
@@ -359,7 +364,7 @@ dark #165987
 .span2{
 
   min-width: 300px;
-
+}
 .user-form {
   margin: auto;
   width: 60%;

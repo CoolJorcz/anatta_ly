@@ -20,7 +20,7 @@
               - if kind == "share"
                 - if type == "requests"
                   %li#approve
-                    = link_to "approve", update_share_path(share_id: share.id, update_type: "approved"), { method: :put, controller: "shares"}
+                    = link_to "approve", update_share_path(share_id: share.id, update_type: "approved"), { method: :put, controller: "shares", data: share.id, }
                   %li#deny
                     = link_to "deny", update_share_path(share_id: share.id, update_type: "denied"), { method: "put", controller: "shares" }, confirm: "Are you sure you don't want to share with " + share.borrower.name + "?"
                 - elsif type == "approvals"

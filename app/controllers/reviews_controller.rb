@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   def new
-    @share = Share.find(params[:share_id]) #Share.find(params[:share_id]) #CHANGE THIS
+    @share = Share.find(params[:share_id]) 
     @review = Review.new
   end
 
@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
     if @review.valid?
       @review.save
       params
-      redirect_to share_path(@share) #id: @review.id, :share_id @review.share.id
+      redirect_to share_path(@share) 
     else 
       render :new
     end 

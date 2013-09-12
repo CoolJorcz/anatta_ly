@@ -11,11 +11,11 @@
     = "going to share with" 
   - elsif @share.status == "checkedout"
     = "sharing with" 
-  - elsif @share.status == "canceled" || @share.status == "pending"
+  - elsif @share.status == "canceled" || @share.status == "denied"
     = "in not sharing with"    
   = link_to image_tag(profile_picture_path(@share.borrower)), user_path(@share.borrower)
   = @share.borrower.name
-  - if @share.status == "canceled" || @share.status == "pending"
+  - if @share.status == "canceled" || @share.status == "denied"
     = "at this time" 
 
 %h5= @share.item.category.name

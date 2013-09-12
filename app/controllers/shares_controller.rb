@@ -31,7 +31,7 @@ class SharesController < ApplicationController
     if end_on < start_on || start_on < today
       redirect_to new_share_path(item_id: item_id)
     elsif share.save
-      redirect_to shares_url
+      redirect_to root_url
     else
       redirect_to new_share_path(item_id: item_id)
     end

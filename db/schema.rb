@@ -85,6 +85,9 @@ ActiveRecord::Schema.define(:version => 20130912043100) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.boolean  "gmaps"
     t.integer  "amt_borrowed",                          :default => 0
     t.integer  "amt_shared",                            :default => 0
     t.integer  "points",                                :default => 10

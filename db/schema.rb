@@ -94,5 +94,4 @@ ActiveRecord::Schema.define(:version => 20130912043100) do
     t.integer  "percent_returned_on_time",              :default => 0
     t.integer  "num_reviews",                           :default => 0
   end
-
 end

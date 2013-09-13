@@ -31,7 +31,7 @@ class SharesController < ApplicationController
     if end_on < start_on || start_on < today
       redirect_to new_share_path(item_id: item_id)
     elsif share.save
-      redirect_to shares_url
+      redirect_to root_path
     else
       redirect_to new_share_path(item_id: item_id)
     end
@@ -74,7 +74,6 @@ class SharesController < ApplicationController
           @share.borrower.amt_borrowed += @share.item.price
           @share.borrower.points -= 2
           @share.borrower.save
-          return_phrase = " has checked out your item."
         elsif new_status == "returned"
           @share.borrower.points +=1
           @share.borrower.save

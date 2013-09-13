@@ -8,4 +8,5 @@ class CategoriesController < ApplicationController
     @friend_items = Friend.items_of_friends(current_user)
     @items = @category.items
   end
+
 end

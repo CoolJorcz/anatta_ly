@@ -16,7 +16,7 @@
           = render partial: "shares/share_panel", locals: {all_shares: @all_shares, all_borrows: @all_borrows}
 
       %div.span9
-        %div.categories
+        %div.categories.stretch
 
           %ul
             - @categories.each do |category|
@@ -38,20 +38,21 @@
             = link_to "Back home", root_path
             / %hr
 - else
-  %h1= link_to "Sign up with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-small btn-primary"
-  %h3 More often than not, our friends already have the things we want or need. AnattaLy is an app that makes it easy to share items amongst friends.
+  %div.non_user_home
+    %div.welcome.center-wrap
+      %h3 More often than not, our friends already have the things we want or need. Anatta.Ly is an app that makes it easy to share items amongst friends.
+      %h1 When you share more you can DO MORE.
+    %div.user_gallery
+      %ul#welcomegallery
+        %li.polaroid.desaturate#backstretch1.stretchtest
+        %li.polaroid.desaturate#backstretch2.stretchtest
+        %li.polaroid.desaturate#backstretch3.stretchtest
+        %li.polaroid.desaturate#backstretch4.stretchtest
+        %li.polaroid.desaturate#backstretch5.stretchtest
+        %li.polaroid.desaturate#backstretch6.stretchtest
+        %li.polaroid.desaturate#backstretch7.stretchtest
+        %li.polaroid.desaturate#backstretch8.stretchtest
+        %li.polaroid.desaturate#backstretch9.stretchtest
+        %li.polaroid.desaturate#backstretch10.stretchtest
 
-  %h1 When you share more you can DO MORE.
-
-  =image_tag "index/test1.jpg", class: "img-polaroid holy desaturate"
-  =image_tag "index/test2.jpg", class: "img-polaroid holy desaturate"
-  =image_tag "index/test3.jpg", class: "img-polaroid holy desaturate"
-  =image_tag "index/test4.png", class: "img-polaroid holy desaturate"
-  =image_tag "index/test5.jpg", class: "img-polaroid holy desaturate"
-  =image_tag "index/test4.png", class: "img-polaroid holy desaturate"
-  =image_tag "index/test6.jpg", class: "img-polaroid holy desaturate"
-  =image_tag "index/test7.jpg", class: "img-polaroid holy desaturate"
-  =image_tag "index/test8.jpg", class: "img-polaroid holy desaturate"
-  =image_tag "index/test2.jpg", class: "img-polaroid holy desaturate"
-  =image_tag "index/test1.jpg", class: "img-polaroid holy desaturate"
 

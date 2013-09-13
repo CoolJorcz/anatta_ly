@@ -22,14 +22,19 @@
       <div class="navbar-inner">
         <div class="container">
           <nav>
-            <span class="nav pull-right">
-              <% if current_user %>
-                <span class="nav pull-right">Hello, <%= link_to current_user.name, user_path(current_user) %>! <%= "(" + current_user.points.to_s + "ॐ)" %></span>
-              <% else %>
-                <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-small
-                 btn-primary" %>
-              <% end %>
-            </span>
+            <div class="nav pull-left">
+              <span><%=image_tag "index/om.gif", class: "logo"%></span>
+              <span class="anattaly">AnattaLy</span>
+              </div>
+                <span class="nav pull-right">
+                  <% if current_user %>
+                    <span class="nav pull-right">Hello, <%= link_to current_user.name, user_path(current_user) %>! <%= "(" + current_user.points.to_s + "ॐ)" %></span>
+                  <% else %>
+                  <span class="nav pull-right">
+                    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-small btn-primary" %>
+                   </span>
+                  <% end %>
+                </span>
             <ul class="nav" id="links">
               <li><%=link_to "AnattaLy", about_path %></li>
               <% if current_user %>
@@ -38,7 +43,6 @@
               <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
             </ul>
             <% end %>
-
           </nav>
         </div>
       </div>

@@ -4,7 +4,7 @@
 
 body {
   font-family: "Tahoma";
-    font-size: 16px;
+  font-size: 16px;
 }
 
 html {
@@ -20,14 +20,11 @@ body {
 section {
   overflow: auto;
 }
-/*
-.container{
-  margin:0; padding: 0;
-}*/
 
 header {
   width: 100%;
 }
+
 .centerwrap{
   display: table;
   margin: 0 auto;
@@ -42,6 +39,7 @@ header {
   margin: 0;
   padding: 0;
 }
+
 .navbar .container{
   width: 100%;
   padding: 30px 0 0 0;
@@ -57,6 +55,7 @@ header {
   position: relative;
   top:6px;
 }
+
 .navbar .container > nav > span{
   position: absolute;
   right: 10px;
@@ -65,19 +64,21 @@ header {
 }
 
 .navbar .container > nav > ul > li{
-  /*border:1px red solid;*/
   background: rgba(21,86,130,0.5);
   padding: 2px 10px;
 }
+
 .navbar .container > nav > ul > li:nth-of-type(even):hover,
 .navbar .container > nav > ul > li:nth-of-type(odd):hover{
   background: rgba(25,130,114,0.8);
   padding: 2px 10px;
 }
+
 .navbar .container > nav > ul > li{
   margin: 0 3px;
 
 }
+
 .navbar .container > nav > ul > li > a {
   color: rgba(254,254,254,1);
   font-size: 15px;
@@ -92,7 +93,6 @@ header {
 }
 
 span.nav_search > form{
-  /*margin:10px 0;*/
   padding: 0; margin: 0;
   height:50px;
   float: left;
@@ -103,11 +103,16 @@ span.nav_search > form{
   text-align: center;
   width: 80%;
   display: inline;
+  position: relative;
 }
 
 .categories li {
   padding-left: 2em;
   font-size: 1.5em;
+}
+
+.categories li a{
+  display: inline;
 }
 
 .search_bar{
@@ -117,6 +122,7 @@ span.nav_search > form{
   background-color: rgba(21,86,130,0.6);
   border-radius: 5px;
 }
+
 .index_search textfield{
   color: black;
 }
@@ -126,11 +132,13 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   text-align: center;
   letter-spacing: 4px;
 }
+
 input:-moz-placeholder, textarea:-moz-placeholder{
  color: rgba(254,254,254,1);
   text-align: center;
 letter-spacing: 5px;
 }
+
 .btn-small {
   margin-left:1em;
   font-size: 14px;
@@ -141,6 +149,10 @@ letter-spacing: 5px;
 
 .nav pull-center{
   width: 30%;
+}
+
+.nav pull-right{
+  display:inline-block;
 }
 
 footer {
@@ -164,17 +176,16 @@ ul.collection > li > h4 > a{
   text-decoration: none;
   text-align: center;
 }
-ul.collection > li > h4{
-}
 
 ul.collection > li >  p{
 text-align: center;
 }
+
 .my_items {
   width: 246px;
 }
 
-.caption{
+.caption {
   color: rgba(21,86,130,1);
   font-size: 14px;
   text-wrap: none;
@@ -186,7 +197,7 @@ text-align: center;
 }
 
 .container-body {
-  width: 100%;
+  width: 90%;
   margin: 80px auto;
   color: black;
   padding-bottom: 10em;
@@ -204,15 +215,7 @@ img.desaturate {
   height: auto;
   padding: 0;
   margin: 0.5em 0.5em;
-  display: inline;
-}
-
-h1 {
   display: inline-block;
-  margin: 0;
-  margin-left: 85px;
-  padding: 50px 0;
-  font-size: 3.25em;
 }
 
 .header_4 {
@@ -228,7 +231,13 @@ h1 {
 .profile_box{
   display: inline-block;
   margin-left: 32px;
+  padding: 10px;
 }
+
+.profile_box > h4 {
+  padding: 10px 0;
+}
+
 
 .individual_share{
   width: 300px;
@@ -237,10 +246,13 @@ h1 {
   position: relative;
   margin-bottom: 2em;
   background-color: rgba(240, 240, 240, .5);
-    li{
-      display:inline-block;
-    }
+  li{
+    display:inline-block;
+  }
 }
+    /*li{
+      display:inline-block;
+    }*/
 .individual_share > ul {
   border-top:1px solid gray;
   margin: 0;
@@ -292,7 +304,7 @@ h1 {
   background-color: rgba(240, 240, 240, .5);
 }
 .sharer{
-  float:right;
+  float: right;
   padding-right: 1em;
 }
 
@@ -300,7 +312,7 @@ h1 {
   color: red;
 }
 
-<<<<<<< HEAD
+
 /*4ac2e2*/
 
 .about_block {
@@ -351,14 +363,27 @@ dark #165987
 .about_block.even {
   background-color: #165987;
   color: #4AC2E2;
-  
+
   /*background-color: #4ac2e2;*/
 
 }
 
-.span2{
+.anattaly{
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 40px;
+}
 
-  min-width: 300px;
+.logo{
+  width:50px;
+  height:50px;
+  background:url(index/om.gif) 0 0;
+}
+
+.welcome{
+  padding: 0 10%;
+  margin: 0 auto;
+}
 
 .user-form {
   margin: auto;
@@ -396,4 +421,48 @@ input:focus, textarea:focus {
 
 .user-form p {
   font-size: 1.5em;
+}
+.stretchtest{
+  width: 15em;
+  height: 15em;
+  /*padding: 4px;*/
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+}
+
+.item_container{
+  width: 50%;
+  border: 2px solid gray;
+  padding: 0 40px;
+}
+
+.collection_container{
+  width: 100%;
+  padding: 20px 20px;
+  margin: 0 auto;
+}
+
+
+.collection-button {
+  background-color: rgba(21,86,130,1);
+  border: none;
+  color: #4ac2e2;
+  letter-spacing: 1.5px;
+  padding:5px 25px;
+}
+
+a.collection-button:hover {
+  background-color: rgba(25,130,114,1);
+  text-decoration: none;
+  color: white;
+}
+
+.user_gallery {
+  min-width: 1296px;
+  max-width: 1300px;
+  margin: 0 auto;
 }

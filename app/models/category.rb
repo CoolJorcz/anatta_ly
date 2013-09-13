@@ -3,4 +3,6 @@ class Category < ActiveRecord::Base
   validates_presence_of :name
 
   has_many :items
+
+  # scope :find_category, where(category_id: item.category)
 end

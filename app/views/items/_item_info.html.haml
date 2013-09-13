@@ -4,14 +4,14 @@
   = link_to image_tag(profile_picture_path(@item.user)), user_path(@item.user)
   = link_to @item.user.name, user_path(@item.user)
 
-%h5= @item.category.name
+%h5= "Category: " + @item.category.name
 
-= image_tag @item.image.url(:medium)
+= image_tag @item.image.url(:medium), class: "img-polaroid holy"
 
 %p= @item.description
 
 - if @item.color != ""
-  %p= "color: " + @item.color
+  %p= "Color: " + @item.color
 
 - if @item.size != ""
-  %p= "size: " + @item.size
+  %p= "Size: " + @item.size

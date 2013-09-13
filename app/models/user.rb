@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   attr_accessible :avatar
 
   has_many :items, dependent: :destroy
-  has_many :borrows, through: :shares, source: :borrower
+  has_many :borrowed_items, through: :shares, source: :item
+  # has_many :shares, :foreign_key => :borrower_id
   has_many :shares, through: :items
   has_many :friends, foreign_key: :requestor_id, foreign_key: :receiver_id
 

@@ -21,14 +21,20 @@ class User < ActiveRecord::Base
     new_access_token = new_access_info["access_token"]
     new_access_expires_at = DateTime.now + new_access_info["expires"].to_i.seconds
 
-  	where(auth.slice(:provider,:uid)).first_or_initialize.tap do |user|
-  		user.provider = auth.provider
-  		user.facebook_id = auth.uid
-  		user.name = auth.info.name
-  		user.oauth_token = new_access_token
-  		user.oauth_expires_at = new_access_expires_at
-  		user.save!
-  	end
+    where(auth.slice(:provider,:uid)).first_or_initialize.tap do |user|
+      user.provider = auth.provider
+      user.facebook_id = auth.uid
+      user.name = auth.info.name
+      user.oauth_token = new_access_token
+      user.oauth_expires_at = new_access_expires_at
+      user.avatar = open user.facebook_avatar_url
+      user.save!
+    end
+  end
+
+  def facebook_avatar_url
+    graph = Koala::Facebook::API.new(self.oauth_token)
+    graph.get_picture(uid)
   end
 
   def facebook

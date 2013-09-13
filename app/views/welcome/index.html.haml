@@ -1,16 +1,45 @@
 - if current_user
-  %h1 Check out what your friends are lending out!
-  %ul
-    - @items.each do |item|
-      %li
-        - if item.image_file_name != nil
-          = link_to image_tag(item.image.url(:small)), item_path(item.id)
-        = link_to item.name, item_path(item.id)
+  %div.container-fluid
+    %div.row-fluid
+      %div.span2
+        %div.sharing_friends
+          %h2 My Friends
+        %ul
+          - @friends.each do |friend|
+            %li.friends
+              = link_to image_tag(profile_picture_path(friend)), user_path(friend)
+              = link_to friend.name, user_path(friend.id)
+          %br
+          = link_to "Check to see if you have friends on Anatta.ly", new_friend_path(current_user)
 
+      %div.span10
+        %div.categories
+
+          %ul
+            - @categories.each do |category|
+              %li.categories
+                = link_to category.name, category_path(category)
+        %ul{class: "collection", id: "collection"}
+          - unless @items.size == 0
+            - @items.each do |item|
+              %li.item
+                = link_to image_tag(item.image.url(:small), class: "holy img-polaroid"), item_path(item.id)
+                %h4= link_to item.name, item_path(item.id), class: "caption centerwrap"
+                %hr
+                %p= item.description*3
+                %hr
+                = image_tag(item.user.avatar.url)
+                = "Posted by " + item.user.name
+          - else
+            %h2 Your search didn't return any results.
+            = link_to "Back home", root_path
+            / %hr
 - else
+  %h1= link_to "Sign up with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-small btn-primary"
   %h3 More often than not, our friends already have the things we want or need. Anatta.Ly is an app that makes it easy to share items amongst friends.
 
   %h1 When you share more you can DO MORE.
+
   =image_tag "index/test1.jpg", class: "img-polaroid holy desaturate"
   =image_tag "index/test2.jpg", class: "img-polaroid holy desaturate"
   =image_tag "index/test3.jpg", class: "img-polaroid holy desaturate"

@@ -5,10 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
-
-    graph = Koala::Facebook::API.new(@user.oauth_token)
-    @profile_picture = graph.get_picture(@user.facebook_id)
-    
+    @profile_picture = @user.avatar.url
     @items = @user.items
   end
 end

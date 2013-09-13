@@ -8,6 +8,8 @@ class WelcomeController < ApplicationController
       	friend_items = Item.items_of_friends(current_user)
       	@items = friend_items.search(params[:search])
       end
+      @categories = Category.all
+      @friends = Friend.get_friends(current_user)
   	end
   end
 end

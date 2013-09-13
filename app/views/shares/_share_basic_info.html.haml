@@ -12,7 +12,7 @@
 
 %br
 
-= link_to image_tag(@share.item.image.url(:medium)), item_path(@share.item.id)
+= link_to image_tag(@share.item.image.url(:medium), item_path(@share.item.id),
 
 %p= @share.item.description
 

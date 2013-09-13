@@ -1,19 +1,21 @@
 - if shares.length > 0
   %h3= kind.upcase + " " + type
-  %ul
+  %ul.shares
     - shares.each do |share|
-      %li
-        = link_to image_tag(share.item.image.url(:thumb)), item_path(share.item.id)
+      %li.individual_share
+        = link_to image_tag(share.item.image.url(:thumb), class: "img_share img-polaroid"), item_path(share.item.id)
         = link_to share.item.name, item_path(share.item.id)
         %ul
+          - unless share.item.user == current_user
+            %li
+              %span= link_to image_tag(profile_picture_path(share.item.user)), user_path(share.item.user)
+              %span.sharer= "lender: " + share.item.user.name
+          - unless share.borrower == current_user
+            %li
+              = link_to image_tag(profile_picture_path(share.borrower), class: "img_user img-polaroid"), user_path(share.borrower)
+              %span.sharer= "requester: " + share.borrower.name
           %li
-            = link_to image_tag(profile_picture_path(share.item.user)), user_path(share.item.user)
-            = "lender: " + share.item.user.name
-          %li
-            = link_to image_tag(profile_picture_path(share.borrower)), user_path(share.borrower)
-            = "requester: " + share.borrower.name
-          %li= "start: " + share.start_on.to_date.strftime("%m/%d/%Y")
-          %li= "to: " + share.end_on.to_date.strftime("%m/%d/%Y")
+            %p= "start: " + share.start_on.to_date.strftime("%m/%d/%Y") + " to: " + share.end_on.to_date.strftime("%m/%d/%Y")
           %li= link_to "share page", share_path(share.id)
           - if kind == "share"
             - if type == "requests"
@@ -26,6 +28,7 @@
 
             - elsif type == "checkouts"
               %li= link_to "returned", update_share_path(share_id: share.id, update_type: "returned"), { method: "put", controller: "shares" }
-          - elsif kind == "borrow" &&  (type == "requests" || type == "approvals")
-            %li= link_to "cancel request", update_share_path(share_id: share.id, update_type: "canceled"), { method: "put", controller: "shares" }, confirm: "Are you sure you don't want to borrow this item?"
-
+            - elsif kind == "borrow" &&  (type == "requests" || type == "approvals")
+              %li= link_to "cancel request", update_share_path(share_id: share.id, update_type: "canceled"), { method: "put", controller: "shares" }, confirm: "Are you sure you don't want to borrow this item?"
+- else
+  %h1 Shares are empty!

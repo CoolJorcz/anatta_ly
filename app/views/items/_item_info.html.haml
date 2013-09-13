@@ -2,7 +2,7 @@
 
 %h3
   = link_to image_tag(profile_picture_path(@item.user)), user_path(@item.user)
-  = @item.user.name
+  = link_to @item.user.name, user_path(@item.user)
 
 %h5= @item.category.name
 

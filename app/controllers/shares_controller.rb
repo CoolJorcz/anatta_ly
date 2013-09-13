@@ -82,12 +82,11 @@ class SharesController < ApplicationController
         request_info = { name: @share.borrower.name, id: @share.id}
         render json: request_info
       else
-        redirect_to share_path(@share)
+        render share_path(@share)
       end
     else
       flash[:notice] = "Failed share approval"
     end
-    redirect_to share_path(@share)
   end
 
   def destroy

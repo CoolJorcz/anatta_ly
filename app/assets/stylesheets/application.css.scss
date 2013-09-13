@@ -231,7 +231,13 @@ img.desaturate {
 .profile_box{
   display: inline-block;
   margin-left: 32px;
+  padding: 10px;
 }
+
+.profile_box > h4 {
+  padding: 10px 0;
+}
+
 
 .individual_share{
   width: 300px;
@@ -431,4 +437,25 @@ input:focus, textarea:focus {
   width: 50%;
   border: 2px solid gray;
   padding: 0 40px;
+}
+
+.collection_container{
+  width: 100%;
+  padding: 20px 20px;
+  margin: 0 auto;
+}
+
+
+.collection-button {
+  background-color: rgba(21,86,130,1);
+  border: none;
+  color: #4ac2e2;
+  letter-spacing: 1.5px;
+  padding:5px 25px;
+}
+
+a.collection-button:hover {
+  background-color: rgba(25,130,114,1);
+  text-decoration: none;
+  color: white;
 }

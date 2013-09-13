@@ -14,4 +14,7 @@ class WelcomeController < ApplicationController
       @all_shares = current_user.shares
   	end
   end
+
+  def about
+  end
 end

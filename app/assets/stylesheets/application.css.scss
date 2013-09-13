@@ -342,6 +342,61 @@ h1 {
   color: red;
 }
 
+/*4ac2e2*/
+
+.about_block {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 auto;
+  text-align: center;
+}
+
+.about_inside {
+  width: 61.8%;
+  margin: 0 auto;
+}
+.about_block.odd {
+  font-style: none;
+}
+
+h1.about1 {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+h1.about2 {
+  margin: 0;
+  padding: 0;
+}
+
+h2.about1 {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+h3.about1 {
+
+}
+h3.about2 {
+  font-weight: normal;
+  color: #198272;
+}
+/*
+grey #EBEBEB
+blue #4AC2E2
+teal #198272
+dark #165987
+*/
+.about_block.even {
+  background-color: #165987;
+  color: #4AC2E2;
+  
+  /*background-color: #4ac2e2;*/
+
+}
+
 /*.span2{
   min-width: 300px;
 }

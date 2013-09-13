@@ -32,6 +32,7 @@
               <% end %>
             </span>
             <ul class="nav" id="links">
+              <li><%=link_to "AnattaLy", about_path %></li>
               <% if current_user %>
                 <li><%=link_to "Available Items", root_path %></li>
                 <li><%=link_to "My Items", user_path(current_user)%></li>

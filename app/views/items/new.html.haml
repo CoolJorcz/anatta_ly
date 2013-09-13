@@ -1,25 +1,26 @@
-%h2 Post an item to share
+%div.user-form
+  %h2 Post an item to share
 
-= form_for @item do |f|
-  %p Item
-  = f.text_field :name, placeholder: "required"
-  %p Description
-  = f.text_area :description, placeholder: "required"
-  %p Image
-  = f.file_field :image
-  %p Category
-  - Category.all.each do |c|
-    = f.radio_button :category_id, c.id
-    = c.name
+  = form_for @item do |f|
+    %p Item
+    = f.text_field :name, placeholder: "required"
+    %p Description
+    = f.text_area :description, placeholder: "required"
+    %p Image
+    = f.file_field :image
+    %p Category
+    - Category.all.each do |c|
+      = f.radio_button :category_id, c.id
+      = c.name
+      %br
     %br
-  %br
-  %p Approximate Price
-  $
-  = f.text_field :price, placeholder: "required"
-  %p Size
-  = f.text_field :size, placeholder: "optional"
-  %p Color
-  = f.text_field :color, placeholder: "optional"
-  %br
-  = f.submit "Post!"
+    %p Approximate Price
+    $
+    = f.text_field :price, placeholder: "required"
+    %p Size
+    = f.text_field :size, placeholder: "optional"
+    %p Color
+    = f.text_field :color, placeholder: "optional"
+    %br
+    = f.submit "Post!"
 

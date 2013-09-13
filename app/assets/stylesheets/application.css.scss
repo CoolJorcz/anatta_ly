@@ -382,6 +382,7 @@ dark #165987
 
 .welcome{
   padding: 0 10%;
+  margin: 0 auto;
 }
 
 .user-form {
@@ -458,4 +459,10 @@ a.collection-button:hover {
   background-color: rgba(25,130,114,1);
   text-decoration: none;
   color: white;
+}
+
+.user_gallery {
+  min-width: 1296px;
+  max-width: 1300px;
+  margin: 0 auto;
 }

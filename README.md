@@ -69,4 +69,4 @@ end
 ## Heroku apps
 
 * http://shielded-forest-9758.herokuapp.com - staging
-* http://anattaly.herokuapp.com/ - production
+* http://anatta-ly.herokuapp.com/ - production

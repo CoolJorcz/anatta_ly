@@ -22,7 +22,7 @@
                   %li.approve
                     = link_to "approve", update_share_path(share_id: share.id, update_type: "approved"), { method: "put", controller: "shares", remote: true}
                   %li.deny
-                    = link_to "deny", update_share_path(share_id: share.id, update_type: "denied"), { method: "put", controller: "shares"}, confirm: "Are  you sure you don't want to share with " + share.borrower.name + "?"
+                    = link_to "deny", update_share_path(share_id: share.id, update_type: "denied"), { method: "put", controller: "shares", remote: true}, confirm: "Are  you sure you don't want to share with " + share.borrower.name + "?"
                 - elsif type == "approvals"
                   %li.picked_up= link_to "picked up", update_share_path(share_id: share.id, update_type: "checkedout"), { method: "put", controller: "shares"}
 

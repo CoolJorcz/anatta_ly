@@ -12,6 +12,8 @@ class WelcomeController < ApplicationController
       @friends = Friend.get_friends(current_user)
       @all_borrows = Share.borrows(current_user)
       @all_shares = current_user.shares
+    else
+      images = Item.item_images
   	end
   end
 

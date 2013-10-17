@@ -1,8 +1,7 @@
 class SharesController < ApplicationController
   def index
-
-      @all_shares = current_user.shares
-      @all_borrows = Share.borrows(current_user)
+    @all_shares = current_user.shares
+    @all_borrows = Share.borrows(current_user)
   end
 
   def new
@@ -60,18 +59,18 @@ class SharesController < ApplicationController
     @share = Share.find(params[:share_id])
     @share.status = new_status
     if @share.save
+      if new_status == "checkedout"
+        @share.item.user.amt_shared += @share.item.price
+        @share.item.user.points += 2
+        @share.item.user.save
+        @share.borrower.amt_borrowed += @share.item.price
+        @share.borrower.points -= 2
+        @share.borrower.save
+      elsif new_status == "returned"
+        @share.borrower.points +=1
+        @share.borrower.save
+      end
       if request.xhr?
-        if new_status == "checkedout"
-          @share.item.user.amt_shared += @share.item.price
-          @share.item.user.points += 2
-          @share.item.user.save
-          @share.borrower.amt_borrowed += @share.item.price
-          @share.borrower.points -= 2
-          @share.borrower.save
-        elsif new_status == "returned"
-          @share.borrower.points +=1
-          @share.borrower.save
-        end
         request_info = { name: @share.borrower.name, id: @share.id}
         render json: request_info
       else

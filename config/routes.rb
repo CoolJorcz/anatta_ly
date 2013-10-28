@@ -4,6 +4,7 @@ AnattaLy::Application.routes.draw do
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'
   match 'about', to: 'welcome#about'
+  match 'images', to: 'welcome#images'
 
   resources :items
 

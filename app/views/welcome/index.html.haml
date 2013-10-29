@@ -29,7 +29,7 @@
                 = link_to image_tag(item.image.url(:small), class: "holy img-polaroid"), item_path(item.id)
                 %h4= link_to item.name, item_path(item.id), class: "caption centerwrap"
                 %hr
-                %p= item.description*3
+                %p= item.description
                 %hr
                 = image_tag(item.user.avatar.url)
                 = "Posted by " + item.user.name

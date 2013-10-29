@@ -9,27 +9,15 @@
     - if @all_shares.length == 0
       %h4 It looks like no one has requested to share with you. Why not invite some friends or add some more items?
     %div{class: "accordion", id:"accordion1"}
-      %div{class: "accordion-group"}
-        %div{class: "accordion-heading"}
-          %a{class: "accordion-toggle", "data-toggle"=> "collapse", "data-parent"=> "#accordion1", "href"=> "#collapse1"}
-            = "Requests for My Items"
-          %div{id: "collapse1", class: "accordion-body collapse"}
-            %div{class: "accordion-inner"}
-            = render partial: "shares/share_category", locals: { shares: all_shares.where(status: :pending), kind: "share", type: "requests" }
-      %div{class: "accordion-group"}
-        %div{class: "accordion-heading"}
-          %a{class: "accordion-toggle", "data-toggle"=> "collapse", "data-parent"=> "#accordion1", "href"=> "#collapse2"}
-            = "Rentals Approved By Me"
-          %div{id: "collapse2", class: "accordion-body collapse"}
-            %div{class: "accordion-inner"}
-            = render partial: "shares/share_category", locals: { shares: all_shares.where(status: :approved), kind: "share", type: "approvals" }
-      %div{class: "accordion-group"}
-        %div{class: "accordion-heading"}
-          %a{class: "accordion-toggle", "data-toggle"=> "collapse", "data-parent"=> "#accordion1", "href"=> "#collapse3"}
-            = "Currently Rented Out Items"
-          %div{id: "collapse3", class: "accordion-body collapse"}
-            %div{class: "accordion-inner"}
-            = render partial: "shares/share_category", locals: { shares: all_shares.where(status: :checkedout), kind: "share", type: "checkouts" }
+      - [["Requests for My Items", "requests", :pending], ["Rentals Approved By Me", "approvals", :approved], ["Currently Rented Out Items", "checkouts", :checkedout]].each_with_index do |(group_title, share_type, share_status), index|
+        %div{class: "accordion-group"}
+          %div{class: "accordion-heading"}
+            - collapse_id = "collapse#{index + 1}"
+            %a{class: "accordion-toggle", "data-toggle"=> "collapse", "data-parent"=> "#accordion1", "href"=> "##{collapse_id}"}
+              = group_title
+            %div{id: collapse_id, class: "accordion-body collapse"}
+              %div{class: "accordion-inner"}
+              = render partial: "shares/share_category", locals: { shares: all_shares.where(status: share_status), kind: "share", type: share_type }
 
   %div{id: "borrows", class: "tab-pane"}
     - if @all_borrows.length == 0

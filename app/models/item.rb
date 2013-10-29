@@ -23,4 +23,12 @@ class Item < ActiveRecord::Base
       all
     end
   end
+
+  def self.item_images
+    images = []
+    Item.all.sample(10).each do |item|
+      images << item.image.url
+    end
+    images
+  end
 end

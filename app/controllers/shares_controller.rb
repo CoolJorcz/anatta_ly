@@ -1,14 +1,7 @@
 class SharesController < ApplicationController
   def index
-
-      @all_shares = current_user.shares
-      @all_borrows = Share.borrows(current_user)
-    # @share_requests = Share.shares(current_user, "pending")
-    # @share_approvals = Share.shares(current_user, "approved")
-    # @share_checkouts = Share.shares(current_user, "checkedout")
-    # @borrow_requests = Share.borrows(current_user, "pending")
-    # @borrow_approvals = Share.borrows(current_user, "approved")
-    # @borrow_checkouts = Share.borrows(current_user, "checkedout")
+    @all_shares = current_user.shares
+    @all_borrows = Share.borrows(current_user)
   end
 
   def new
@@ -31,7 +24,7 @@ class SharesController < ApplicationController
     if end_on < start_on || start_on < today
       redirect_to new_share_path(item_id: item_id)
     elsif share.save
-      redirect_to shares_url
+      redirect_to root_path
     else
       redirect_to new_share_path(item_id: item_id)
     end
@@ -66,19 +59,18 @@ class SharesController < ApplicationController
     @share = Share.find(params[:share_id])
     @share.status = new_status
     if @share.save
+      if new_status == "checkedout"
+        @share.item.user.amt_shared += @share.item.price
+        @share.item.user.points += 2
+        @share.item.user.save
+        @share.borrower.amt_borrowed += @share.item.price
+        @share.borrower.points -= 2
+        @share.borrower.save
+      elsif new_status == "returned"
+        @share.borrower.points +=1
+        @share.borrower.save
+      end
       if request.xhr?
-        if new_status == "checkedout"
-          @share.item.user.amt_shared += @share.item.price
-          @share.item.user.points += 2
-          @share.item.user.save
-          @share.borrower.amt_borrowed += @share.item.price
-          @share.borrower.points -= 2
-          @share.borrower.save
-          return_phrase = " has checked out your item."
-        elsif new_status == "returned"
-          @share.borrower.points +=1
-          @share.borrower.save
-        end
         request_info = { name: @share.borrower.name, id: @share.id}
         render json: request_info
       else

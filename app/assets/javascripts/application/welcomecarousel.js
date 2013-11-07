@@ -9,9 +9,6 @@ function addBackstretch( i, imageArray ) {
   $('#backstretch'+i).backstretch(pictures, {duration: random_duration, fade: 750});
 }
 
-
-
-
 $(function(){
   var imageArray;
 
